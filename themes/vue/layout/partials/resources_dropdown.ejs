@@ -1,0 +1,13 @@
+<li class="nav-dropdown-container resources">
+    <a class="nav-link<%- page.path.match(/\/(hexo(?!\/team.html$)|process|hexo|docker)(\/|$)/) ? ' current' : '' %>">网站部署</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="<%- url_for("/website/process/") %>" class="nav-link<%- page.path.match(/\/process(\/|$)/) ? ' current' : '' %>">部署流程</a></li>
+                <li><a href="<%- url_for("/website/hexo/") %>" class="nav-link<%- page.path.match(/\/hexo(\/|$)/) ? ' current' : '' %>">HEXO</a></li>
+                <li><a href="<%- url_for("/website/docker/") %>" class="nav-link<%- page.path.match(/\/docker(\/|$)/) ? ' current' : '' %>">Docker</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>

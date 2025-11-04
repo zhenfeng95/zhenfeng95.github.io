@@ -1,0 +1,17 @@
+<% var isHomePage = page.path === 'index.html' %>
+
+<div class="sidebar">
+    <div class="sidebar-inner">
+        <% if (isHomePage) { %>
+        <ul class="main-menu">
+            <%- partial('partials/main_menu', { context: 'sidebar' }) %>
+        </ul>
+        <% } %>
+        <div class="list"><% if (type !== 'search') { %> <%- partial('partials/toc', { type: type }) %> <% } %></div>
+    </div>
+</div>
+<!--
+<% if (!page.sponsors && !page.partners) { %>
+<%- partial('partials/platinum_sponsors', { context: 'right' }) %>
+<% } %>
+-->
