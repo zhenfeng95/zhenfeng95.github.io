@@ -1,0 +1,662 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="with-v3-banner">
+  <head>
+    <title>git 常用命令 — Vue.js</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="alternate" hreflang="x-default" href="https://v2.vuejs.org/tool/git/index.html">
+    <link rel="alternate" hreflang="zh" href="https://v2.cn.vuejs.org/tool/git/index.html">
+    <link rel="alternate" hreflang="ja" href="https://jp.vuejs.org/tool/git/index.html">
+    <link rel="alternate" hreflang="ru" href="https://ru.vuejs.org/tool/git/index.html">
+    <link rel="alternate" hreflang="ko" href="https://kr.vuejs.org/tool/git/index.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://br.vuejs.org/tool/git/index.html">
+    <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/tool/git/index.html">
+    <link rel="alternate" hreflang="es" href="https://es.vuejs.org/tool/git/index.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="git 常用命令 — Vue.js">
+    <meta property="og:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta property="og:image" content="https://v2.cn.vuejs.org/images/logo.png">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="git 常用命令 — Vue.js">
+    <meta name="twitter:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="twitter:image" content="https://v2.cn.vuejs.org/images/logo.png">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+    <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
+    <link rel="icon" href="/images/logo.svg">
+
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin> -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com" rel="preconnect" crossorigin> -->
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono&display=swap" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Dosis:500&text=Vue.js&display=swap" rel="stylesheet"> -->
+
+    <link href="//code.bdstatic.com/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- main page styles -->
+    
+<link rel="stylesheet" href="/css/page.css">
+
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+
+    
+
+    <script>
+      Vue.config.productionTip = false
+      window.PAGE_TYPE = "git"
+    </script>
+
+    <!-- Fathom - beautiful, simple website analytics -->
+    <script src="https://cdn.usefathom.com/script.js" data-site="KTDIHEIJ" defer></script>
+    <!-- / Fathom -->
+
+    <!-- vimeo analytics -->
+    <!-- <script type="text/javascript" defer="defer" src="https://extend.vimeocdn.com/ga/72160148.js"></script> -->
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Vue.js" type="application/atom+xml">
+</head>
+  <body class="docs">
+
+    
+
+    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div>
+
+
+  <header id="header">
+    <a id="logo" href="/">
+      <!-- <img src="/images/logo.svg" alt="vue logo"> -->
+      <span>博客</span>
+    </a>
+    <ul id="nav">
+      <li>
+    <form id="search-form">
+        <input type="text" id="search-query-nav" class="search-query st-default-search-input" aria-label="搜索" />
+    </form>
+</li>
+<li class="nav-dropdown-container learn">
+    <a class="nav-link">前端</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li><h4>文档</h4></li>
+        <li>
+            <ul>
+                <li><a href="/v2/guide/" class="nav-link">HTML</a></li>
+        <li><a href="/v2/api/" class="nav-link">CSS</a></li>
+        <li><a href="/v2/style-guide/" class="nav-link">JS</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container ecosystem">
+    <a class="nav-link">框架</a><span class="arrow"></span>
+    <ul class="nav-dropdown">
+      
+        <li>
+            <ul>
+                <li><a href="https://forum.vuejs.org/" class="nav-link" target="_blank" rel="noopener">Vue</a></li>
+              
+            </ul>
+        </li>
+       
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container resources">
+    <a class="nav-link">网站部署</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/website/process/" class="nav-link">部署流程</a></li>
+                <li><a href="/website/hexo/" class="nav-link">HEXO</a></li>
+                <li><a href="/website/docker/" class="nav-link">Docker</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container tool">
+    <a class="nav-link current">工具</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/tool/git/" class="nav-link current">git</a></li>
+               
+            </ul>
+        </li>
+    </ul>
+</li>
+
+<!-- <li>
+    <a href="/eol/" class="badge-parent">终止支持 (EOL)<sup class="badge">新</sup></a>
+</li> -->
+
+    </ul>
+  </header>
+</div>
+
+    
+      <div id="main" class="fix-sidebar">
+         
+
+<div class="sidebar">
+    <div class="sidebar-inner">
+        
+        <div class="list"> <ul class="menu-root">
+  
+    
+    
+    <li>
+      <a href="/tool/git/index.html" class="sidebar-link current">git 常用命令</a>
+    </li>
+  
+</ul>
+ </div>
+    </div>
+</div>
+<!--
+
+<div id="sidebar-sponsors-platinum-right">
+  <div class="main-sponsor">
+    <span>白金赞助商</span>
+    <div>
+    <a href="https://www.vuemastery.com/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/vuemastery.png" alt="VueMastery">
+    </a>
+    <a href="https://vehikl.com/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/vehikl.png" alt="Vehikl">
+    </a>
+    <a href="https://vuejs.amsterdam/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/vue_js_amsterdam.png" alt="Vue.js Amsterdam">
+    </a>
+    <a href="https://www.storyblok.com" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/storyblok.png" alt="Storyblok">
+    </a>
+    <a href="https://opencollective.com/2021-frameworks-fund" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/chrome_frameworks_fund.png" alt="Chrome Frameworks Fund">
+    </a>
+    <a href="https://www.herodevs.com/support/vue" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/herodevs.png" alt="HeroDevs">
+    </a>
+    <a href="https://certificates.dev/javascript/?ref=vuejs-sponsor&friend=VUEJS" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/javascript_certification.png?v2" alt="JavaScript Certification">
+    </a>
+    <a href="https://www.coderabbit.ai?utm_source=github&utm_medium=sponsors&utm_campaign=evan_you_2025" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/coderabbit_.png" alt="CodeRabbit ">
+    </a>
+    <a href="https://imagekit.io/?utm_source=vuejs&utm_medium=referral&utm_campaign=oss-sponsorship&utm_content=homepage" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/imagekit_io.svg" alt="ImageKit.io">
+    </a>
+    <a href="https://www.greptile.com/?utm_source=vuejs&utm_medium=sponsorship&utm_campaign=vue_sponsor_page" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/greptile.png" alt="Greptile">
+    </a>
+    </div>
+  </div>
+  <a class="become-backer" href="/support-vuejs">
+    成为赞助者
+  </a>
+</div>
+
+
+-->
+ 
+<div
+    class="content git with-sidebar "
+>
+      
+<div id="ad">
+  <!-- start: special logic for cn -->
+  <div
+    class="wwads-cn wwads-vertical"
+    data-id="53"
+    style="max-width: 200px"
+  ></div>
+  <script
+    type="text/javascript"
+    src="https://cdn.wwads.cn/js/makemoney.js"
+    async
+  ></script>
+  <!-- end: special logic for cn -->
+  <!-- <script
+    async
+    type="text/javascript"
+    src="//cdn.carbonads.com/carbon.js?serve=CEBDT27Y&placement=vuejsorg"
+    id="_carbonads_js"
+  ></script> -->
+</div>
+
+   
+    <h1>git 常用命令</h1>
+    
+
+    <!-- start: special logic for cn -->
+    <!-- start: special logic for cn -->
+<!-- <div class="ad-pagetop">
+  <a href="http://www.vueshop.com.cn/index.php?http_referer=vuejs" target="_blank" rel="noopener noreferrer">
+    <span class="name">VUEshop</span>
+    <span class="description">中国免费商城系统 - 搜豹商城系统 - 免费50小时 Vue 视频教程</span>
+    <span class="action">立即查看 &gt;</span>
+  </a>
+</div> -->
+<!-- end: special logic for cn -->
+
+    <!-- end: special logic for cn -->
+
+     <h2 id="创建SSH-Key"><a href="#创建SSH-Key" class="headerlink" title="创建SSH Key"></a>创建SSH Key</h2><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">// 检查是否已有 SSH Key<br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">ls</span> -al ~/.ssh</span><br>// 新的GitHub 默认使用的是 ED25519 类型的 SSH key，因为它比传统的 RSA 更安全、性能更高，文件更小<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">ssh-keygen -t ed25519 -C <span class="hljs-string">&quot;your_email@example.com&quot;</span></span><br>// 老旧的使用的<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">ssh-keygen -t rsa -C <span class="hljs-string">&quot;youremail@example.com&quot;</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">ssh-keygen -t rsa -b 4096 -C <span class="hljs-string">&quot;your_email@example.com&quot;</span></span><br><br>// centos系统查看公钥，然后配置在github上<br>cat /root/.ssh/id_ed25519.pub<br>// 在centos系统中，尽量通过ssh拉取代码,<br>git clone ssh://git@ssh.github.com:443/zhenfeng95/mysite.git<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">$ ssh -T -p 443 git@ssh.github.com<br><br>输出：Hi zhenfeng95! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.<br>说明：<br>你的 SSH 公钥已经成功配置在 GitHub 上；<br>服务器可以通过 ssh.github.com:443 成功访问 GitHub；<br>可以安全地使用 SSH 拉取代码（使用 git@ssh.github.com:443 方式）<br></code></pre></td></tr></table></figure>
+<h2 id="配置用户信息"><a href="#配置用户信息" class="headerlink" title="配置用户信息"></a>配置用户信息</h2><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config --global --list</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config --global user.name <span class="hljs-string">&quot;Your Name&quot;</span></span>             <br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config --global user.email <span class="hljs-string">&quot;email@example.com&quot;</span></span><br></code></pre></td></tr></table></figure>
+<h2 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h2><blockquote>
+<p>在当前目录新建一个Git代码库</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git init</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>新建一个目录，将其初始化为Git代码库</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git init [project-name]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>下载一个项目和它的整个代码历史</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">clone</span> [url]</span><br></code></pre></td></tr></table></figure>
+<h2 id="增加-删除文件"><a href="#增加-删除文件" class="headerlink" title="增加/删除文件"></a>增加/删除文件</h2><blockquote>
+<p>添加指定文件到暂存区</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git add [file1] [file2] ...</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>添加指定目录到暂存区，包括子目录</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git add [<span class="hljs-built_in">dir</span>]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>添加当前目录的所有文件到暂存区</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git add .</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>添加每个变化前，都会要求确认<br>对于同一个文件的多处变化，可以实现分次提交</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git add -p</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>删除工作区文件，并且将这次删除放入暂存区</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">rm</span> [file1] [file2] ...</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>停止追踪指定文件，但该文件会保留在工作区</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">rm</span> --cached [file]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>改名文件，并且将这个改名放入暂存区</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">mv</span> [file-original] [file-renamed]</span><br></code></pre></td></tr></table></figure>
+<h2 id="代码提交"><a href="#代码提交" class="headerlink" title="代码提交"></a>代码提交</h2><blockquote>
+<p>提交暂存区到仓库区</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git commit -m [message]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>提交工作区自上次commit之后的变化，直接到仓库区</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git commit -a</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>提交时显示所有diff信息</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git commit -v</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>使用一次新的commit，替代上一次提交<br>如果代码没有任何新变化，则用来改写上一次commit的提交信息</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git commit --amend -m [message]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>重做上一次commit，并包括指定文件的新变化</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git commit --amend [file1] [file2] ...</span><br></code></pre></td></tr></table></figure>
+<h2 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h2><blockquote>
+<p>显示有变更的文件</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git status</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示当前分支的版本历史</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span></span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示commit历史，以及每次commit发生变更的文件</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> --<span class="hljs-built_in">stat</span></span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>搜索提交历史，根据关键词</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> -S [keyword]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示某个commit之后的所有变动，每个commit占据一行</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> [tag] HEAD --pretty=format:%s</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示某个commit之后的所有变动，其”提交说明”必须符合搜索条件</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> [tag] HEAD --grep feature</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示某个文件的版本历史，包括文件改名</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> --follow [file]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示指定文件相关的每一次diff</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> -p [file]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示过去5次提交</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git <span class="hljs-built_in">log</span> -5 --pretty --oneline</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示所有提交过的用户，按提交次数排序</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git shortlog -sn</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示指定文件是什么人在什么时间修改过</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git blame [file]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示暂存区和工作区的差异</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git diff</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示暂存区和上一个commit的差异</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git diff --cached [file]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示工作区与当前分支最新commit之间的差异</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git diff HEAD</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示两次提交之间的差异</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git diff [first-branch]...[second-branch]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示今天你写了多少行代码</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git diff --shortstat <span class="hljs-string">&quot;@&#123;0 day ago&#125;&quot;</span></span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示某次提交的元数据和内容变化</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git show [commit]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示某次提交发生变化的文件</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git show --name-only [commit]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示某次提交时，某个文件的内容</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git show [commit]:[filename]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示当前分支的最近几次提交，记录着本地所有的提交以及分支的切换，包括删除类型的操作，reset操作等等</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reflog</span><br></code></pre></td></tr></table></figure>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><blockquote>
+<p>列出所有本地分支</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git branch</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>列出所有远程分支</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git branch -r</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>列出所有本地分支和远程分支</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git branch -a</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>新建一个分支，但依然停留在当前分支</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git branch [branch-name]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>新建一个分支，并切换到该分支</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git checkout -b [branch]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>新建一个分支，指向指定commit</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git branch [branch] [commit]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>新建一个分支，与指定的远程分支建立追踪关系</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git branch --track [branch] [remote-branch]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>切换到指定分支，并更新工作区</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git checkout [branch-name]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>切换到上一个分支</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git checkout -</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>建立追踪关系，在现有分支与指定的远程分支之间</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git branch --set-upstream [branch] [remote-branch]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>合并指定分支到当前分支</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git merge [branch]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>选择一个commit，合并进当前分支</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git cherry-pick [commit]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>删除分支</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git branch -d [branch-name]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>删除远程分支</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git push origin --delete [branch-name]</span><br></code></pre></td></tr></table></figure>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><blockquote>
+<p>列出所有tag</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git tag</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>新建一个tag在当前commit</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git tag [tag]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>新建一个tag在指定commit</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git tag [tag] [commit]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>删除本地tag</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git tag -d [tag]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>删除远程tag</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git push origin :refs/tags/[tagName]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>查看tag信息</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git show [tag]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>提交指定tag</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git push [remote] [tag]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>提交所有tag</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git push [remote] --tags</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>新建一个分支，指向某个tag</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git checkout -b [branch] [tag]</span><br></code></pre></td></tr></table></figure>
+<h2 id="远程同步"><a href="#远程同步" class="headerlink" title="远程同步"></a>远程同步</h2><blockquote>
+<p>下载远程仓库的所有变动</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git fetch [remote]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示所有远程仓库</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git remote -v</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>显示某个远程仓库的信息</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git remote show [remote]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>增加一个新的远程仓库，并命名</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git remote add [shortname] [url]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>取回远程仓库的变化，并与本地分支合并</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git pull [remote] [branch]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>允许不相关历史提交,并强制合并</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git pull origin master --allow-unrelated-histories</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>上传本地指定分支到远程仓库</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git push [remote] [branch]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>强行推送当前分支到远程仓库，即使有冲突</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git push [remote] --force</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>推送所有分支到远程仓库</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git push [remote] --all</span><br></code></pre></td></tr></table></figure>
+<h2 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h2><blockquote>
+<p>恢复暂存区的指定文件到工作区</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git checkout [file]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>恢复某个commit的指定文件到暂存区和工作区</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git checkout [commit] [file]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>恢复暂存区的所有文件到工作区</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git checkout .</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>重置暂存区的指定文件，与上一次commit保持一致，但工作区不变</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reset [file]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>重置暂存区与工作区，与上一次commit保持一致</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reset --hard</span> <br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reset [commit]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reset --hard [commit]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>回退到上一个版本<br><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reset --hard <span class="hljs-built_in">head</span>^</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git push origin master -f // 强制退到远端</span><br></code></pre></td></tr></table></figure></p>
+<p>重置当前HEAD为指定commit，但保持暂存区和工作区不变</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git reset --keep [commit]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>新建一个commit，用来撤销指定commit<br>后者的所有变化都将被前者抵消，并且应用到当前分支</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git revert [commit]</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>暂时将未提交的变化移除，稍后再移入</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git stash</span><br>会将当前分支的最后一次缓存的内容释放出来，但是刚才的记录不存在list中<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git stash pop</span> <br>会将当前分支的最后一次缓存的内容释放出来，但是刚才的记录还存在list中<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git stash apply</span> <br></code></pre></td></tr></table></figure>
+<h2 id="忽略文件配置（-gitignore"><a href="#忽略文件配置（-gitignore" class="headerlink" title="忽略文件配置（.gitignore)"></a>忽略文件配置（.gitignore)</h2><p>1、配置语法:</p>
+<blockquote>
+<p>以斜杠“/”开头表示目录；<br>以星号“*”通配多个字符；<br>以问号“?”通配单个字符<br>以方括号“[]”包含单个字符的匹配列表；<br>以叹号“!”表示不忽略(跟踪)匹配到的文件或目录；</p>
+</blockquote>
+<p>此外，git 对于 .ignore 配置文件是按行从上到下进行规则匹配的，意味着如果前面的规则匹配的范围更大，则后面的规则将不会生效；<br>2、示例：<br>（1）规则：fd1/*<br>　　　　 说明：忽略目录 fd1 下的全部内容；注意，不管是根目录下的 /fd1/ 目录，还是某个子目录 /child/fd1/ 目录，都会被忽略；<br>（2）规则：/fd1/*<br>　　　　 说明：忽略根目录下的 /fd1/ 目录的全部内容；<br>（3）规则：<br>/*<br>!.gitignore<br>!/fw/bin/<br>!/fw/sf/<br>说明：忽略全部内容，但是不忽略 .gitignore 文件、根目录下的 /fw/bin/ 和 /fw/sf/ 目录；</p>
+  
+    <div class="footer">
+<script src="//m.servedby-buysellads.com/monetization.js" type="text/javascript"></script>
+<div id="bsa-native"></div>
+<script>
+_bsa.init('custom', 'CKYD62QM', 'placement:vuejsorg',
+  {
+    target: '#bsa-native',
+    template: '<a class="native-box" href="##statlink##"><div class="native-sponsor">Sponsor</div><div class="native-text"><strong>##company##</strong> — ##description##</div></a>'
+  }
+);
+</script>
+
+发现错误？想参与编辑？
+        <a
+            href="https://github.com/vuejs/v2.cn.vuejs.org/blob/master/src/tool/git/index.md"
+            rel="noopener"
+            target="_blank"
+        >
+            在 GitHub 上编辑此页！
+        </a>
+        <!-- Deployed on
+    <a href="https://url.netlify.com/HJ8X2mxP8" rel="noopener" target="_blank">
+      Netlify
+    </a>. -->
+    </div>
+</div>
+
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- search -->
+    <link href="//code.bdstatic.com/npm/docsearch.js@1.5.0/dist/cdn/docsearch.min.css" rel='stylesheet' type='text/css'>
+    
+<link rel="stylesheet" href="/css/search.css">
+
+    <script src="//code.bdstatic.com/npm/docsearch.js@1.5.0/dist/cdn/docsearch.min.js"></script>
+    <script>
+    [
+      '#search-query-nav',
+      '#search-query-sidebar',
+      '#search-query-menu'
+    ].forEach(function (selector) {
+      if (!document.querySelector(selector)) return
+      docsearch({
+        appId: 'UURH1MHAF7',
+        apiKey: 'c23eb8e7895f42daeaf2bf6f63eb4bf6',
+        indexName: 'vuejs_cn2',
+        inputSelector: selector,
+        algoliaOptions: { facetFilters: ["version:v2"]},
+        autocompleteOptions: { hint: false, appendTo: 'body'}
+      })
+    })
+
+    // unregister service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for(let registration of registrations) {
+          registration.unregister()
+        }
+      })
+    }
+    </script>
+  </body>
+</html>
