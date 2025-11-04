@@ -1,0 +1,12 @@
+<li class="nav-dropdown-container tool">
+    <a class="nav-link<%- page.path.match(/\/(hexo(?!\/team.html$)|git|hexo|docker)(\/|$)/) ? ' current' : '' %>">工具</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="<%- url_for("/tool/git/") %>" class="nav-link<%- page.path.match(/\/git(\/|$)/) ? ' current' : '' %>">git</a></li>
+               
+            </ul>
+        </li>
+    </ul>
+</li>
