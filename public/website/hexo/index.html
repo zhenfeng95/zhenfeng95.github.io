@@ -280,9 +280,9 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">your-github-username.github.io<br></code></pre></td></tr></table></figure>
 <h4 id="2-安装部署插件"><a href="#2-安装部署插件" class="headerlink" title="2.安装部署插件"></a>2.安装部署插件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npm install hexo-deployer-git --save<br></code></pre></td></tr></table></figure>
 <h4 id="3-修改-config-yml（位于-Hexo-根目录）"><a href="#3-修改-config-yml（位于-Hexo-根目录）" class="headerlink" title="3.修改 _config.yml（位于 Hexo 根目录）"></a>3.修改 <code>_config.yml</code>（位于 Hexo 根目录）</h4><p>找到deploy：修改成下面的配置</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">deploy:<br>  <span class="hljs-built_in">type</span>: git<br>  repo: git@github.com:zhenfeng95/zhenfeng95.github.io.git<br>  branch: main<br>  name: zzf<br>  email: 285273676@qq.com<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">deploy:<br>  <span class="hljs-built_in">type</span>: git<br>  repo: git@github.com:zhenfeng95/zhenfeng95.github.io.git<br>  branch: gh-pages<br>  name: zzf<br>  email: 285273676@qq.com<br></code></pre></td></tr></table></figure>
 <h4 id="4-一键部署"><a href="#4-一键部署" class="headerlink" title="4.一键部署"></a>4.一键部署</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy<br></code></pre></td></tr></table></figure>
-<p>执行后会自动推送生成的静态网页到 GitHub Pages。<br>几秒后访问：</p>
+<p>执行后会自动推送生成的静态网页到 GitHub Pages。<br>双分支维护，main分支用于保存博客源文件，gh-pages分支用于保存静态页面。<br>几秒后访问：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">https://zhenfeng95.github.io<br></code></pre></td></tr></table></figure>
 <h3 id="三、绑定自定义域名"><a href="#三、绑定自定义域名" class="headerlink" title="三、绑定自定义域名"></a>三、绑定自定义域名</h3><p>假设你已经在阿里云或腾讯云购买了域名。</p>
 <p>登录阿里云后台，<a target="_blank" rel="noopener" href="https://dc.console.aliyun.com/#/domain-list/all">域名解析</a></p>

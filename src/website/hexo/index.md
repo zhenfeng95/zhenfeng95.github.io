@@ -40,7 +40,7 @@ npm install hexo-deployer-git --save
 deploy:
   type: git
   repo: git@github.com:zhenfeng95/zhenfeng95.github.io.git
-  branch: main
+  branch: gh-pages
   name: zzf
   email: 285273676@qq.com
 ```
@@ -52,6 +52,7 @@ hexo clean && hexo generate && hexo deploy
 ```
 
 执行后会自动推送生成的静态网页到 GitHub Pages。
+双分支维护，main分支用于保存博客源文件，gh-pages分支用于保存静态页面。
 几秒后访问：
 
 ```bash
