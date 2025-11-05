@@ -6,7 +6,7 @@ order: 1
 
 [Hexo网址](https://hexo.io/)
 
-###  一、搭建项目
+###  搭建项目
 
 ```bash
 npm install hexo-cli -g
@@ -16,7 +16,7 @@ npm install
 hexo server
 ```
 
-### 二、部署到github
+### 部署到github
 
 #### 1. 在 GitHub 上创建仓库
 
@@ -47,6 +47,8 @@ deploy:
 
 #### 4.一键部署
 
+在source目录下创建CNAME文件，写上域名地址，比如：blog.zzf.net.cn，这样每次部署就不会丢失
+
 ```bash
 hexo clean && hexo generate && hexo deploy
 ```
@@ -59,7 +61,7 @@ hexo clean && hexo generate && hexo deploy
 https://zhenfeng95.github.io
 ```
 
-### 三、绑定自定义域名
+### 绑定自定义域名
 
 假设你已经在阿里云或腾讯云购买了域名。
 
@@ -71,7 +73,7 @@ https://zhenfeng95.github.io
 | -------- | -------- | -------------------- |
 | CNAME    | blog     | zhenfeng95.github.io |
 
-### 四、启用 HTTPS（强烈推荐）
+### 启用 HTTPS（强烈推荐）
 
 #### 1.打开你的博客仓库
 
@@ -93,7 +95,7 @@ Enforce HTTPS
 
 GitHub 会自动为你的子域名签发免费证书。
 
-### 五、验证是否成功
+### 验证是否成功
 
 几分钟后（DNS 生效），你可以访问：
 

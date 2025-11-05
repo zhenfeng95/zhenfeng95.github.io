@@ -118,17 +118,16 @@
         </li>
     </ul>
 </li>
- <li class="nav-dropdown-container ecosystem">
-    <a class="nav-link">框架</a><span class="arrow"></span>
+ <li class="nav-dropdown-container framework">
+    <a class="nav-link">前端框架</a
+    ><span class="arrow"></span>
     <ul class="nav-dropdown">
-      
         <li>
             <ul>
-                <li><a href="https://forum.vuejs.org/" class="nav-link" target="_blank" rel="noopener">Vue</a></li>
-              
+                 <li><a href="/framework/vue/" class="nav-link">vue</a></li>
+                  <li><a href="/framework/uniapp/" class="nav-link">uniapp</a></li>
+               
             </ul>
-        </li>
-       
         </li>
     </ul>
 </li>
@@ -153,7 +152,7 @@
             <ul>
                  <li><a href="/tool/git/" class="nav-link">git</a></li>
                   <li><a href="/tool/webpack/" class="nav-link">webpack</a></li>
-               
+                <li><a href="/tool/jenkins/" class="nav-link">jenkins</a></li>
             </ul>
         </li>
     </ul>
@@ -274,7 +273,7 @@
 
     <!-- end: special logic for cn -->
 
-     <h2 id="一、Docker容器技术的特点"><a href="#一、Docker容器技术的特点" class="headerlink" title="一、Docker容器技术的特点"></a>一、Docker容器技术的特点</h2><ol>
+     <h2 id="Docker容器技术的特点"><a href="#Docker容器技术的特点" class="headerlink" title="Docker容器技术的特点"></a>Docker容器技术的特点</h2><ol>
 <li><p>文件系统隔离：每个进程容器运行在完全独立的根文件系统里。</p>
 </li>
 <li><p>资源隔离：可以使用cgroup为每个进程容器分配不同的系统资源，例如CPU和内存。</p>
@@ -307,7 +306,7 @@
 <ul>
 <li>这些服务都是 Docker 的“经典组合”，在实际项目部署中非常常见。</li>
 </ul>
-<h2 id="二、Docker的安装与使用"><a href="#二、Docker的安装与使用" class="headerlink" title="二、Docker的安装与使用"></a>二、Docker的安装与使用</h2><p>docker服务可以通过宝塔面板安装</p>
+<h2 id="Docker的安装与使用"><a href="#Docker的安装与使用" class="headerlink" title="Docker的安装与使用"></a>Docker的安装与使用</h2><p>docker服务可以通过宝塔面板安装</p>
 <ol>
 <li><p>安装 MongoDB</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker run -d \<br>  --name mongo \<br>  -v /data/mongo:/data/db \<br>  -p 27017:27017 \<br>  mongo:latest<br></code></pre></td></tr></table></figure>
@@ -322,7 +321,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker run -d \<br>  --name nodeapp \<br>  -v /data/nodeapp:/app \<br>  -w /app \<br>  -p 3000:3000 \<br>  node:18 \<br>  node index.js<br></code></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="三、Docker-的优势"><a href="#三、Docker-的优势" class="headerlink" title="三、Docker 的优势"></a>三、Docker 的优势</h2><table>
+<h2 id="Docker-的优势"><a href="#Docker-的优势" class="headerlink" title="Docker 的优势"></a>Docker 的优势</h2><table>
 <thead>
 <tr>
 <th>功能</th>
@@ -363,7 +362,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="四、Docker常用命令"><a href="#四、Docker常用命令" class="headerlink" title="四、Docker常用命令"></a>四、Docker常用命令</h2><p>查看所有容器运行状态</p>
+<h2 id="Docker常用命令"><a href="#Docker常用命令" class="headerlink" title="Docker常用命令"></a>Docker常用命令</h2><p>查看所有容器运行状态</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker ps<br></code></pre></td></tr></table></figure>
 <p>查看某个容器的运行状态</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker ps | grep mongodb<br></code></pre></td></tr></table></figure>
@@ -379,7 +378,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker compose up -d mongo<br></code></pre></td></tr></table></figure>
 <p>重启单个服务</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker compose restart mongo<br></code></pre></td></tr></table></figure>
-<h2 id="五、Docker-通常怎么用"><a href="#五、Docker-通常怎么用" class="headerlink" title="五、Docker 通常怎么用"></a>五、Docker 通常怎么用</h2><p>在生产部署中，通常这样安装环境：</p>
+<h2 id="Docker-通常怎么用，部署服务器环境省事又省心"><a href="#Docker-通常怎么用，部署服务器环境省事又省心" class="headerlink" title="Docker 通常怎么用，部署服务器环境省事又省心"></a>Docker 通常怎么用，部署服务器环境省事又省心</h2><p>在生产部署中，通常这样安装环境：</p>
 <ul>
 <li><p>Mongo + MySQL 都用 Docker 启动，挂载数据卷；</p>
 </li>
@@ -392,6 +391,7 @@
 </ul>
 <p>例如一个典型的 docker-compose.yml：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">version: &quot;3&quot;<br>services:<br><span class="hljs-meta prompt_">	# </span><span class="language-bash">安装并启动mongodb服务</span><br>  mongo:<br>    image: mongo<br>    container_name: &quot;mongodb&quot;<br>    restart: always<br>    volumes: # 挂载宿主机目录<br>      - /var/lib/mongodb:/data/db  # 数据持久化目录<br>      - /var/lib/mongodb/initdb.d:/docker-entrypoint-initdb.d/ # 自定义配置（可选）<br>      # .sh &amp; .js<br>    ports:<br>      - &quot;27018:27017&quot; # 宿主机端口:镜像端口，将镜像的27017端口映射到宿主机的27018端口，也可以映射到27017端口<br>    environment:<br>      MONGO_INITDB_ROOT_USERNAME: root # 数据库账号<br>      MONGO_INITDB_ROOT_PASSWORD: 密码 # 数据库密码<br>    command: [&quot;--auth&quot;, &quot;--bind_ip_all&quot;]<br>    <br><span class="hljs-meta prompt_">  # </span><span class="language-bash">安装并启动redis服务</span><br>  redis:<br>    image: redis<br>    container_name: &quot;redis&quot;<br>    restart: always<br>    volumes:<br>      - /var/lib/redis:/data<br>    ports:<br>      - &quot;6379:6379&quot;<br>    command: [&quot;redis-server&quot;, &quot;--requirepass&quot;, &quot;密码&quot;]<br>  <br><span class="hljs-meta prompt_">  # </span><span class="language-bash">安装并启动jenkins服务</span><br>  jenkins:<br>    image: jenkins/jenkins:lts<br>    container_name: &quot;jenkins&quot;<br>    restart: always<br>    user: root<br>    ports:<br>      - &quot;10050:8080&quot;<br>      - &quot;50000:50000&quot;<br>      - &quot;10051:10051&quot;<br>    environment:<br>      - JAVA_OPTS=-Xms256m -Xmx768m<br>    volumes:<br>      - /var/lib/jenkins:/var/jenkins_home<br>      - /usr/bin/docker:/usr/bin/docker<br>      - /var/run/docker.sock:/var/run/docker.sock<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">	# </span><span class="language-bash">安装并启动mysql服务</span><br>  mysql:<br>    image: mysql<br>    container_name: &quot;mysql_server&quot;<br>    restart: always<br>    ports:<br>      - &quot;3306:3306&quot;  # 映射到宿主机3306端口<br>    environment:<br>      MYSQL_ROOT_PASSWORD: root123456       # root用户密码<br>      MYSQL_DATABASE: mydb                  # 初始化创建的数据库<br>      MYSQL_USER: myuser                    # 普通用户<br>      MYSQL_PASSWORD: mypassword            # 普通用户密码<br>    volumes:<br>      - /var/lib/mysql:/var/lib/mysql  # 数据持久化目录<br>      - /var/lib/mysql/conf.d:/etc/mysql/conf.d  # 自定义配置（可选）<br>    <br></code></pre></td></tr></table></figure>
+<p>创建宿主机容器目录<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p /var/lib/mysql<br><span class="hljs-built_in">chmod</span> -R 777 /var/lib/mysql<br><span class="hljs-built_in">mkdir</span> -p /var/lib/redis<br><span class="hljs-built_in">chmod</span> -R 777 /var/lib/redis<br><span class="hljs-built_in">mkdir</span> -p /var/lib/mongodb<br><span class="hljs-built_in">chmod</span> -R 777 /var/lib/mongodb<br></code></pre></td></tr></table></figure></p>
 <p>👉 然后只需执行：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker compose up -d<br></code></pre></td></tr></table></figure>
 <p>注意：compose 是新版命令，如果你是旧版 docker，请用 docker-compose up -d</p>
@@ -407,8 +407,11 @@
 <p>登录MongoDB测试：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">1.连接数据库，进入mongodb的交互式终端，这一步不需要输入用户名和密码<br>docker <span class="hljs-built_in">exec</span> -it mongodb mongosh<br>2.切换到管理员数据库，登录上去<br>use admin<br>db.auth(<span class="hljs-string">&#x27;root&#x27;</span>,<span class="hljs-string">&#x27;Feng950925@&#x27;</span>)<br>3.使用show dbs，如果能显示数据库名称，则登录成功，拥有管理员操作权限<br>4.创建一个新的数据库，<br>use 数据库名称<br>5.为该数据库配置一个用户<br>db.createUser(&#123;user:<span class="hljs-string">&#x27;koa&#x27;</span>,<span class="hljs-built_in">pwd</span>:<span class="hljs-string">&#x27;925926&#x27;</span>,roles:[&#123;role:<span class="hljs-string">&#x27;dbOwner&#x27;</span>,db:<span class="hljs-string">&#x27;koa&#x27;</span>&#125;]&#125;)<br>6.鉴权登录<br>db.auth(<span class="hljs-string">&#x27;koa&#x27;</span>,<span class="hljs-string">&#x27;925926&#x27;</span>)<br>7.为该数据库添加一个表，并且添加一条数据<br>db.users.insertOne(&#123;name:<span class="hljs-string">&#x27;koa&#x27;</span>,age:7&#125;)<br>8.如何备份数据<br>备份：docker <span class="hljs-built_in">exec</span> -it mongodb mongodump -h localhost -u root -p Feng950925@ -o /tmp/test<br>拷贝出来到主机：docker <span class="hljs-built_in">cp</span> mongodb:/tmp/test /tmp/test<br>9.如何恢复数据<br>拷贝出来到容器: docker <span class="hljs-built_in">cp</span> /tmp/test mongodb:/tmp/test<br>恢复：docker <span class="hljs-built_in">exec</span> -it mongodb mongorestore -h localhost -u root -p Feng950925@ --<span class="hljs-built_in">dir</span> /tmp/test<br></code></pre></td></tr></table></figure>
 <p>📁 推荐目录结构<br>/www/<br>├── docker-compose.yml<br>├── wwwroot/<br>│   └── zzf.net.cn/<br>│       ├── server/        # Node.js 后端项目<br>│       ├── web/           # 前端打包文件<br>│       └── nginx_conf/    # Nginx 配置文件<br>├── mongo_data/            # Mongo 数据持久化<br>└── mysql_data/            # MySQL 数据持久化</p>
-<h2 id="六、Docker安装jenkins的详细步骤"><a href="#六、Docker安装jenkins的详细步骤" class="headerlink" title="六、Docker安装jenkins的详细步骤"></a>六、Docker安装jenkins的详细步骤</h2><ol>
+<h2 id="Docker安装jenkins的详细步骤"><a href="#Docker安装jenkins的详细步骤" class="headerlink" title="Docker安装jenkins的详细步骤"></a>Docker安装jenkins的详细步骤</h2><ol>
 <li><p>参考上面配置好的docker-compose.yml文件</p>
+</li>
+<li><p>创建宿主机容器目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p /var/lib/jenkins<br><span class="hljs-built_in">chmod</span> -R 777 /var/lib/jenkins<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>启动jenkins容器</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker compose up -d jenkins<br>如果容器已经存在，先停止容器，然后再删除容易<br>docker stop jenkins &amp;&amp; docker <span class="hljs-built_in">rm</span> jenkins<br></code></pre></td></tr></table></figure>

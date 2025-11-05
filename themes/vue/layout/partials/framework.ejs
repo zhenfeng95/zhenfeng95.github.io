@@ -1,0 +1,13 @@
+<li class="nav-dropdown-container framework">
+    <a class="nav-link<%- page.path.match(/\/(framework(?!\/team.html$)|vue|uniapp)(\/|$)/) ? ' current' : '' %>">前端框架</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="<%- url_for("/framework/vue/") %>" class="nav-link<%- page.path.match(/\/vue(\/|$)/) ? ' current' : '' %>">vue</a></li>
+                  <li><a href="<%- url_for("/framework/uniapp/") %>" class="nav-link<%- page.path.match(/\/uniapp(\/|$)/) ? ' current' : '' %>">uniapp</a></li>
+               
+            </ul>
+        </li>
+    </ul>
+</li>

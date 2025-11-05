@@ -6,24 +6,41 @@ order: 1
 
 ## 创建SSH Key
 
-```shell
-// 检查是否已有 SSH Key
-$ ls -al ~/.ssh
-// 新的GitHub 默认使用的是 ED25519 类型的 SSH key，因为它比传统的 RSA 更安全、性能更高，文件更小
-$ ssh-keygen -t ed25519 -C "your_email@example.com"
-// 老旧的使用的
-$ ssh-keygen -t rsa -C "youremail@example.com"
-$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+检查是否已有 SSH Key
 
-// centos系统查看公钥，然后配置在github上
+```bash
+ls -al ~/.ssh
+```
+
+新的GitHub 默认使用的是 ED25519 类型的 SSH key，因为它比传统的 RSA 更安全、性能更高，文件更小
+
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+老旧版本如何生成：
+
+```bash
+ssh-keygen -t rsa -C "youremail@example.com"
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+centos系统查看公钥，然后配置在github上
+
+```bash
 cat /root/.ssh/id_ed25519.pub
-// 在centos系统中，尽量通过ssh拉取代码,
+```
+
+在centos系统中，尽量通过ssh拉取代码
+
+```bash
 git clone ssh://git@ssh.github.com:443/zhenfeng95/mysite.git
 ```
 
-```
-$ ssh -T -p 443 git@ssh.github.com
+查看是否配置成功
 
+```shell
+ssh -T -p 443 git@ssh.github.com
 输出：Hi zhenfeng95! You've successfully authenticated, but GitHub does not provide shell access.
 说明：
 你的 SSH 公钥已经成功配置在 GitHub 上；
@@ -34,9 +51,9 @@ $ ssh -T -p 443 git@ssh.github.com
 ## 配置用户信息
 
 ```shell
-$ git config --global --list
-$ git config --global user.name "Your Name"             
-$ git config --global user.email "email@example.com"
+git config --global --list
+git config --global user.name "Your Name"             
+git config --global user.email "email@example.com"
 ```
 
 ## 仓库
@@ -543,12 +560,53 @@ $ git stash apply
 此外，git 对于 .ignore 配置文件是按行从上到下进行规则匹配的，意味着如果前面的规则匹配的范围更大，则后面的规则将不会生效；
 2、示例：
 （1）规则：fd1/\*
-　　　　 说明：忽略目录 fd1 下的全部内容；注意，不管是根目录下的 /fd1/ 目录，还是某个子目录 /child/fd1/ 目录，都会被忽略；
+　　  说明：忽略目录 fd1 下的全部内容；注意，不管是根目录下的 /fd1/ 目录，还是某个子目录 /child/fd1/ 目录，都会被忽略；
 （2）规则：/fd1/\*
-　　　　 说明：忽略根目录下的 /fd1/ 目录的全部内容；
+　　  说明：忽略根目录下的 /fd1/ 目录的全部内容；
 （3）规则：
-/\*
-!.gitignore
-!/fw/bin/
-!/fw/sf/
-说明：忽略全部内容，但是不忽略 .gitignore 文件、根目录下的 /fw/bin/ 和 /fw/sf/ 目录；
+			/\*
+			!.gitignore
+			!/fw/bin/
+			!/fw/sf/
+			说明：忽略全部内容，但是不忽略 .gitignore 文件、根目录下的 /fw/bin/ 和 /fw/sf/ 目录；
+
+## github代码如何同步到gitee
+
+1. 生成一对公私钥对，github往gitee同步代码，github需要钥匙，就是私钥，而gitee需要公钥，相当于大门
+
+   ```shell
+   ssh-keygen -t ed25519 -C "285273676@qq.com"
+   ```
+
+   输入上方命令回车，然后在Enter file in which to save the key：中指定一个新的文件地址保存，不要影响现有项目的ssh，如：/Users/zhangzhenfeng/Downloads/demo_gitee，然后一路回车
+
+2. 进入Downloads，查看公私钥
+
+   ```shell
+   cat demo_gitee.pub
+   cat demo_gitee
+   ```
+
+ 3. 在gitee平台配置公钥，设置-->SSH公钥中添加
+ 4. 在github平台配置公钥和私钥，进入具体的项目仓库，Settings-->Deploy keys中添加公钥，Settings-->Secrets and variables-->Repository secrets添加私钥，这个名称在后面的配置文件中会用到
+ 5. 开始配置github的Actions，搜索git-mirror-action插件，找到写好的脚本文件，在.github/workflows中新建一个sync-gitee.yml文件
+ ```yml
+name: Mirror to Gitee Repo
+
+on: [ push ]
+
+# Ensures that only one mirror task will run at a time.
+concurrency:
+  group: git-mirror
+
+jobs:
+  git-mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: wearerequired/git-mirror-action@v1
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_DEPLOY_KEY }}
+        with:
+          source-repo: "git@github.com:zhenfeng95/community-pc.git"
+          destination-repo: "git@gitee.com:zhenfeng95/community-pc.git"
+ ```

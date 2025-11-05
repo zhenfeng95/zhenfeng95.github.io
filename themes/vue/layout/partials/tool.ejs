@@ -1,12 +1,12 @@
 <li class="nav-dropdown-container tool">
-    <a class="nav-link<%- page.path.match(/\/(tool(?!\/team.html$)|git|webpack)(\/|$)/) ? ' current' : '' %>">工具</a
+    <a class="nav-link<%- page.path.match(/\/(tool(?!\/team.html$)|git|webpack|jenkins)(\/|$)/) ? ' current' : '' %>">工具</a
     ><span class="arrow"></span>
     <ul class="nav-dropdown">
         <li>
             <ul>
                  <li><a href="<%- url_for("/tool/git/") %>" class="nav-link<%- page.path.match(/\/git(\/|$)/) ? ' current' : '' %>">git</a></li>
                   <li><a href="<%- url_for("/tool/webpack/") %>" class="nav-link<%- page.path.match(/\/webpack(\/|$)/) ? ' current' : '' %>">webpack</a></li>
-               
+                <li><a href="<%- url_for("/tool/jenkins/") %>" class="nav-link<%- page.path.match(/\/jenkins(\/|$)/) ? ' current' : '' %>">jenkins</a></li>
             </ul>
         </li>
     </ul>

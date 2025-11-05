@@ -118,17 +118,16 @@
         </li>
     </ul>
 </li>
- <li class="nav-dropdown-container ecosystem">
-    <a class="nav-link">框架</a><span class="arrow"></span>
+ <li class="nav-dropdown-container framework">
+    <a class="nav-link">前端框架</a
+    ><span class="arrow"></span>
     <ul class="nav-dropdown">
-      
         <li>
             <ul>
-                <li><a href="https://forum.vuejs.org/" class="nav-link" target="_blank" rel="noopener">Vue</a></li>
-              
+                 <li><a href="/framework/vue/" class="nav-link">vue</a></li>
+                  <li><a href="/framework/uniapp/" class="nav-link">uniapp</a></li>
+               
             </ul>
-        </li>
-       
         </li>
     </ul>
 </li>
@@ -153,7 +152,7 @@
             <ul>
                  <li><a href="/tool/git/" class="nav-link current">git</a></li>
                   <li><a href="/tool/webpack/" class="nav-link">webpack</a></li>
-               
+                <li><a href="/tool/jenkins/" class="nav-link">jenkins</a></li>
             </ul>
         </li>
     </ul>
@@ -274,9 +273,19 @@
 
     <!-- end: special logic for cn -->
 
-     <h2 id="创建SSH-Key"><a href="#创建SSH-Key" class="headerlink" title="创建SSH Key"></a>创建SSH Key</h2><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">// 检查是否已有 SSH Key<br><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">ls</span> -al ~/.ssh</span><br>// 新的GitHub 默认使用的是 ED25519 类型的 SSH key，因为它比传统的 RSA 更安全、性能更高，文件更小<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">ssh-keygen -t ed25519 -C <span class="hljs-string">&quot;your_email@example.com&quot;</span></span><br>// 老旧的使用的<br><span class="hljs-meta prompt_">$ </span><span class="language-bash">ssh-keygen -t rsa -C <span class="hljs-string">&quot;youremail@example.com&quot;</span></span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">ssh-keygen -t rsa -b 4096 -C <span class="hljs-string">&quot;your_email@example.com&quot;</span></span><br><br>// centos系统查看公钥，然后配置在github上<br>cat /root/.ssh/id_ed25519.pub<br>// 在centos系统中，尽量通过ssh拉取代码,<br>git clone ssh://git@ssh.github.com:443/zhenfeng95/mysite.git<br></code></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">$ ssh -T -p 443 git@ssh.github.com<br><br>输出：Hi zhenfeng95! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.<br>说明：<br>你的 SSH 公钥已经成功配置在 GitHub 上；<br>服务器可以通过 ssh.github.com:443 成功访问 GitHub；<br>可以安全地使用 SSH 拉取代码（使用 git@ssh.github.com:443 方式）<br></code></pre></td></tr></table></figure>
-<h2 id="配置用户信息"><a href="#配置用户信息" class="headerlink" title="配置用户信息"></a>配置用户信息</h2><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config --global --list</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config --global user.name <span class="hljs-string">&quot;Your Name&quot;</span></span>             <br><span class="hljs-meta prompt_">$ </span><span class="language-bash">git config --global user.email <span class="hljs-string">&quot;email@example.com&quot;</span></span><br></code></pre></td></tr></table></figure>
+     <h2 id="创建SSH-Key"><a href="#创建SSH-Key" class="headerlink" title="创建SSH Key"></a>创建SSH Key</h2><p>检查是否已有 SSH Key</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -al ~/.ssh<br></code></pre></td></tr></table></figure>
+<p>新的GitHub 默认使用的是 ED25519 类型的 SSH key，因为它比传统的 RSA 更安全、性能更高，文件更小</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">ssh-keygen -t ed25519 -C <span class="hljs-string">&quot;your_email@example.com&quot;</span><br></code></pre></td></tr></table></figure>
+<p>老旧版本如何生成：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa -C <span class="hljs-string">&quot;youremail@example.com&quot;</span><br>ssh-keygen -t rsa -b 4096 -C <span class="hljs-string">&quot;your_email@example.com&quot;</span><br></code></pre></td></tr></table></figure>
+<p>centos系统查看公钥，然后配置在github上</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /root/.ssh/id_ed25519.pub<br></code></pre></td></tr></table></figure>
+<p>在centos系统中，尽量通过ssh拉取代码</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> ssh://git@ssh.github.com:443/zhenfeng95/mysite.git<br></code></pre></td></tr></table></figure>
+<p>查看是否配置成功</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">ssh -T -p 443 git@ssh.github.com<br>输出：Hi zhenfeng95! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.<br>说明：<br>你的 SSH 公钥已经成功配置在 GitHub 上；<br>服务器可以通过 ssh.github.com:443 成功访问 GitHub；<br>可以安全地使用 SSH 拉取代码（使用 git@ssh.github.com:443 方式）<br></code></pre></td></tr></table></figure>
+<h2 id="配置用户信息"><a href="#配置用户信息" class="headerlink" title="配置用户信息"></a>配置用户信息</h2><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git config --global --list<br>git config --global user.name &quot;Your Name&quot;             <br>git config --global user.email &quot;email@example.com&quot;<br></code></pre></td></tr></table></figure>
 <h2 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h2><blockquote>
 <p>在当前目录新建一个Git代码库</p>
 </blockquote>
@@ -590,7 +599,21 @@
 <blockquote>
 <p>以斜杠“/”开头表示目录；<br>以星号“*”通配多个字符；<br>以问号“?”通配单个字符<br>以方括号“[]”包含单个字符的匹配列表；<br>以叹号“!”表示不忽略(跟踪)匹配到的文件或目录；</p>
 </blockquote>
-<p>此外，git 对于 .ignore 配置文件是按行从上到下进行规则匹配的，意味着如果前面的规则匹配的范围更大，则后面的规则将不会生效；<br>2、示例：<br>（1）规则：fd1/*<br>　　　　 说明：忽略目录 fd1 下的全部内容；注意，不管是根目录下的 /fd1/ 目录，还是某个子目录 /child/fd1/ 目录，都会被忽略；<br>（2）规则：/fd1/*<br>　　　　 说明：忽略根目录下的 /fd1/ 目录的全部内容；<br>（3）规则：<br>/*<br>!.gitignore<br>!/fw/bin/<br>!/fw/sf/<br>说明：忽略全部内容，但是不忽略 .gitignore 文件、根目录下的 /fw/bin/ 和 /fw/sf/ 目录；</p>
+<p>此外，git 对于 .ignore 配置文件是按行从上到下进行规则匹配的，意味着如果前面的规则匹配的范围更大，则后面的规则将不会生效；<br>2、示例：<br>（1）规则：fd1/*<br>　　  说明：忽略目录 fd1 下的全部内容；注意，不管是根目录下的 /fd1/ 目录，还是某个子目录 /child/fd1/ 目录，都会被忽略；<br>（2）规则：/fd1/*<br>　　  说明：忽略根目录下的 /fd1/ 目录的全部内容；<br>（3）规则：<br>            /*<br>            !.gitignore<br>            !/fw/bin/<br>            !/fw/sf/<br>            说明：忽略全部内容，但是不忽略 .gitignore 文件、根目录下的 /fw/bin/ 和 /fw/sf/ 目录；</p>
+<h2 id="github代码如何同步到gitee"><a href="#github代码如何同步到gitee" class="headerlink" title="github代码如何同步到gitee"></a>github代码如何同步到gitee</h2><ol>
+<li><p>生成一对公私钥对，github往gitee同步代码，github需要钥匙，就是私钥，而gitee需要公钥，相当于大门</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">ssh-keygen -t ed25519 -C &quot;285273676@qq.com&quot;<br></code></pre></td></tr></table></figure>
+<p>输入上方命令回车，然后在Enter file in which to save the key：中指定一个新的文件地址保存，不要影响现有项目的ssh，如：/Users/zhangzhenfeng/Downloads/demo_gitee，然后一路回车</p>
+</li>
+<li><p>进入Downloads，查看公私钥</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">cat demo_gitee.pub<br>cat demo_gitee<br></code></pre></td></tr></table></figure>
+<ol start="3">
+<li>在gitee平台配置公钥，设置–&gt;SSH公钥中添加</li>
+<li>在github平台配置公钥和私钥，进入具体的项目仓库，Settings–&gt;Deploy keys中添加公钥，Settings–&gt;Secrets and variables–&gt;Repository secrets添加私钥，这个名称在后面的配置文件中会用到</li>
+<li>开始配置github的Actions，搜索git-mirror-action插件，找到写好的脚本文件，在.github/workflows中新建一个sync-gitee.yml文件<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">name:</span> <span class="hljs-string">Mirror</span> <span class="hljs-string">to</span> <span class="hljs-string">Gitee</span> <span class="hljs-string">Repo</span><br><br><span class="hljs-attr">on:</span> [ <span class="hljs-string">push</span> ]<br><br><span class="hljs-comment"># Ensures that only one mirror task will run at a time.</span><br><span class="hljs-attr">concurrency:</span><br>  <span class="hljs-attr">group:</span> <span class="hljs-string">git-mirror</span><br><br><span class="hljs-attr">jobs:</span><br>  <span class="hljs-attr">git-mirror:</span><br>    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span><br>    <span class="hljs-attr">steps:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">wearerequired/git-mirror-action@v1</span><br>        <span class="hljs-attr">env:</span><br>          <span class="hljs-attr">SSH_PRIVATE_KEY:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.GITEE_DEPLOY_KEY</span> <span class="hljs-string">&#125;&#125;</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">source-repo:</span> <span class="hljs-string">&quot;git@github.com:zhenfeng95/community-pc.git&quot;</span><br>          <span class="hljs-attr">destination-repo:</span> <span class="hljs-string">&quot;git@gitee.com:zhenfeng95/community-pc.git&quot;</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ol>
   
     <div class="footer">
 <script src="//m.servedby-buysellads.com/monetization.js" type="text/javascript"></script>
