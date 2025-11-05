@@ -146,7 +146,7 @@ markdown:
 deploy:
     type: git
     repo: git@github.com:zhenfeng95/zhenfeng95.github.io.git
-    branch: main
+    branch: gh-pages
     name: zzf
     email: 285273676@qq.com
 
