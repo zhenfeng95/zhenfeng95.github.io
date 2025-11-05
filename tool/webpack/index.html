@@ -10,14 +10,14 @@
     <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="alternate" hreflang="x-default" href="https://v2.vuejs.org/menu/index.html">
-    <link rel="alternate" hreflang="zh" href="https://v2.cn.vuejs.org/menu/index.html">
-    <link rel="alternate" hreflang="ja" href="https://jp.vuejs.org/menu/index.html">
-    <link rel="alternate" hreflang="ru" href="https://ru.vuejs.org/menu/index.html">
-    <link rel="alternate" hreflang="ko" href="https://kr.vuejs.org/menu/index.html">
-    <link rel="alternate" hreflang="pt-BR" href="https://br.vuejs.org/menu/index.html">
-    <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/menu/index.html">
-    <link rel="alternate" hreflang="es" href="https://es.vuejs.org/menu/index.html">
+    <link rel="alternate" hreflang="x-default" href="https://v2.vuejs.org/tool/webpack/index.html">
+    <link rel="alternate" hreflang="zh" href="https://v2.cn.vuejs.org/tool/webpack/index.html">
+    <link rel="alternate" hreflang="ja" href="https://jp.vuejs.org/tool/webpack/index.html">
+    <link rel="alternate" hreflang="ru" href="https://ru.vuejs.org/tool/webpack/index.html">
+    <link rel="alternate" hreflang="ko" href="https://kr.vuejs.org/tool/webpack/index.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://br.vuejs.org/tool/webpack/index.html">
+    <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/tool/webpack/index.html">
+    <link rel="alternate" hreflang="es" href="https://es.vuejs.org/tool/webpack/index.html">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="Vue.js">
@@ -71,7 +71,7 @@
 
     <script>
       Vue.config.productionTip = false
-      window.PAGE_TYPE = "menu"
+      window.PAGE_TYPE = ""
     </script>
 
     <!-- Fathom - beautiful, simple website analytics -->
@@ -146,13 +146,13 @@
     </ul>
 </li>
  <li class="nav-dropdown-container tool">
-    <a class="nav-link">工具</a
+    <a class="nav-link current">工具</a
     ><span class="arrow"></span>
     <ul class="nav-dropdown">
         <li>
             <ul>
                  <li><a href="/tool/git/" class="nav-link">git</a></li>
-                  <li><a href="/tool/webpack/" class="nav-link">webpack</a></li>
+                  <li><a href="/tool/webpack/" class="nav-link current">webpack</a></li>
                
             </ul>
         </li>
@@ -169,142 +169,80 @@
 
     
       <div id="main" class="fix-sidebar">
-         
-
-<div class="sidebar">
-    <div class="sidebar-inner">
         
-        <div class="list"> <ul class="menu-root">
-  
-    
-    
+<div class="sidebar">
+    <ul class="main-menu">
+        <li>
+    <form id="search-form">
+        <input type="text" id="search-query-sidebar" class="search-query st-default-search-input" aria-label="搜索" />
+    </form>
+</li>
+<li class="nav-dropdown-container learn">
+    <a class="nav-link">前端</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li><h4>文档</h4></li>
+        <li>
+            <ul>
+                <li><a href="/v2/guide/" class="nav-link">HTML</a></li>
+        <li><a href="/v2/api/" class="nav-link">CSS</a></li>
+        <li><a href="/v2/style-guide/" class="nav-link">JS</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container ecosystem">
+    <a class="nav-link">框架</a><span class="arrow"></span>
+    <ul class="nav-dropdown">
       
-        <li><h3>基础</h3></li>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    
-    <li>
-      <a href="/v2/guide/installation.html" class="sidebar-link">安装</a>
-    </li>
-  
-    
-    
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    
-    <li>
-      <a href="/v2/guide/index.html" class="sidebar-link">介绍</a>
-    </li>
-  
-</ul>
- </div>
-    </div>
-</div>
-<!--
+        <li>
+            <ul>
+                <li><a href="https://forum.vuejs.org/" class="nav-link" target="_blank" rel="noopener">Vue</a></li>
+              
+            </ul>
+        </li>
+       
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container resources">
+    <a class="nav-link">网站部署</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/website/process/" class="nav-link">部署流程</a></li>
+                <li><a href="/website/hexo/" class="nav-link">HEXO</a></li>
+                <li><a href="/website/docker/" class="nav-link">Docker</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container tool">
+    <a class="nav-link current">工具</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/tool/git/" class="nav-link">git</a></li>
+                  <li><a href="/tool/webpack/" class="nav-link current">webpack</a></li>
+               
+            </ul>
+        </li>
+    </ul>
+</li>
 
-<div id="sidebar-sponsors-platinum-right">
-  <div class="main-sponsor">
-    <span>白金赞助商</span>
-    <div>
-    <a href="https://www.vuemastery.com/" target="_blank" rel="sponsored noopener" class="logo">
-      <img src="https://sponsors.vuejs.org/images/vuemastery.png" alt="VueMastery">
-    </a>
-    <a href="https://vehikl.com/" target="_blank" rel="sponsored noopener" class="logo">
-      <img src="https://sponsors.vuejs.org/images/vehikl.png" alt="Vehikl">
-    </a>
-    <a href="https://vuejs.amsterdam/" target="_blank" rel="sponsored noopener" class="logo">
-      <img src="https://sponsors.vuejs.org/images/vue_js_amsterdam.png" alt="Vue.js Amsterdam">
-    </a>
-    <a href="https://www.storyblok.com" target="_blank" rel="sponsored noopener" class="logo">
-      <img src="https://sponsors.vuejs.org/images/storyblok.png" alt="Storyblok">
-    </a>
-    <a href="https://opencollective.com/2021-frameworks-fund" target="_blank" rel="sponsored noopener" class="logo">
-      <img src="https://sponsors.vuejs.org/images/chrome_frameworks_fund.png" alt="Chrome Frameworks Fund">
-    </a>
-    <a href="https://www.herodevs.com/support/vue" target="_blank" rel="sponsored noopener" class="logo">
-      <img src="https://sponsors.vuejs.org/images/herodevs.png" alt="HeroDevs">
-    </a>
-    <a href="https://certificates.dev/javascript/?ref=vuejs-sponsor&friend=VUEJS" target="_blank" rel="sponsored noopener" class="logo">
-      <img src="https://sponsors.vuejs.org/images/javascript_certification.png?v2" alt="JavaScript Certification">
-    </a>
-    <a href="https://www.coderabbit.ai?utm_source=github&utm_medium=sponsors&utm_campaign=evan_you_2025" target="_blank" rel="sponsored noopener" class="logo">
-      <img src="https://sponsors.vuejs.org/images/coderabbit_.png" alt="CodeRabbit ">
-    </a>
-    <a href="https://imagekit.io/?utm_source=vuejs&utm_medium=referral&utm_campaign=oss-sponsorship&utm_content=homepage" target="_blank" rel="sponsored noopener" class="logo">
-      <img src="https://sponsors.vuejs.org/images/imagekit_io.svg" alt="ImageKit.io">
-    </a>
-    <a href="https://www.greptile.com/?utm_source=vuejs&utm_medium=sponsorship&utm_campaign=vue_sponsor_page" target="_blank" rel="sponsored noopener" class="logo">
-      <img src="https://sponsors.vuejs.org/images/greptile.png" alt="Greptile">
-    </a>
-    </div>
-  </div>
-  <a class="become-backer" href="/support-vuejs">
-    成为赞助者
-  </a>
+<!-- <li>
+    <a href="/eol/" class="badge-parent">终止支持 (EOL)<sup class="badge">新</sup></a>
+</li> -->
+
+    </ul>
 </div>
 
-
--->
- 
 <div
-    class="content menu with-sidebar "
+    class="content  "
 >
      
-    <form id="search-form">
-        <input type="text" id="search-query-menu" aria-label="搜索 Vue.js 站点" class="search-query st-default-search-input" />
-    </form>
-    <ul class="menu-root">
-  
-    
-    
-      
-        <li><h3>基础</h3></li>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    
-    <li>
-      <a href="/v2/guide/installation.html" class="sidebar-link">安装</a>
-    </li>
-  
-    
-    
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    
-    <li>
-      <a href="/v2/guide/index.html" class="sidebar-link">介绍</a>
-    </li>
-  
-</ul>
-   
 
     <!-- start: special logic for cn -->
     <!-- start: special logic for cn -->
@@ -334,7 +272,7 @@ _bsa.init('custom', 'CKYD62QM', 'placement:vuejsorg',
 
 发现错误？想参与编辑？
         <a
-            href="https://github.com/vuejs/v2.cn.vuejs.org/blob/master/src/menu/index.md"
+            href="https://github.com/vuejs/v2.cn.vuejs.org/blob/master/src/tool/webpack/index.md"
             rel="noopener"
             target="_blank"
         >
