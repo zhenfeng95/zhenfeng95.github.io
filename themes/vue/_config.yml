@@ -131,6 +131,9 @@ gold:
   - name: Daman Game
     url: https://damanappdownload.io/
     img: daman_game.png
+  - name: Guidebook.BetWinner
+    url: https://guidebook.betwinner.com/
+    img: guidebook_betwinner.png
 silver:
   - name: Doximity
     url: https://technology.doximity.com/
