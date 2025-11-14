@@ -168,6 +168,7 @@ brew update
 * Atom：[https://atom.io/](https://atom.io/)
 * Hbuilderx：[https://www.dcloud.io/hbuilderx.html](https://www.dcloud.io/hbuilderx.html)
 * 微信开发者工具：[https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)
+* 谷歌浏览器：[下载地址](https://www.google.com/chrome/?brand=CHBD&ds_kid=20441638724&gclsrc=aw.ds&gad_source=1&gad_campaignid=22008060471&gbraid=0AAAAAoY3CA6rv_DT0ukd9Y-OqU2Vum9lJ&gclid=CjwKCAiAw9vIBhBBEiwAraSATupbbC0FQq3XxJscjPQjcSIxEpMu6uAWwxSEVmXasPJ4nz5CYiydhBoCt6wQAvD_BwE)
 
 ### Vue-CLI
 
