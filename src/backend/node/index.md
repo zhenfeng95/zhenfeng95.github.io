@@ -5,7 +5,9 @@ type: node
 order: 1
 ---
 
-## [#](https://front-end.toimc.com/notes-page/basic/node/#什么是-node-js)什么是 Node.js
+## Nodejs
+
+### 什么是 Node.js
 
 Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 
@@ -15,7 +17,7 @@ Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 
 Node.js 的官网地址: https://nodejs.org/zh-cn/
 
-## [#](https://front-end.toimc.com/notes-page/basic/node/#node运行时)Node运行时
+### Node运行时
 
 ![Node.js runtime architecture](node.assets/1*txgFPN5LaUZvPOXelJlSuA.ac77e90a.jpeg)
 
@@ -24,20 +26,78 @@ Node.js 的官网地址: https://nodejs.org/zh-cn/
 * Node.js 是 JavaScript 的`后端`运行环境。（正常情况下，Nodejs要安装到服务器上）
 * Node.js 中无法调用 DOM 和 BOM 等 浏览器内置 API
 
-## [#](https://front-end.toimc.com/notes-page/basic/node/#安装node)安装Node
+### 安装Node
 
 方案：
 
 * 官网下载直装：[https://nodejs.org/zh-cn/download/(opens new window)](https://nodejs.org/zh-cn/download/)
 
-* 使用nvm（Node Version Management，node版本管理工具）安装**（推荐）**
+* 使用nvm（Node Version Management，node版本管理工具）安装
 
-  * mac：[https://github.com/nvm-sh/nvm (opens new window)](https://github.com/nvm-sh/nvm)， 国内镜像仓库地址：[https://gitee.com/mirrors/nvm/(opens new window)](https://gitee.com/mirrors/nvm/)
+  **方式一：**mac推荐使用以下命令安装，较为灵活，可以选择node版本**（推荐）**
+
+  ```bash
+  # 下载并安装 nvm：
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+  
+  # 代替重启 shell
+  \. "$HOME/.nvm/nvm.sh"
+  
+  # 下载并安装 Node.js：
+  nvm install 24
+  
+  # 验证 Node.js 版本：
+  node -v # Should print "v24.11.1".
+  
+  # 验证 npm 版本：
+  npm -v # Should print "11.6.2".
+  ```
+
+  Windows命令：
+
+  ```bash
+  # 下载并安装 Chocolatey：
+  powershell -c "irm https://community.chocolatey.org/install.ps1|iex"
+  
+  # 下载并安装 Node.js：
+  choco install nodejs --version="24.11.1"
+  
+  # 验证 Node.js 版本：
+  node -v # Should print "v24.11.1".
+  
+  # 验证 npm 版本：
+  npm -v # Should print "11.6.2".
+  ```
+
+  Linux命令：
+
+  ```bash
+  # 下载并安装 nvm：
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+  
+  # 代替重启 shell
+  \. "$HOME/.nvm/nvm.sh"
+  
+  # 下载并安装 Node.js：
+  nvm install 24
+  
+  # 验证 Node.js 版本：
+  node -v # Should print "v24.11.1".
+  
+  # 验证 npm 版本：
+  npm -v # Should print "11.6.2".
+  ```
+
+  
+
+  **方式二：**参考以下链接安装
+
+  * mac：[https://github.com/nvm-sh/nvm ](https://github.com/nvm-sh/nvm)， 国内镜像仓库地址：[https://gitee.com/mirrors/nvm](https://gitee.com/mirrors/nvm/)
 
     安装脚本：
 
     ```bash
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
     # or
     wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
     
@@ -45,22 +105,17 @@ Node.js 的官网地址: https://nodejs.org/zh-cn/
     curl -o- https://gitee.com/mirrors/nvm/raw/master/install.sh | bash
     ```
 
-    国内加速：
-
-    ```text
-    export NVM_NODEJS_ORG_MIRROR=http://npm.taobao.org/mirrors/node
-    ```
-
   * windows：[https://github.com/coreybutler/nvm-windows(opens new window)](https://github.com/coreybutler/nvm-windows)
 
-    安装包：[1.1.9.zip(opens new window)](https://github.91chi.fun/https://github.com//coreybutler/nvm-windows/releases/download/1.1.9/nvm-setup.zip)
-
-  配置nvm环境，找到如下位置的文件（如果没有则新建）：
-
+    
+    
+    配置nvm环境，找到如下位置的文件（如果没有则新建）：
+    
   * M1：`~/.zprofile`
   * Intel：`~/.bash_profile`， `~/.zshrc`，`~/.profile`或者 `~/.bashrc`
 
-  添加如下内容：
+    添加如下内容：
+
 
   ```bash
   export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -69,7 +124,9 @@ Node.js 的官网地址: https://nodejs.org/zh-cn/
 
   并重启终端工具。
 
-  常见nvm命令(Mac)：
+  
+
+  **常见nvm命令(Mac)：**
 
   ```text
   # 查看有哪些可以下载的版本 mac&Linux
@@ -90,7 +147,7 @@ Node.js 的官网地址: https://nodejs.org/zh-cn/
   nvm alias default v16.14.0
   ```
 
-## [#](https://front-end.toimc.com/notes-page/basic/node/#包管理器npm-yarn-pnpm)包管理器npm&yarn&pnpm
+### 包管理器npm&yarn&pnpm
 
 介绍
 
@@ -148,7 +205,7 @@ node12下，benchmark对比：
 
 ![Snipaste_2022-02-25_16-53-56](node.assets/Snipaste_2022-02-25_16-53-56.2105b285.jpg)
 
-## [#](https://front-end.toimc.com/notes-page/basic/node/#npm国内加速)npm国内加速
+### npm国内加速
 
 初始化之后，就可以在当前文件夹中安装第三方模块了
 
@@ -168,7 +225,7 @@ npm install -g nrm --registry=https://registry.npmmirror.com
 nrm use taobao
 ```
 
-## [#](https://front-end.toimc.com/notes-page/basic/node/#常见命令)常见命令
+### 常见命令
 
 ```bash
 # 正常的下载安装
@@ -196,16 +253,14 @@ npm uninstall 模块名
 
 > **重要**：代码文件夹不能有中文；代码文件夹不能和模块名同名。
 
-
-
-# NPM包管理工具
+## NPM包管理工具
 
 这个部分是扩展npm命令的篇章，主要应用场景：
 
 * 版本号管理
 * 发包
 
-## [#](https://front-end.toimc.com/notes-page/basic/node/00-npm.html#版本号管理)版本号管理
+### 版本号管理
 
 ![image-20220528102521776](node.assets/image-20220528102521776.2c04e51a.png)
 
@@ -228,9 +283,9 @@ npm version命令是用来管理package.json中的version属性的。
 * minor
 * Major
 
-## [#](https://front-end.toimc.com/notes-page/basic/node/00-npm.html#预发布相关)预发布相关
+### 预发布相关
 
-### [#](https://front-end.toimc.com/notes-page/basic/node/00-npm.html#npm-version)npm version
+### npm version
 
 这里主要是`npm version`命令的相关介绍。
 
@@ -268,7 +323,7 @@ npm version [<newversion> | major | minor | patch | premajor | preminor | prepat
 }
 ```
 
-### [#](https://front-end.toimc.com/notes-page/basic/node/00-npm.html#prerelease)prerelease
+### prerelease
 
 pre-预
 
@@ -299,7 +354,7 @@ v1.0.1-1
 v1.0.0-2
 ```
 
-### [#](https://front-end.toimc.com/notes-page/basic/node/00-npm.html#prepatch)prepatch
+### prepatch
 
 直接升级小号，增加预发布号为0。
 
@@ -313,7 +368,7 @@ TIP
 v1.0.2-0
 ```
 
-### [#](https://front-end.toimc.com/notes-page/basic/node/00-npm.html#preminor)preminor
+### preminor
 
 直接升级中号，小号置为0，增加预发布号为0。
 
@@ -322,7 +377,7 @@ v1.0.2-0
 v1.1.0-0
 ```
 
-### [#](https://front-end.toimc.com/notes-page/basic/node/00-npm.html#premajor)premajor
+### premajor
 
 直接升级大号，中号、小号置为0，增加预发布号为0。
 
@@ -331,9 +386,9 @@ v1.1.0-0
 v2.0.0-0
 ```
 
-## [#](https://front-end.toimc.com/notes-page/basic/node/00-npm.html#正式版本相关)正式版本相关
+### 正式版本相关
 
-### [#](https://front-end.toimc.com/notes-page/basic/node/00-npm.html#patch)patch
+### patch
 
 TIP
 
@@ -355,7 +410,7 @@ v2.0.0
 v2.0.1
 ```
 
-### [#](https://front-end.toimc.com/notes-page/basic/node/00-npm.html#minor)minor
+### minor
 
 TIP
 
@@ -378,7 +433,7 @@ v2.1.0
 # npm version minor 3.0.1-0–>3.1.0;
 ```
 
-### [#](https://front-end.toimc.com/notes-page/basic/node/00-npm.html#major)major
+### major
 
 TIP
 
@@ -415,7 +470,7 @@ v8.0.0
 * 如果有preminor/prepatch/prerelease，则会去掉`release`版本；
 * 如果有minor/patch，则会直接置0，升级主版本号；
 
-## [#](https://front-end.toimc.com/notes-page/basic/node/00-npm.html#发包相关)发包相关
+### 发包相关
 
 常见的`npm publish`、`npm link`、`npm login`这里不介绍了，主要介绍与发包之后的命令：
 
@@ -423,7 +478,7 @@ v8.0.0
 * 删除版本
 * 废弃版本
 
-### [#](https://front-end.toimc.com/notes-page/basic/node/00-npm.html#查看历史版本)查看历史版本
+### 查看历史版本
 
 言归正传，如何查看已发布包的历史版本呢？
 
@@ -460,7 +515,7 @@ npm view test@1.0.0 version
 
 但是这个是针对正式版本的，如果是测试版本，是不会出现在最新版本的查询里的。
 
-### [#](https://front-end.toimc.com/notes-page/basic/node/00-npm.html#删除版本)删除版本
+### 删除版本
 
 删除版本前，一定要确认这个版本的包已经没有依赖（废弃）了。
 
@@ -479,7 +534,7 @@ npm unpublish test
 npm unpublish test --force
 ```
 
-### [#](https://front-end.toimc.com/notes-page/basic/node/00-npm.html#废弃版本)废弃版本
+### 废弃版本
 
 什么是废弃版本？
 
@@ -495,13 +550,11 @@ npm deprecate test '不再维护'
 npm deprecate test@1.0.1 '不再维护'
 ```
 
-
-
-# [#](https://front-end.toimc.com/notes-page/basic/node/01-koa.html#koa-下一代web框架)Koa(下一代web框架)
+## Koa(下一代web框架)
 
 [koa (opens new window)](https://koajs.com/)([中文网 (opens new window)](https://www.koajs.com.cn/))是基于 Node.js 平台的下一代 web 开发框架，致力于成为应用和 API 开发领域中的一个更小、更富有表现力、更健壮的基石；利用*async 函数*丢弃回调函数，并增强错误处理，koa 没有任何预置的中间件，可快速的编写服务端应用程序。
 
-## [#](https://front-end.toimc.com/notes-page/basic/node/01-koa.html#核心概念)核心概念
+###  核心概念
 
 ![微信图片_20200713125342.jpg](node.assets/1594616036570-1030d9b1-ad5f-42b6-910b-8a90b43a6c00.205fb4e5.jpeg)
 
@@ -509,7 +562,7 @@ npm deprecate test@1.0.1 '不再维护'
 * Context（上下文）
 * Request（请求）、Response(响应)
 
-## [#](https://front-end.toimc.com/notes-page/basic/node/01-koa.html#初识-koa)初识 koa
+### 初识 koa
 
 ```shell
 // 创建一个 acquaintance 的文件夹
@@ -580,7 +633,9 @@ TIP
 
 执行命令时，终端的路径必须指向当前程序
 
-## [#](https://front-end.toimc.com/notes-page/basic/node/01-koa.html#路由)路由
+
+
+### 路由
 
 路由即是**路径**与**处理函数**之间的对应关系！
 
@@ -681,7 +736,7 @@ app.listen(3003)
 在浏览器中请求：`http://localhost:3003/api/v1`、`http://localhost:3003/api/v1/user`，结果如下图：
 ![img](data:image/png;base64,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) ![img](data:image/png;base64,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)
 
-## [#](https://front-end.toimc.com/notes-page/basic/node/01-koa.html#中间件)中间件
+### 中间件
 
 中间件其实就是一个个函数，中间件是一系列的中间过程执行的函数，它可以通过`app.use()`注册；
 
@@ -811,7 +866,7 @@ handleRequest(ctx, fnMiddleware) {
 * 接着调用 this.handleRequest(ctx, fnMiddleware)处理该次请求。
 * 通过 fnMiddleware(ctx).then(handleResponse).catch(onerror)执行中间件。
 
-## [#](https://front-end.toimc.com/notes-page/basic/node/01-koa.html#传参-取参-方式)传参(取参)方式
+### 传参(取参)方式
 
 * 在 params 中取值，`eg：http://localhost:3003/api/v1/user/1`
 
@@ -883,7 +938,7 @@ axios.post('http://localhost/user', {name: 'Foreset', age: 18}).then(res => {
 });
 ```
 
-## [#](https://front-end.toimc.com/notes-page/basic/node/01-koa.html#创建-restful-接口)创建 RESTful 接口
+### 创建 RESTful 接口
 
 * 路由 koa-router
 * 协议解析 koa-body
@@ -974,7 +1029,7 @@ POST传参：
 
 ![深度截图_选择区域_20200713194851.png](node.assets/1594640959915-07c5c8a3-e861-4fe0-ada8-b138a758f72e.fadbeb70.png)
 
-## [#](https://front-end.toimc.com/notes-page/basic/node/01-koa.html#小案例)小案例
+### 小案例
 
 **任务描述：**
 

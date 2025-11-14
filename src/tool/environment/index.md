@@ -10,7 +10,7 @@ order: 1
 * Node.js环境
 
 
-​		前端开发的基础环境，学习Node.js的安装、版本管理工具nvm及npm命令的使用。
+​		[参考文档](/backend/node/)
 
 * git环境
 
@@ -161,63 +161,13 @@ brew update
 
 ## 本地开发环境
 
-### Node.js
-
-直装方式：Node.js下载，官方地址：[https://nodejs.org/zh-cn/ (opens new window)](https://nodejs.org/zh-cn/)，建议下载LTS版本。
-
-> 缺点：不利于多环境的Node.js项目的运行！
-
-Nvm(Node.js版本管理)：
-
-* Linux/MacOS：[https://github.com/nvm-sh/nvm(opens new window)](https://github.com/nvm-sh/nvm)
-
-  ```text
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-  ```
-
-  或者
-
-  ```text
-  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-  ```
-
-  然后在`~/.bash_profile`, `~/.zshrc`, `~/.profile`, or `~/.bashrc`文件其中之一添加：
-
-  ```text
-  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-  ```
-
-* Windows：[https://github.com/coreybutler/nvm-windows/releases(opens new window)](https://github.com/coreybutler/nvm-windows/releases)
-
-  国内加速源下载地址：[https://github.91chi.fun/https://github.com//coreybutler/nvm-windows/releases/download/1.1.9/nvm-setup.zip(opens new window)](https://github.91chi.fun/https://github.com//coreybutler/nvm-windows/releases/download/1.1.9/nvm-setup.zip)
-
-Yarn安装：
-
-```text
-npm i -g yarn
-```
-
-> 可以并行安装包，使用yarn命令快速安装前端项目的依赖。
-
-npm源切换工具nrm:
-
-```text
-npm i -g nrm --registry=https://registry.npmmirror.com
-nrm use taobao
-```
-
-国内源cnpm：[https://npmmirror.com/(opens new window)](https://npmmirror.com/)
-
-```text
-npm install -g cnpm --registry=https://registry.npmmirror.com
-```
-
 ### IDE
 
-* WebStorm（收费）：[https://www.jetbrains.com/webstorm/(opens new window)](https://www.jetbrains.com/webstorm/)
-* VSCode（推荐）：[https://code.visualstudio.com/(opens new window)](https://code.visualstudio.com/)
-* Atom：[https://atom.io/(opens new window)](https://atom.io/)
+* WebStorm（收费）：[https://www.jetbrains.com/webstorm/](https://www.jetbrains.com/webstorm/)
+* VSCode（推荐）：[https://code.visualstudio.com/](https://code.visualstudio.com/)
+* Atom：[https://atom.io/](https://atom.io/)
+* Hbuilderx：[https://www.dcloud.io/hbuilderx.html](https://www.dcloud.io/hbuilderx.html)
+* 微信开发者工具：[https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html](https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html)
 
 ### Vue-CLI
 
