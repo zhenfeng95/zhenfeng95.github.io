@@ -48,8 +48,6 @@ Node.js 的官网地址: https://nodejs.org/zh-cn/
   xcode-select --install
   ```
   
-  
-  
   ```bash
   # 下载并安装 nvm：
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
@@ -67,8 +65,47 @@ Node.js 的官网地址: https://nodejs.org/zh-cn/
   npm -v # Should print "11.6.2".
   ```
   
-  Windows命令：
+  以上安装方式可能会导致nvm只在当前终端生效，新终端不生效，那是因为nvm未自动写入shell配置文件
+  
+  配置nvm环境，找到如下位置的文件（如果没有则新建），步骤如下：
 
+  1、确认你使用的是 zsh 还是 bash
+
+  ```bash
+  echo $SHELL
+  macOS 默认是 zsh（路径通常为 /bin/zsh）
+  如果返回：
+  /bin/zsh → 用 .zshrc
+  /bin/bash → 用 .bashrc
+  ```
+  
+  2、查看~/.zshrc文件是否存在，不存在进行创建
+  
+  ```bash
+  cat ~/.zshrc
+  vi ~/.zshrc
+  ```
+  
+  3、在文件末尾添加如下内容：
+
+  
+    ```bash
+  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+    ```
+
+  4、source ~/.zshrc使配置生效，然后进行测试
+
+  5、查看nvm安装位置
+  
+  ```bash
+  ls -a ~ | grep nvm
+  ```
+  
+  
+  
+  Windows命令：
+  
   ```bash
   # 下载并安装 Chocolatey：
   powershell -c "irm https://community.chocolatey.org/install.ps1|iex"
@@ -123,20 +160,8 @@ Node.js 的官网地址: https://nodejs.org/zh-cn/
   
     
     
-    配置nvm环境，找到如下位置的文件（如果没有则新建）：
     
-  * M1：`~/.zprofile`
-  * Intel：`~/.bash_profile`， `~/.zshrc`，`~/.profile`或者 `~/.bashrc`
-  
-    添加如下内容：
-
-
-  ```bash
-  export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-  ```
-
-  并重启终端工具。
+    
 
   
 
