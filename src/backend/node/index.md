@@ -36,6 +36,20 @@ Node.js 的官网地址: https://nodejs.org/zh-cn/
 
   **方式一：**mac推荐使用以下命令安装，较为灵活，可以选择node版本**（推荐）**
 
+  用命令行安装工具前先检查一下子，用于在Mac上安装或更新的Xcode的命令行工具
+  
+  ```bash
+  xcode-select -p
+  ```
+  
+  没安装的话先进行安装
+  
+  ```bash
+  xcode-select --install
+  ```
+  
+  
+  
   ```bash
   # 下载并安装 nvm：
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
@@ -52,7 +66,7 @@ Node.js 的官网地址: https://nodejs.org/zh-cn/
   # 验证 npm 版本：
   npm -v # Should print "11.6.2".
   ```
-
+  
   Windows命令：
 
   ```bash
@@ -68,9 +82,9 @@ Node.js 的官网地址: https://nodejs.org/zh-cn/
   # 验证 npm 版本：
   npm -v # Should print "11.6.2".
   ```
-
+  
   Linux命令：
-
+  
   ```bash
   # 下载并安装 nvm：
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
@@ -87,15 +101,15 @@ Node.js 的官网地址: https://nodejs.org/zh-cn/
   # 验证 npm 版本：
   npm -v # Should print "11.6.2".
   ```
-
   
-
+  
+  
   **方式二：**参考以下链接安装
-
+  
   * mac：[https://github.com/nvm-sh/nvm ](https://github.com/nvm-sh/nvm)， 国内镜像仓库地址：[https://gitee.com/mirrors/nvm](https://gitee.com/mirrors/nvm/)
-
+  
     安装脚本：
-
+  
     ```bash
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
     # or
@@ -104,16 +118,16 @@ Node.js 的官网地址: https://nodejs.org/zh-cn/
     # 国内
     curl -o- https://gitee.com/mirrors/nvm/raw/master/install.sh | bash
     ```
-
+  
   * windows：[https://github.com/coreybutler/nvm-windows(opens new window)](https://github.com/coreybutler/nvm-windows)
-
+  
     
     
     配置nvm环境，找到如下位置的文件（如果没有则新建）：
     
   * M1：`~/.zprofile`
   * Intel：`~/.bash_profile`， `~/.zshrc`，`~/.profile`或者 `~/.bashrc`
-
+  
     添加如下内容：
 
 

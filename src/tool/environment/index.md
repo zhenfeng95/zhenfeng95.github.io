@@ -58,6 +58,18 @@ brew官网：[https://brew.sh/(opens new window)](https://brew.sh/)
 
 ### 安装
 
+用命令行安装工具前先检查一下子，用于在Mac上安装或更新的Xcode的命令行工具
+
+```bash
+xcode-select -p
+```
+
+没安装的话先进行安装
+
+```bash
+xcode-select --install
+```
+
 苹果电脑标准安装脚本：（推荐 优点全面 缺点慢一点）
 
 ```text
