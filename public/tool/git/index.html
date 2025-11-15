@@ -288,7 +288,7 @@
     <!-- end: special logic for cn -->
 
      <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="1、Windows-安装-Git"><a href="#1、Windows-安装-Git" class="headerlink" title="1、Windows 安装 Git"></a>1、Windows 安装 Git</h3><ol>
-<li><p>打开官网  <a target="_blank" rel="noopener" href="https://git-scm.com/install/windows">https://git-scm.com/install/windows</a></p>
+<li><p>打开官网 <a target="_blank" rel="noopener" href="https://git-scm.com/install/windows">https://git-scm.com/install/windows</a></p>
 </li>
 <li><p>点击主页上的 <strong>“Download for Windows”</strong>，下载 <code>.exe</code> 安装包。</p>
 </li>
@@ -303,15 +303,17 @@
 </blockquote>
 </li>
 <li><p>安装完成后，打开命令行（CMD 或 PowerShell），输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">git --version<br></code></pre></td></tr></table></figure>
-<p>如果输出类似：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">git version 2.47.0.windows.1<br></code></pre></td></tr></table></figure>
-<p>说明安装成功。</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">git --version<br></code></pre></td></tr></table></figure>
+<p> 如果输出类似：</p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">git version 2.47.0.windows.1<br></code></pre></td></tr></table></figure>
+<p> 说明安装成功。</p>
 </li>
 </ol>
 <h3 id="2、macOS-安装-Git"><a href="#2、macOS-安装-Git" class="headerlink" title="2、macOS 安装 Git"></a>2、macOS 安装 Git</h3><p>方式一：通过 Homebrew 安装（推荐）</p>
 <p>如果你已安装 <strong>Homebrew</strong>，直接运行：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">brew install git<br></code></pre></td></tr></table></figure>
+<p>安装 git-gui 工具</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">brew install git-gui<br>which git<br>which gitk<br>git --version<br></code></pre></td></tr></table></figure>
 <p>方式二：通过 Xcode Command Line Tools 安装</p>
 <p>系统自带方式：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">xcode-select --install<br></code></pre></td></tr></table></figure>
@@ -348,22 +350,22 @@
 <p>安装完成后验证：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">git --version<br></code></pre></td></tr></table></figure>
 <h3 id="4、安装后基础配置"><a href="#4、安装后基础配置" class="headerlink" title="4、安装后基础配置"></a>4、安装后基础配置</h3><p>首次使用 Git，建议配置用户名与邮箱（用于提交记录）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">git config --global user.name &quot;Your Name&quot;             <br>git config --global user.email &quot;email@example.com&quot;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">git config --global user.name &quot;Your Name&quot;<br>git config --global user.email &quot;email@example.com&quot;<br></code></pre></td></tr></table></figure>
 <p>验证配置：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">git config --global --list<br></code></pre></td></tr></table></figure>
 <h3 id="5、生成-SSH-密钥（连接-GitHub-GitLab）"><a href="#5、生成-SSH-密钥（连接-GitHub-GitLab）" class="headerlink" title="5、生成 SSH 密钥（连接 GitHub / GitLab）"></a>5、生成 SSH 密钥（连接 GitHub / GitLab）</h3><p><strong>检查是否已有 SSH Key</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -al ~/.ssh	<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> -al ~/.ssh<br></code></pre></td></tr></table></figure>
 <p><strong>生成密钥</strong></p>
-<p>新的GitHub 默认使用的是 ED25519 类型的 SSH key，因为它比传统的 RSA 更安全、性能更高，文件更小</p>
+<p>新的 GitHub 默认使用的是 ED25519 类型的 SSH key，因为它比传统的 RSA 更安全、性能更高，文件更小</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">ssh-keygen -t ed25519 -C <span class="hljs-string">&quot;your_email@example.com&quot;</span><br></code></pre></td></tr></table></figure>
 <p>老旧版本如何生成：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">ssh-keygen -t rsa -b 4096 -C <span class="hljs-string">&quot;your_email@example.com&quot;</span><br>ssh-keygen -t rsa -C <span class="hljs-string">&quot;youremail@example.com&quot;</span><br></code></pre></td></tr></table></figure>
 <p>连续回车（默认路径 <code>~/.ssh/id_rsa</code>）。</p>
 <p><strong>查看公钥</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">cat ~/.ssh/id_rsa.pub<br></code></pre></td></tr></table></figure>
-<p>centos系统查看公钥，然后配置在github上</p>
+<p>centos 系统查看公钥，然后配置在 github 上</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /root/.ssh/id_ed25519.pub<br></code></pre></td></tr></table></figure>
-<p>在centos系统中，尽量通过ssh拉取代码</p>
+<p>在 centos 系统中，尽量通过 ssh 拉取代码</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> ssh://git@ssh.github.com:443/zhenfeng95/mysite.git<br></code></pre></td></tr></table></figure>
 <p><strong>查看是否配置成功</strong></p>
 <p>将输出内容复制到 GitHub / GitLab 的 “SSH Keys” 设置中。</p>
@@ -373,12 +375,12 @@
 <p>成功会提示：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">输出：Hi zhenfeng95! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.<br>说明：<br>你的 SSH 公钥已经成功配置在 GitHub 上；<br>服务器可以通过 ssh.github.com:443 成功访问 GitHub；<br>可以安全地使用 SSH 拉取代码（使用 git@ssh.github.com:443 方式）<br></code></pre></td></tr></table></figure>
 <h3 id="6、图形界面工具（可选）"><a href="#6、图形界面工具（可选）" class="headerlink" title="6、图形界面工具（可选）"></a>6、图形界面工具（可选）</h3><ul>
-<li><strong>GitHub Desktop</strong>（简单易用）<br> 👉 <a target="_blank" rel="noopener" href="https://desktop.github.com/">https://desktop.github.com/</a></li>
-<li><strong>SourceTree</strong>（适合团队协作）<br> 👉 <a target="_blank" rel="noopener" href="https://www.sourcetreeapp.com/">https://www.sourcetreeapp.com/</a></li>
+<li><strong>GitHub Desktop</strong>（简单易用）<br>👉 <a target="_blank" rel="noopener" href="https://desktop.github.com/">https://desktop.github.com/</a></li>
+<li><strong>SourceTree</strong>（适合团队协作）<br>👉 <a target="_blank" rel="noopener" href="https://www.sourcetreeapp.com/">https://www.sourcetreeapp.com/</a></li>
 </ul>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="创建-拉取仓库"><a href="#创建-拉取仓库" class="headerlink" title="创建/拉取仓库"></a>创建/拉取仓库</h3><p>在当前目录新建一个Git代码库</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="创建-拉取仓库"><a href="#创建-拉取仓库" class="headerlink" title="创建/拉取仓库"></a>创建/拉取仓库</h3><p>在当前目录新建一个 Git 代码库</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git init<br></code></pre></td></tr></table></figure>
-<p>新建一个目录，将其初始化为Git代码库</p>
+<p>新建一个目录，将其初始化为 Git 代码库</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git init [project-name]<br></code></pre></td></tr></table></figure>
 <p>下载一个项目和它的整个代码历史</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git clone [url]<br></code></pre></td></tr></table></figure>
@@ -398,31 +400,31 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git mv [file-original] [file-renamed]<br></code></pre></td></tr></table></figure>
 <h3 id="代码提交"><a href="#代码提交" class="headerlink" title="代码提交"></a>代码提交</h3><p>提交暂存区到仓库区</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git commit -m [message]<br></code></pre></td></tr></table></figure>
-<p>提交工作区自上次commit之后的变化，直接到仓库区</p>
+<p>提交工作区自上次 commit 之后的变化，直接到仓库区</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git commit -a<br></code></pre></td></tr></table></figure>
-<p>提交时显示所有diff信息</p>
+<p>提交时显示所有 diff 信息</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git commit -v<br></code></pre></td></tr></table></figure>
-<p>使用一次新的commit，替代上一次提交<br>如果代码没有任何新变化，则用来改写上一次commit的提交信息</p>
+<p>使用一次新的 commit，替代上一次提交<br>如果代码没有任何新变化，则用来改写上一次 commit 的提交信息</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git commit --amend -m [message]<br></code></pre></td></tr></table></figure>
-<p>重做上一次commit，并包括指定文件的新变化</p>
+<p>重做上一次 commit，并包括指定文件的新变化</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git commit --amend [file1] [file2] ...<br></code></pre></td></tr></table></figure>
 <h3 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h3><p>显示有变更的文件</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git status<br></code></pre></td></tr></table></figure>
 <p>显示当前分支的版本历史</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git log<br></code></pre></td></tr></table></figure>
-<p>显示commit历史，以及每次commit发生变更的文件</p>
+<p>显示 commit 历史，以及每次 commit 发生变更的文件</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git log --stat<br></code></pre></td></tr></table></figure>
 <p>搜索提交历史，根据关键词</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git log -S [keyword]<br></code></pre></td></tr></table></figure>
-<p>显示某个commit之后的所有变动，每个commit占据一行</p>
+<p>显示某个 commit 之后的所有变动，每个 commit 占据一行</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git log [tag] HEAD --pretty=format:%s<br></code></pre></td></tr></table></figure>
-<p>显示某个commit之后的所有变动，其”提交说明”必须符合搜索条件</p>
+<p>显示某个 commit 之后的所有变动，其”提交说明”必须符合搜索条件</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git log [tag] HEAD --grep feature<br></code></pre></td></tr></table></figure>
 <p>显示某个文件的版本历史，包括文件改名</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git log --follow [file]<br></code></pre></td></tr></table></figure>
-<p>显示指定文件相关的每一次diff</p>
+<p>显示指定文件相关的每一次 diff</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git log -p [file]<br></code></pre></td></tr></table></figure>
-<p>显示过去5次提交</p>
+<p>显示过去 5 次提交</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git log -5 --pretty --oneline<br></code></pre></td></tr></table></figure>
 <p>显示所有提交过的用户，按提交次数排序</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git shortlog -sn<br></code></pre></td></tr></table></figure>
@@ -430,9 +432,9 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git blame [file]<br></code></pre></td></tr></table></figure>
 <p>显示暂存区和工作区的差异</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git diff<br></code></pre></td></tr></table></figure>
-<p>显示暂存区和上一个commit的差异</p>
+<p>显示暂存区和上一个 commit 的差异</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git diff --cached [file]<br></code></pre></td></tr></table></figure>
-<p>显示工作区与当前分支最新commit之间的差异</p>
+<p>显示工作区与当前分支最新 commit 之间的差异</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git diff HEAD<br></code></pre></td></tr></table></figure>
 <p>显示两次提交之间的差异</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git diff [first-branch]...[second-branch]<br></code></pre></td></tr></table></figure>
@@ -444,7 +446,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git show --name-only [commit]<br></code></pre></td></tr></table></figure>
 <p>显示某次提交时，某个文件的内容</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git show [commit]:[filename]<br></code></pre></td></tr></table></figure>
-<p>显示当前分支的最近几次提交，记录着本地所有的提交以及分支的切换，包括删除类型的操作，reset操作等等</p>
+<p>显示当前分支的最近几次提交，记录着本地所有的提交以及分支的切换，包括删除类型的操作，reset 操作等等</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git reflog<br></code></pre></td></tr></table></figure>
 <h3 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h3><p>列出所有本地分支</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git branch<br></code></pre></td></tr></table></figure>
@@ -458,7 +460,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git checkout -b [branch]<br>git checkout -b [branch] orgin/master<br></code></pre></td></tr></table></figure>
 <p>新建一个与远端同名分支，并切换到该分支</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git checkout -t origin/[branch]<br></code></pre></td></tr></table></figure>
-<p>新建一个分支，指向指定commit</p>
+<p>新建一个分支，指向指定 commit</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git branch [branch] [commit]<br></code></pre></td></tr></table></figure>
 <p>新建一个分支，与指定的远程分支建立追踪关系</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git branch --track [branch] [remote-branch]<br></code></pre></td></tr></table></figure>
@@ -470,29 +472,29 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git branch --set-upstream [branch] [remote-branch]<br></code></pre></td></tr></table></figure>
 <p>合并指定分支到当前分支</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git merge [branch]<br></code></pre></td></tr></table></figure>
-<p>选择一个commit，合并进当前分支</p>
+<p>选择一个 commit，合并进当前分支</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git cherry-pick [commit]<br></code></pre></td></tr></table></figure>
 <p>删除分支</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git branch -d [branch-name]<br></code></pre></td></tr></table></figure>
 <p>删除远程分支</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git push origin --delete [branch-name]<br></code></pre></td></tr></table></figure>
-<h3 id="查看标签"><a href="#查看标签" class="headerlink" title="查看标签"></a>查看标签</h3><p>列出所有tag</p>
+<h3 id="查看标签"><a href="#查看标签" class="headerlink" title="查看标签"></a>查看标签</h3><p>列出所有 tag</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git tag<br></code></pre></td></tr></table></figure>
-<p>新建一个tag在当前commit</p>
+<p>新建一个 tag 在当前 commit</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git tag [tag]<br></code></pre></td></tr></table></figure>
-<p>新建一个tag在指定commit</p>
+<p>新建一个 tag 在指定 commit</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git tag [tag] [commit]<br></code></pre></td></tr></table></figure>
-<p>删除本地tag</p>
+<p>删除本地 tag</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git tag -d [tag]<br></code></pre></td></tr></table></figure>
-<p>删除远程tag</p>
+<p>删除远程 tag</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git push origin :refs/tags/[tagName]<br></code></pre></td></tr></table></figure>
-<p>查看tag信息</p>
+<p>查看 tag 信息</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git show [tag]<br></code></pre></td></tr></table></figure>
-<p>提交指定tag</p>
+<p>提交指定 tag</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git push [remote] [tag]<br></code></pre></td></tr></table></figure>
-<p>提交所有tag</p>
+<p>提交所有 tag</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git push [remote] --tags<br></code></pre></td></tr></table></figure>
-<p>新建一个分支，指向某个tag</p>
+<p>新建一个分支，指向某个 tag</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git checkout -b [branch] [tag]<br></code></pre></td></tr></table></figure>
 <h3 id="远程同步"><a href="#远程同步" class="headerlink" title="远程同步"></a>远程同步</h3><p>下载远程仓库的所有变动</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git fetch [remote]<br></code></pre></td></tr></table></figure>
@@ -514,45 +516,45 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git push [remote] --all<br></code></pre></td></tr></table></figure>
 <h3 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h3><p>恢复暂存区的指定文件到工作区</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git checkout [file]<br></code></pre></td></tr></table></figure>
-<p>恢复某个commit的指定文件到暂存区和工作区</p>
+<p>恢复某个 commit 的指定文件到暂存区和工作区</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git checkout [commit] [file]<br></code></pre></td></tr></table></figure>
 <p>恢复暂存区的所有文件到工作区</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git checkout .<br></code></pre></td></tr></table></figure>
-<p>重置暂存区的指定文件，与上一次commit保持一致，但工作区不变</p>
+<p>重置暂存区的指定文件，与上一次 commit 保持一致，但工作区不变</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git reset [file]<br></code></pre></td></tr></table></figure>
-<p>重置暂存区与工作区，与上一次commit保持一致</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git reset --hard <br></code></pre></td></tr></table></figure>
-<p>重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变</p>
+<p>重置暂存区与工作区，与上一次 commit 保持一致</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git reset --hard<br></code></pre></td></tr></table></figure>
+<p>重置当前分支的指针为指定 commit，同时重置暂存区，但工作区不变</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git reset [commit]<br></code></pre></td></tr></table></figure>
-<p>重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致</p>
+<p>重置当前分支的 HEAD 为指定 commit，同时重置暂存区和工作区，与指定 commit 一致</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git reset --hard [commit]<br></code></pre></td></tr></table></figure>
 <p>回退到上一个版本</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git reset --hard head^<br>git push origin master -f // 强制推到远端<br></code></pre></td></tr></table></figure>
-<p>重置当前HEAD为指定commit，但保持暂存区和工作区不变</p>
+<p>重置当前 HEAD 为指定 commit，但保持暂存区和工作区不变</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git reset --keep [commit]<br></code></pre></td></tr></table></figure>
-<p>新建一个commit，用来撤销指定commit<br>后者的所有变化都将被前者抵消，并且应用到当前分支</p>
+<p>新建一个 commit，用来撤销指定 commit<br>后者的所有变化都将被前者抵消，并且应用到当前分支</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git revert [commit]<br></code></pre></td></tr></table></figure>
 <p>暂时将未提交的变化移除，稍后再移入</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git stash<br>会将当前分支的最后一次缓存的内容释放出来，但是刚才的记录不存在list中<br>git stash pop <br>会将当前分支的最后一次缓存的内容释放出来，但是刚才的记录还存在list中<br>git stash apply <br></code></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git stash<br>会将当前分支的最后一次缓存的内容释放出来，但是刚才的记录不存在list中<br>git stash pop<br>会将当前分支的最后一次缓存的内容释放出来，但是刚才的记录还存在list中<br>git stash apply<br></code></pre></td></tr></table></figure>
 <h2 id="忽略文件配置（-gitignore"><a href="#忽略文件配置（-gitignore" class="headerlink" title="忽略文件配置（.gitignore)"></a>忽略文件配置（.gitignore)</h2><p>1、配置语法:</p>
 <blockquote>
 <p>以斜杠“/”开头表示目录；<br>以星号“*”通配多个字符；<br>以问号“?”通配单个字符<br>以方括号“[]”包含单个字符的匹配列表；<br>以叹号“!”表示不忽略(跟踪)匹配到的文件或目录；</p>
 </blockquote>
-<p>此外，git 对于 .ignore 配置文件是按行从上到下进行规则匹配的，意味着如果前面的规则匹配的范围更大，则后面的规则将不会生效；<br>2、示例：<br>（1）规则：fd1/*<br>　　  说明：忽略目录 fd1 下的全部内容；注意，不管是根目录下的 /fd1/ 目录，还是某个子目录 /child/fd1/ 目录，都会被忽略；<br>（2）规则：/fd1/*<br>　　  说明：忽略根目录下的 /fd1/ 目录的全部内容；<br>（3）规则：<br>            /*<br>            !.gitignore<br>            !/fw/bin/<br>            !/fw/sf/<br>            说明：忽略全部内容，但是不忽略 .gitignore 文件、根目录下的 /fw/bin/ 和 /fw/sf/ 目录；</p>
-<h2 id="github代码如何同步到gitee"><a href="#github代码如何同步到gitee" class="headerlink" title="github代码如何同步到gitee"></a>github代码如何同步到gitee</h2><ol>
-<li><p>生成一对公私钥对，github往gitee同步代码，github需要钥匙，就是私钥，而gitee需要公钥，相当于大门</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">ssh-keygen -t ed25519 -C &quot;285273676@qq.com&quot;<br></code></pre></td></tr></table></figure>
-<p>输入上方命令回车，然后在Enter file in which to save the key：中指定一个新的文件地址保存，不要影响现有项目的ssh，如：/Users/zhangzhenfeng/Downloads/demo_gitee，然后一路回车</p>
+<p>此外，git 对于 .ignore 配置文件是按行从上到下进行规则匹配的，意味着如果前面的规则匹配的范围更大，则后面的规则将不会生效；<br>2、示例：<br>（1）规则：fd1/*<br>　　 说明：忽略目录 fd1 下的全部内容；注意，不管是根目录下的 /fd1/ 目录，还是某个子目录 /child/fd1/ 目录，都会被忽略；<br>（2）规则：/fd1/*<br>　　 说明：忽略根目录下的 /fd1/ 目录的全部内容；<br>（3）规则：<br>/*<br>!.gitignore<br>!/fw/bin/<br>!/fw/sf/<br>说明：忽略全部内容，但是不忽略 .gitignore 文件、根目录下的 /fw/bin/ 和 /fw/sf/ 目录；</p>
+<h2 id="github-代码如何同步到-gitee"><a href="#github-代码如何同步到-gitee" class="headerlink" title="github 代码如何同步到 gitee"></a>github 代码如何同步到 gitee</h2><ol>
+<li><p>生成一对公私钥对，github 往 gitee 同步代码，github 需要钥匙，就是私钥，而 gitee 需要公钥，相当于大门</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">ssh-keygen -t ed25519 -C &quot;285273676@qq.com&quot;<br></code></pre></td></tr></table></figure>
+<p> 输入上方命令回车，然后在 Enter file in which to save the key：中指定一个新的文件地址保存，不要影响现有项目的 ssh，如：/Users/zhangzhenfeng/Downloads/demo_gitee，然后一路回车</p>
 </li>
-<li><p>进入Downloads，查看公私钥</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">cat demo_gitee.pub<br>cat demo_gitee<br></code></pre></td></tr></table></figure>
-<ol start="3">
-<li>在gitee平台配置公钥，设置–&gt;SSH公钥中添加</li>
-<li>在github平台配置公钥和私钥，进入具体的项目仓库，Settings–&gt;Deploy keys中添加公钥，Settings–&gt;Secrets and variables–&gt;Repository secrets添加私钥，这个名称在后面的配置文件中会用到</li>
-<li>开始配置github的Actions，搜索git-mirror-action插件，找到写好的脚本文件，在.github/workflows中新建一个sync-gitee.yml文件<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">name:</span> <span class="hljs-string">Mirror</span> <span class="hljs-string">to</span> <span class="hljs-string">Gitee</span> <span class="hljs-string">Repo</span><br><br><span class="hljs-attr">on:</span> [ <span class="hljs-string">push</span> ]<br><br><span class="hljs-comment"># Ensures that only one mirror task will run at a time.</span><br><span class="hljs-attr">concurrency:</span><br>  <span class="hljs-attr">group:</span> <span class="hljs-string">git-mirror</span><br><br><span class="hljs-attr">jobs:</span><br>  <span class="hljs-attr">git-mirror:</span><br>    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span><br>    <span class="hljs-attr">steps:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">wearerequired/git-mirror-action@v1</span><br>        <span class="hljs-attr">env:</span><br>          <span class="hljs-attr">SSH_PRIVATE_KEY:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.GITEE_DEPLOY_KEY</span> <span class="hljs-string">&#125;&#125;</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">source-repo:</span> <span class="hljs-string">&quot;git@github.com:zhenfeng95/community-pc.git&quot;</span><br>          <span class="hljs-attr">destination-repo:</span> <span class="hljs-string">&quot;git@gitee.com:zhenfeng95/community-pc.git&quot;</span><br></code></pre></td></tr></table></figure></li>
-</ol>
+<li><p>进入 Downloads，查看公私钥</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">cat demo_gitee.pub<br>cat demo_gitee<br></code></pre></td></tr></table></figure>
 </li>
+<li><p>在 gitee 平台配置公钥，设置–&gt;SSH 公钥中添加</p>
+</li>
+<li>在 github 平台配置公钥和私钥，进入具体的项目仓库，Settings–&gt;Deploy keys 中添加公钥，Settings–&gt;Secrets and variables–&gt;Repository secrets 添加私钥，这个名称在后面的配置文件中会用到</li>
+<li>开始配置 github 的 Actions，搜索 git-mirror-action 插件，找到写好的脚本文件，在.github/workflows 中新建一个 sync-gitee.yml 文件</li>
 </ol>
+<figure class="highlight yml"><table><tr><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">name:</span> <span class="hljs-string">Mirror</span> <span class="hljs-string">to</span> <span class="hljs-string">Gitee</span> <span class="hljs-string">Repo</span><br><br><span class="hljs-attr">on:</span> [<span class="hljs-string">push</span>]<br><br><span class="hljs-comment"># Ensures that only one mirror task will run at a time.</span><br><span class="hljs-attr">concurrency:</span><br>    <span class="hljs-attr">group:</span> <span class="hljs-string">git-mirror</span><br><br><span class="hljs-attr">jobs:</span><br>    <span class="hljs-attr">git-mirror:</span><br>        <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span><br>        <span class="hljs-attr">steps:</span><br>            <span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">wearerequired/git-mirror-action@v1</span><br>              <span class="hljs-attr">env:</span><br>                  <span class="hljs-attr">SSH_PRIVATE_KEY:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.GITEE_DEPLOY_KEY</span> <span class="hljs-string">&#125;&#125;</span><br>              <span class="hljs-attr">with:</span><br>                  <span class="hljs-attr">source-repo:</span> <span class="hljs-string">&#x27;git@github.com:zhenfeng95/community-pc.git&#x27;</span><br>                  <span class="hljs-attr">destination-repo:</span> <span class="hljs-string">&#x27;git@gitee.com:zhenfeng95/community-pc.git&#x27;</span><br></code></pre></td></tr></table></figure>
   
     <div class="footer">
 <script src="//m.servedby-buysellads.com/monetization.js" type="text/javascript"></script>

@@ -8,31 +8,31 @@ order: 1
 
 ### 1、Windows 安装 Git
 
-1. 打开官网  https://git-scm.com/install/windows
+1. 打开官网 https://git-scm.com/install/windows
 
 2. 点击主页上的 **“Download for Windows”**，下载 `.exe` 安装包。
 
 3. 双击安装程序，保持默认选项即可（一般一路「Next」）。
 
-   > ⚙️ 建议在选项中勾选：
-   >
-   > * “Git Bash Here”
-   > * “Use Git from Windows Command Prompt”
-   > * “Checkout Windows-style, commit Unix-style line endings”
+    > ⚙️ 建议在选项中勾选：
+    >
+    > - “Git Bash Here”
+    > - “Use Git from Windows Command Prompt”
+    > - “Checkout Windows-style, commit Unix-style line endings”
 
 4. 安装完成后，打开命令行（CMD 或 PowerShell），输入：
 
-   ```
-   git --version
-   ```
+    ```
+    git --version
+    ```
 
-   如果输出类似：
+    如果输出类似：
 
-   ```
-   git version 2.47.0.windows.1
-   ```
+    ```
+    git version 2.47.0.windows.1
+    ```
 
-   说明安装成功。
+    说明安装成功。
 
 ### 2、macOS 安装 Git
 
@@ -42,6 +42,15 @@ order: 1
 
 ```
 brew install git
+```
+
+安装 git-gui 工具
+
+```
+brew install git-gui
+which git
+which gitk
+git --version
 ```
 
 方式二：通过 Xcode Command Line Tools 安装
@@ -82,7 +91,7 @@ git --version
 首次使用 Git，建议配置用户名与邮箱（用于提交记录）：
 
 ```
-git config --global user.name "Your Name"             
+git config --global user.name "Your Name"
 git config --global user.email "email@example.com"
 ```
 
@@ -97,12 +106,12 @@ git config --global --list
 **检查是否已有 SSH Key**
 
 ```bash
-ls -al ~/.ssh	
+ls -al ~/.ssh
 ```
 
 **生成密钥**
 
-新的GitHub 默认使用的是 ED25519 类型的 SSH key，因为它比传统的 RSA 更安全、性能更高，文件更小
+新的 GitHub 默认使用的是 ED25519 类型的 SSH key，因为它比传统的 RSA 更安全、性能更高，文件更小
 
 ```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
@@ -123,13 +132,13 @@ ssh-keygen -t rsa -C "youremail@example.com"
 cat ~/.ssh/id_rsa.pub
 ```
 
-centos系统查看公钥，然后配置在github上
+centos 系统查看公钥，然后配置在 github 上
 
 ```bash
 cat /root/.ssh/id_ed25519.pub
 ```
 
-在centos系统中，尽量通过ssh拉取代码
+在 centos 系统中，尽量通过 ssh 拉取代码
 
 ```bash
 git clone ssh://git@ssh.github.com:443/zhenfeng95/mysite.git
@@ -161,22 +170,22 @@ ssh -T -p 443 git@ssh.github.com
 
 ### 6、图形界面工具（可选）
 
-* **GitHub Desktop**（简单易用）
-   👉 https://desktop.github.com/
-* **SourceTree**（适合团队协作）
-   👉 https://www.sourcetreeapp.com/
+-   **GitHub Desktop**（简单易用）
+    👉 https://desktop.github.com/
+-   **SourceTree**（适合团队协作）
+    👉 https://www.sourcetreeapp.com/
 
 ## 常用命令
 
 ### 创建/拉取仓库
 
-在当前目录新建一个Git代码库
+在当前目录新建一个 Git 代码库
 
 ```shell
 git init
 ```
 
-新建一个目录，将其初始化为Git代码库
+新建一个目录，将其初始化为 Git 代码库
 
 ```shell
 git init [project-name]
@@ -242,26 +251,26 @@ git mv [file-original] [file-renamed]
 git commit -m [message]
 ```
 
-提交工作区自上次commit之后的变化，直接到仓库区
+提交工作区自上次 commit 之后的变化，直接到仓库区
 
 ```shell
 git commit -a
 ```
 
-提交时显示所有diff信息
+提交时显示所有 diff 信息
 
 ```shell
 git commit -v
 ```
 
-使用一次新的commit，替代上一次提交
-如果代码没有任何新变化，则用来改写上一次commit的提交信息
+使用一次新的 commit，替代上一次提交
+如果代码没有任何新变化，则用来改写上一次 commit 的提交信息
 
 ```shell
 git commit --amend -m [message]
 ```
 
-重做上一次commit，并包括指定文件的新变化
+重做上一次 commit，并包括指定文件的新变化
 
 ```shell
 git commit --amend [file1] [file2] ...
@@ -281,7 +290,7 @@ git status
 git log
 ```
 
-显示commit历史，以及每次commit发生变更的文件
+显示 commit 历史，以及每次 commit 发生变更的文件
 
 ```shell
 git log --stat
@@ -293,13 +302,13 @@ git log --stat
 git log -S [keyword]
 ```
 
-显示某个commit之后的所有变动，每个commit占据一行
+显示某个 commit 之后的所有变动，每个 commit 占据一行
 
 ```shell
 git log [tag] HEAD --pretty=format:%s
 ```
 
-显示某个commit之后的所有变动，其"提交说明"必须符合搜索条件
+显示某个 commit 之后的所有变动，其"提交说明"必须符合搜索条件
 
 ```shell
 git log [tag] HEAD --grep feature
@@ -311,13 +320,13 @@ git log [tag] HEAD --grep feature
 git log --follow [file]
 ```
 
-显示指定文件相关的每一次diff
+显示指定文件相关的每一次 diff
 
 ```shell
 git log -p [file]
 ```
 
-显示过去5次提交
+显示过去 5 次提交
 
 ```shell
 git log -5 --pretty --oneline
@@ -341,13 +350,13 @@ git blame [file]
 git diff
 ```
 
-显示暂存区和上一个commit的差异
+显示暂存区和上一个 commit 的差异
 
 ```shell
 git diff --cached [file]
 ```
 
-显示工作区与当前分支最新commit之间的差异
+显示工作区与当前分支最新 commit 之间的差异
 
 ```shell
 git diff HEAD
@@ -383,7 +392,7 @@ git show --name-only [commit]
 git show [commit]:[filename]
 ```
 
-显示当前分支的最近几次提交，记录着本地所有的提交以及分支的切换，包括删除类型的操作，reset操作等等
+显示当前分支的最近几次提交，记录着本地所有的提交以及分支的切换，包括删除类型的操作，reset 操作等等
 
 ```shell
 git reflog
@@ -428,7 +437,7 @@ git checkout -b [branch] orgin/master
 git checkout -t origin/[branch]
 ```
 
-新建一个分支，指向指定commit
+新建一个分支，指向指定 commit
 
 ```shell
 git branch [branch] [commit]
@@ -464,7 +473,7 @@ git branch --set-upstream [branch] [remote-branch]
 git merge [branch]
 ```
 
-选择一个commit，合并进当前分支
+选择一个 commit，合并进当前分支
 
 ```shell
 git cherry-pick [commit]
@@ -484,55 +493,55 @@ git push origin --delete [branch-name]
 
 ### 查看标签
 
-列出所有tag
+列出所有 tag
 
 ```shell
 git tag
 ```
 
-新建一个tag在当前commit
+新建一个 tag 在当前 commit
 
 ```shell
 git tag [tag]
 ```
 
-新建一个tag在指定commit
+新建一个 tag 在指定 commit
 
 ```shell
 git tag [tag] [commit]
 ```
 
-删除本地tag
+删除本地 tag
 
 ```shell
 git tag -d [tag]
 ```
 
-删除远程tag
+删除远程 tag
 
 ```shell
 git push origin :refs/tags/[tagName]
 ```
 
-查看tag信息
+查看 tag 信息
 
 ```shell
 git show [tag]
 ```
 
-提交指定tag
+提交指定 tag
 
 ```shell
 git push [remote] [tag]
 ```
 
-提交所有tag
+提交所有 tag
 
 ```shell
 git push [remote] --tags
 ```
 
-新建一个分支，指向某个tag
+新建一个分支，指向某个 tag
 
 ```shell
 git checkout -b [branch] [tag]
@@ -602,7 +611,7 @@ git push [remote] --all
 git checkout [file]
 ```
 
-恢复某个commit的指定文件到暂存区和工作区
+恢复某个 commit 的指定文件到暂存区和工作区
 
 ```shell
 git checkout [commit] [file]
@@ -614,25 +623,25 @@ git checkout [commit] [file]
 git checkout .
 ```
 
-重置暂存区的指定文件，与上一次commit保持一致，但工作区不变
+重置暂存区的指定文件，与上一次 commit 保持一致，但工作区不变
 
 ```shell
 git reset [file]
 ```
 
-重置暂存区与工作区，与上一次commit保持一致
+重置暂存区与工作区，与上一次 commit 保持一致
 
 ```shell
-git reset --hard 
+git reset --hard
 ```
 
-重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变
+重置当前分支的指针为指定 commit，同时重置暂存区，但工作区不变
 
 ```shell
 git reset [commit]
 ```
 
-重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致
+重置当前分支的 HEAD 为指定 commit，同时重置暂存区和工作区，与指定 commit 一致
 
 ```shell
 git reset --hard [commit]
@@ -645,13 +654,13 @@ git reset --hard head^
 git push origin master -f // 强制推到远端
 ```
 
-重置当前HEAD为指定commit，但保持暂存区和工作区不变
+重置当前 HEAD 为指定 commit，但保持暂存区和工作区不变
 
 ```shell
 git reset --keep [commit]
 ```
 
-新建一个commit，用来撤销指定commit
+新建一个 commit，用来撤销指定 commit
 后者的所有变化都将被前者抵消，并且应用到当前分支
 
 ```shell
@@ -663,9 +672,9 @@ git revert [commit]
 ```shell
 git stash
 会将当前分支的最后一次缓存的内容释放出来，但是刚才的记录不存在list中
-git stash pop 
+git stash pop
 会将当前分支的最后一次缓存的内容释放出来，但是刚才的记录还存在list中
-git stash apply 
+git stash apply
 ```
 
 ## 忽略文件配置（.gitignore)
@@ -681,53 +690,54 @@ git stash apply
 此外，git 对于 .ignore 配置文件是按行从上到下进行规则匹配的，意味着如果前面的规则匹配的范围更大，则后面的规则将不会生效；
 2、示例：
 （1）规则：fd1/\*
-　　  说明：忽略目录 fd1 下的全部内容；注意，不管是根目录下的 /fd1/ 目录，还是某个子目录 /child/fd1/ 目录，都会被忽略；
+　　 说明：忽略目录 fd1 下的全部内容；注意，不管是根目录下的 /fd1/ 目录，还是某个子目录 /child/fd1/ 目录，都会被忽略；
 （2）规则：/fd1/\*
-　　  说明：忽略根目录下的 /fd1/ 目录的全部内容；
+　　 说明：忽略根目录下的 /fd1/ 目录的全部内容；
 （3）规则：
-			/\*
-			!.gitignore
-			!/fw/bin/
-			!/fw/sf/
-			说明：忽略全部内容，但是不忽略 .gitignore 文件、根目录下的 /fw/bin/ 和 /fw/sf/ 目录；
+/\*
+!.gitignore
+!/fw/bin/
+!/fw/sf/
+说明：忽略全部内容，但是不忽略 .gitignore 文件、根目录下的 /fw/bin/ 和 /fw/sf/ 目录；
 
-## github代码如何同步到gitee
+## github 代码如何同步到 gitee
 
-1. 生成一对公私钥对，github往gitee同步代码，github需要钥匙，就是私钥，而gitee需要公钥，相当于大门
+1. 生成一对公私钥对，github 往 gitee 同步代码，github 需要钥匙，就是私钥，而 gitee 需要公钥，相当于大门
 
-   ```shell
-   ssh-keygen -t ed25519 -C "285273676@qq.com"
-   ```
+    ```shell
+    ssh-keygen -t ed25519 -C "285273676@qq.com"
+    ```
 
-   输入上方命令回车，然后在Enter file in which to save the key：中指定一个新的文件地址保存，不要影响现有项目的ssh，如：/Users/zhangzhenfeng/Downloads/demo_gitee，然后一路回车
+    输入上方命令回车，然后在 Enter file in which to save the key：中指定一个新的文件地址保存，不要影响现有项目的 ssh，如：/Users/zhangzhenfeng/Downloads/demo_gitee，然后一路回车
 
-2. 进入Downloads，查看公私钥
+2. 进入 Downloads，查看公私钥
 
-   ```shell
-   cat demo_gitee.pub
-   cat demo_gitee
-   ```
+    ```shell
+    cat demo_gitee.pub
+    cat demo_gitee
+    ```
 
- 3. 在gitee平台配置公钥，设置-->SSH公钥中添加
- 4. 在github平台配置公钥和私钥，进入具体的项目仓库，Settings-->Deploy keys中添加公钥，Settings-->Secrets and variables-->Repository secrets添加私钥，这个名称在后面的配置文件中会用到
- 5. 开始配置github的Actions，搜索git-mirror-action插件，找到写好的脚本文件，在.github/workflows中新建一个sync-gitee.yml文件
- ```yml
+3. 在 gitee 平台配置公钥，设置-->SSH 公钥中添加
+4. 在 github 平台配置公钥和私钥，进入具体的项目仓库，Settings-->Deploy keys 中添加公钥，Settings-->Secrets and variables-->Repository secrets 添加私钥，这个名称在后面的配置文件中会用到
+5. 开始配置 github 的 Actions，搜索 git-mirror-action 插件，找到写好的脚本文件，在.github/workflows 中新建一个 sync-gitee.yml 文件
+
+```yml
 name: Mirror to Gitee Repo
 
-on: [ push ]
+on: [push]
 
 # Ensures that only one mirror task will run at a time.
 concurrency:
-  group: git-mirror
+    group: git-mirror
 
 jobs:
-  git-mirror:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: wearerequired/git-mirror-action@v1
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.GITEE_DEPLOY_KEY }}
-        with:
-          source-repo: "git@github.com:zhenfeng95/community-pc.git"
-          destination-repo: "git@gitee.com:zhenfeng95/community-pc.git"
- ```
+    git-mirror:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: wearerequired/git-mirror-action@v1
+              env:
+                  SSH_PRIVATE_KEY: ${{ secrets.GITEE_DEPLOY_KEY }}
+              with:
+                  source-repo: 'git@github.com:zhenfeng95/community-pc.git'
+                  destination-repo: 'git@gitee.com:zhenfeng95/community-pc.git'
+```
