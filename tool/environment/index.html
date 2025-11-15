@@ -1,0 +1,547 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="with-v3-banner">
+  <head>
+    <title>开发环境搭建 — zzf的个人博客笔记</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="alternate" hreflang="x-default" href="https://v2.vuejs.org/tool/environment/index.html">
+    <link rel="alternate" hreflang="zh" href="https://v2.cn.vuejs.org/tool/environment/index.html">
+    <link rel="alternate" hreflang="ja" href="https://jp.vuejs.org/tool/environment/index.html">
+    <link rel="alternate" hreflang="ru" href="https://ru.vuejs.org/tool/environment/index.html">
+    <link rel="alternate" hreflang="ko" href="https://kr.vuejs.org/tool/environment/index.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://br.vuejs.org/tool/environment/index.html">
+    <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/tool/environment/index.html">
+    <link rel="alternate" hreflang="es" href="https://es.vuejs.org/tool/environment/index.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="开发环境搭建 — Vue.js">
+    <meta property="og:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta property="og:image" content="https://v2.cn.vuejs.org/images/logo.png">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="开发环境搭建 — Vue.js">
+    <meta name="twitter:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="twitter:image" content="https://v2.cn.vuejs.org/images/logo.png">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+    <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
+    <link rel="icon" href="/images/logo.svg">
+
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin> -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com" rel="preconnect" crossorigin> -->
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono&display=swap" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Dosis:500&text=Vue.js&display=swap" rel="stylesheet"> -->
+
+    <link href="//code.bdstatic.com/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- main page styles -->
+    
+<link rel="stylesheet" href="/css/page.css">
+
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+
+    
+
+    <script>
+      Vue.config.productionTip = false
+      window.PAGE_TYPE = "environment"
+    </script>
+
+    <!-- Fathom - beautiful, simple website analytics -->
+    <script src="https://cdn.usefathom.com/script.js" data-site="KTDIHEIJ" defer></script>
+    <!-- / Fathom -->
+
+    <!-- vimeo analytics -->
+    <!-- <script type="text/javascript" defer="defer" src="https://extend.vimeocdn.com/ga/72160148.js"></script> -->
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Vue123.js" type="application/atom+xml">
+</head>
+  <body class="docs">
+
+    
+
+    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div>
+
+
+  <header id="header">
+    <a id="logo" href="/">
+      <!-- <img src="/images/logo.svg" alt="vue logo"> -->
+      <span>个人博客</span>
+    </a>
+    <ul id="nav">
+      <li>
+    <form id="search-form">
+        <input type="text" id="search-query-nav" class="search-query st-default-search-input" aria-label="搜索" />
+    </form>
+</li>
+<li class="nav-dropdown-container learn">
+    <a class="nav-link">前端基础</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li><h4>文档</h4></li>
+        <li>
+            <ul>
+                <li><a href="/v2/guide/" class="nav-link">HTML</a></li>
+        <li><a href="/v2/api/" class="nav-link">CSS</a></li>
+        <li><a href="/v2/style-guide/" class="nav-link">JS</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container framework">
+    <a class="nav-link">前端框架</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/framework/vue/" class="nav-link">vue</a></li>
+                  <li><a href="/framework/uniapp/" class="nav-link">uniapp</a></li>
+               
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container resources">
+    <a class="nav-link">网站部署</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/website/process/" class="nav-link">部署流程</a></li>
+                <li><a href="/website/hexo/" class="nav-link">HEXO</a></li>
+                <li><a href="/website/docker/" class="nav-link">Docker</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container tool">
+    <a class="nav-link current">工具</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/tool/environment/" class="nav-link current">开发环境</a></li>
+                 <li><a href="/tool/git/" class="nav-link">git</a></li>
+                  <li><a href="/tool/webpack/" class="nav-link">webpack</a></li>
+                <li><a href="/tool/jenkins/" class="nav-link">jenkins</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container backend">
+    <a class="nav-link">服务端</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/backend/node/" class="nav-link">node</a></li>
+                 <li><a href="/backend/MongoDB/" class="nav-link">MongoDB</a></li>
+                 
+            </ul>
+        </li>
+    </ul>
+</li>
+
+<!-- <li>
+    <a href="/eol/" class="badge-parent">终止支持 (EOL)<sup class="badge">新</sup></a>
+</li> -->
+
+    </ul>
+  </header>
+</div>
+
+    
+      <div id="main" class="fix-sidebar">
+         
+
+<div class="sidebar">
+    <div class="sidebar-inner">
+        
+        <div class="list"> <ul class="menu-root">
+  
+    
+    
+    <li>
+      <a href="/tool/environment/index.html" class="sidebar-link current">开发环境搭建</a>
+    </li>
+  
+</ul>
+ </div>
+    </div>
+</div>
+<!--
+
+<div id="sidebar-sponsors-platinum-right">
+  <div class="main-sponsor">
+    <span>白金赞助商</span>
+    <div>
+    <a href="https://www.vuemastery.com/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/vuemastery.png" alt="VueMastery">
+    </a>
+    <a href="https://vehikl.com/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/vehikl.png" alt="Vehikl">
+    </a>
+    <a href="https://vuejs.amsterdam/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/vue_js_amsterdam.png" alt="Vue.js Amsterdam">
+    </a>
+    <a href="https://www.storyblok.com" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/storyblok.png" alt="Storyblok">
+    </a>
+    <a href="https://opencollective.com/2021-frameworks-fund" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/chrome_frameworks_fund.png" alt="Chrome Frameworks Fund">
+    </a>
+    <a href="https://www.herodevs.com/support/vue" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/herodevs.png" alt="HeroDevs">
+    </a>
+    <a href="https://certificates.dev/javascript/?ref=vuejs-sponsor&friend=VUEJS" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/javascript_certification.png?v2" alt="JavaScript Certification">
+    </a>
+    <a href="https://www.coderabbit.ai?utm_source=github&utm_medium=sponsors&utm_campaign=evan_you_2025" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/coderabbit_.png" alt="CodeRabbit ">
+    </a>
+    <a href="https://imagekit.io/?utm_source=vuejs&utm_medium=referral&utm_campaign=oss-sponsorship&utm_content=homepage" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/imagekit_io.svg" alt="ImageKit.io">
+    </a>
+    <a href="https://www.greptile.com/?utm_source=vuejs&utm_medium=sponsorship&utm_campaign=vue_sponsor_page" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/greptile.png" alt="Greptile">
+    </a>
+    </div>
+  </div>
+  <a class="become-backer" href="/support-vuejs">
+    成为赞助者
+  </a>
+</div>
+
+
+-->
+ 
+<div
+    class="content environment with-sidebar "
+>
+      
+<div id="ad">
+  <!-- start: special logic for cn -->
+  <div
+    class="wwads-cn wwads-vertical"
+    data-id="53"
+    style="max-width: 200px"
+  ></div>
+  <script
+    type="text/javascript"
+    src="https://cdn.wwads.cn/js/makemoney.js"
+    async
+  ></script>
+  <!-- end: special logic for cn -->
+  <!-- <script
+    async
+    type="text/javascript"
+    src="//cdn.carbonads.com/carbon.js?serve=CEBDT27Y&placement=vuejsorg"
+    id="_carbonads_js"
+  ></script> -->
+</div>
+
+   
+    <h1>开发环境搭建</h1>
+    
+
+    <!-- start: special logic for cn -->
+    <!-- start: special logic for cn -->
+<!-- <div class="ad-pagetop">
+  <a href="http://www.vueshop.com.cn/index.php?http_referer=vuejs" target="_blank" rel="noopener noreferrer">
+    <span class="name">VUEshop</span>
+    <span class="description">中国免费商城系统 - 搜豹商城系统 - 免费50小时 Vue 视频教程</span>
+    <span class="action">立即查看 &gt;</span>
+  </a>
+</div> -->
+<!-- end: special logic for cn -->
+
+    <!-- end: special logic for cn -->
+
+     <h2 id="整体介绍"><a href="#整体介绍" class="headerlink" title="整体介绍"></a>整体介绍</h2><ul>
+<li>Node.js环境</li>
+</ul>
+<p>​        <a href="/backend/node/">参考文档</a></p>
+<ul>
+<li>git环境</li>
+</ul>
+<p>​        <a href="/tool/git/">参考文档</a></p>
+<ul>
+<li>IDE</li>
+</ul>
+<p>​        介绍最常见的Webstorm与vscode的使用方式</p>
+<ul>
+<li>虚拟机</li>
+</ul>
+<p>​        主要是windows与macOS平台下的虚拟化介绍，用于搭建docker环境，后续的开发环境全部建立在docker之上，安装在Linux环境（虚拟机）之内。</p>
+<p>​        如果大家想使用云服务器，可以考虑购买各大云服务商的2C4G的配置，磁盘最少要40G（配置4G的swap），最好<strong>按量付费</strong>，用完即删。</p>
+<ul>
+<li>Linux入门</li>
+</ul>
+<p>​        常见的Linux命令，可以上手即可，比如：vim编辑器、常见的文件操作命令、更新包安装包的命令等。</p>
+<h2 id="homebrew-macOS包管理工具"><a href="#homebrew-macOS包管理工具" class="headerlink" title="homebrew(macOS包管理工具)"></a>homebrew(macOS包管理工具)</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><code>Homebrew</code>是一款包管理工具，目前支持<code>macOS</code>和<code>Linux</code>系统。主要有四个部分组成: <code>brew</code>、<code>homebrew-core</code> 、<code>homebrew-cask</code>、<code>homebrew-bottles</code>。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>brew</td>
+<td>Homebrew 源代码仓库</td>
+</tr>
+<tr>
+<td>homebrew-core</td>
+<td>Homebrew 核心源</td>
+</tr>
+<tr>
+<td>homebrew-cask</td>
+<td>提供 macOS 应用和大型二进制文件的安装</td>
+</tr>
+<tr>
+<td>homebrew-bottles</td>
+<td>预编译二进制软件包</td>
+</tr>
+</tbody>
+</table>
+<p>brew官网：<a target="_blank" rel="noopener" href="https://brew.sh/">https://brew.sh/(opens new window)</a></p>
+<h2 id="brew安装-amp-卸载"><a href="#brew安装-amp-卸载" class="headerlink" title="brew安装&amp;卸载"></a>brew安装&amp;卸载</h2><p>推荐安装脚本</p>
+<p>项目地址1：<a target="_blank" rel="noopener" href="https://gitee.com/cunkai/HomebrewCN">https://gitee.com/cunkai/HomebrewCN(opens new window)</a></p>
+<p>项目地址2：<a target="_blank" rel="noopener" href="https://brew.idayer.com/">https://brew.idayer.com/(opens new window)</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>用命令行安装工具前先检查一下子，用于在Mac上安装或更新的Xcode的命令行工具</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">xcode-select -p<br></code></pre></td></tr></table></figure>
+<p>没安装的话先进行安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">xcode-select --install<br></code></pre></td></tr></table></figure>
+<p>苹果电脑标准安装脚本：（推荐 优点全面 缺点慢一点）</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&quot;<br></code></pre></td></tr></table></figure>
+<p>苹果电脑极速安装脚本：（优点安装速度快 缺点update功能需要命令修复 ）</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)&quot; speed<br></code></pre></td></tr></table></figure>
+<p>Linux 标准安装脚本：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">rm Homebrew.sh ; wget https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh ; bash Homebrew.sh<br></code></pre></td></tr></table></figure>
+<h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><p>苹果电脑卸载脚本：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">/bin/zsh -c &quot;$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/HomebrewUninstall.sh)&quot;<br></code></pre></td></tr></table></figure>
+<p>Linux卸载脚本：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">rm HomebrewUninstall.sh ; wget https://gitee.com/cunkai/HomebrewCN/raw/master/HomebrewUninstall.sh ; bash HomebrewUninstall.sh<br></code></pre></td></tr></table></figure>
+<h3 id="brew使用，手动设置镜像"><a href="#brew使用，手动设置镜像" class="headerlink" title="brew使用，手动设置镜像"></a>brew使用，手动设置镜像</h3><h4 id="中科大源"><a href="#中科大源" class="headerlink" title="中科大源"></a>中科大源</h4><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.ustc.edu.cn/brew.git<br><br>git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git<br><br>git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git<br><br>brew update<br></code></pre></td></tr></table></figure>
+<h4 id="清华大学源"><a href="#清华大学源" class="headerlink" title="清华大学源"></a>清华大学源</h4><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git -C &quot;$(brew --repo)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git<br><br>git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git<br><br>git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git<br><br>brew update<br></code></pre></td></tr></table></figure>
+<h4 id="设置-bottles-镜像"><a href="#设置-bottles-镜像" class="headerlink" title="设置 bottles 镜像"></a>设置 bottles 镜像</h4><p>设置环境变量需要注意终端的类型，可以先通过以下方式获取：</p>
+<p>执行命令<code>echo $SHELL</code>，根据结果判断：</p>
+<ul>
+<li><code>/bin/zsh</code> =&gt; <code>zsh</code> =&gt; <code>.zprofile</code></li>
+<li><code>/bin/bash</code> =&gt; <code>bash</code> =&gt; <code>.bash_profile</code></li>
+</ul>
+<p>然后继续正式操作，以<strong>中科大源</strong>为例：</p>
+<p>从<code>macOS Catalina</code>(10.15.x) 版开始，<code>Mac</code>使用<code>zsh</code>作为默认<code>Shell</code>，对应文件是<code>.zprofile</code>，所以命令为：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles&#x27; &gt;&gt; ~/.zprofile<br>source ~/.zprofile<br></code></pre></td></tr></table></figure>
+<p>如果是<code>macOS Mojave</code> 及更低版本，并且没有自己配置过<code>zsh</code>，对应文件则是<code>.bash_profile</code>：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">echo &#x27;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles&#x27; &gt;&gt; ~/.bash_profile<br>source ~/.bash_profile<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：上述区别仅仅是<code>.zprofile</code>和<code>.bash_profile</code>不同，上下文如有再次提及编辑<code>.zprofile</code>，均按此方法判断具体操作的文件。</p>
+</blockquote>
+<p>至此，安装和设置操作都完成了。</p>
+<h4 id="恢复默认源"><a href="#恢复默认源" class="headerlink" title="恢复默认源"></a>恢复默认源</h4><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">git -C &quot;$(brew --repo)&quot; remote set-url origin https://github.com/Homebrew/brew.git<br><br>git -C &quot;$(brew --repo homebrew/core)&quot; remote set-url origin https://github.com/Homebrew/homebrew-core.git<br><br>git -C &quot;$(brew --repo homebrew/cask)&quot; remote set-url origin https://github.com/Homebrew/homebrew-cask.git<br><br>brew update<br></code></pre></td></tr></table></figure>
+<p><code>homebrew-bottles</code>配置只能手动删除，将 <code>~/.zprofile</code> 文件中的 <code>HOMEBREW_BOTTLE_DOMAIN=https://mirrors.xxx.com</code>内容删除，并执行 <code>source ~/.zprofile</code>。</p>
+<h2 id="本地开发环境"><a href="#本地开发环境" class="headerlink" title="本地开发环境"></a>本地开发环境</h2><h3 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h3><ul>
+<li>WebStorm（收费）：<a target="_blank" rel="noopener" href="https://www.jetbrains.com/webstorm/">https://www.jetbrains.com/webstorm/</a></li>
+<li>VSCode（推荐）：<a target="_blank" rel="noopener" href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></li>
+<li>Atom：<a target="_blank" rel="noopener" href="https://atom.io/">https://atom.io/</a></li>
+<li>Hbuilderx：<a target="_blank" rel="noopener" href="https://www.dcloud.io/hbuilderx.html">https://www.dcloud.io/hbuilderx.html</a></li>
+<li>微信开发者工具：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html">https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html</a></li>
+<li>谷歌浏览器：<a target="_blank" rel="noopener" href="https://www.google.com/chrome/?brand=CHBD&amp;ds_kid=20441638724&amp;gclsrc=aw.ds&amp;gad_source=1&amp;gad_campaignid=22008060471&amp;gbraid=0AAAAAoY3CA6rv_DT0ukd9Y-OqU2Vum9lJ&amp;gclid=CjwKCAiAw9vIBhBBEiwAraSATupbbC0FQq3XxJscjPQjcSIxEpMu6uAWwxSEVmXasPJ4nz5CYiydhBoCt6wQAvD_BwE">下载地址</a></li>
+</ul>
+<h3 id="Vue-CLI"><a href="#Vue-CLI" class="headerlink" title="Vue-CLI"></a>Vue-CLI</h3><p>Vue官方的开发<a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh/guide/">CLI工具 (opens new window)</a>，安装Node之后，使用npm命令安装：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">npm i -g @vue/cli<br></code></pre></td></tr></table></figure>
+<p>CLI 服务是构建于 <a target="_blank" rel="noopener" href="http://webpack.js.org/">webpack (opens new window)</a>和 <a target="_blank" rel="noopener" href="https://github.com/webpack/webpack-dev-server">webpack-dev-server (opens new window)</a>之上的。它包含了：</p>
+<ul>
+<li>加载其它 CLI 插件的核心服务；</li>
+<li>一个针对绝大部分应用优化过的内部的 webpack 配置；</li>
+<li>项目内部的 <code>vue-cli-service</code> 命令，提供 <code>serve</code>、<code>build</code> 和 <code>inspect</code> 命令。</li>
+</ul>
+<p>如果你熟悉 <a target="_blank" rel="noopener" href="https://github.com/facebookincubator/create-react-app">create-react-app (opens new window)</a>的话，<code>@vue/cli-service</code> 实际上大致等价于 <code>react-scripts</code>，尽管功能集合不一样。</p>
+<h2 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h2><h3 id="虚拟机自建环境（不推荐，比较麻烦）"><a href="#虚拟机自建环境（不推荐，比较麻烦）" class="headerlink" title="虚拟机自建环境（不推荐，比较麻烦）"></a>虚拟机自建环境（不推荐，比较麻烦）</h3><ul>
+<li>Parallels -&gt; 针对 macOS</li>
+<li>VMWare -&gt; 全平台</li>
+<li>Hyperv -&gt; Windows平台支持</li>
+</ul>
+<h3 id="云服务器（推荐）"><a href="#云服务器（推荐）" class="headerlink" title="云服务器（推荐）"></a>云服务器（推荐）</h3><p>阿里云：<a target="_blank" rel="noopener" href="https://cn.aliyun.com/">https://cn.aliyun.com/(opens new window)</a></p>
+<p>腾讯云：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/">https://cloud.tencent.com/(opens new window)</a></p>
+<p>华为云：<a target="_blank" rel="noopener" href="https://www.huaweicloud.com/">https://www.huaweicloud.com/(opens new window)</a></p>
+<p>AWS：<a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/">https://aws.amazon.com/cn/(opens new window)</a></p>
+<h3 id="Docker服务（推荐宝塔一键安装）"><a href="#Docker服务（推荐宝塔一键安装）" class="headerlink" title="Docker服务（推荐宝塔一键安装）"></a>Docker服务（推荐宝塔一键安装）</h3><ul>
+<li><p>macOS：<a target="_blank" rel="noopener" href="https://docs.docker.com/desktop/mac/install/">https://docs.docker.com/desktop/mac/install/ (opens new window)</a>里面有两个很大的按钮(按照自己的CPU版本来选择)：</p>
+<p><img src="Environment.assets/image-20220112002442828.cde166a6.png" alt="image-20220112002442828"></p>
+</li>
+<li><p>Linux：<a target="_blank" rel="noopener" href="https://github.com/docker/docker-install">https://github.com/docker/docker-install(opens new window)</a></p>
+<p>推荐使用get-docker的脚本：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">curl -fsSL https://get.docker.com -o get-docker.sh<br>sh get-docker.sh<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Windows：<a target="_blank" rel="noopener" href="https://hub.docker.com/editions/community/docker-ce-desktop-windows">https://hub.docker.com/editions/community/docker-ce-desktop-windows(opens new window)</a></p>
+</li>
+</ul>
+<p>安装docker-compose集成命令（只针对Linux）服务：<a target="_blank" rel="noopener" href="https://docs.docker.com/compose/install/">https://docs.docker.com/compose/install/(opens new window)</a></p>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose<br><br>sudo chmod +x /usr/local/bin/docker-compose<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>Desktop下载后，自己会带docker-compose，不需要另外安装</p>
+</blockquote>
+<h4 id="Docker加速服务"><a href="#Docker加速服务" class="headerlink" title="Docker加速服务"></a>Docker加速服务</h4><ul>
+<li>阿里云加速器(<a target="_blank" rel="noopener" href="https://www.aliyun.com/product/acr?source=5176.11533457&amp;userCode=8lx5zmtu">点击管理控制台 (opens new window)</a>-&gt; 登录账号(淘宝账号) -&gt; 右侧镜像工具 -&gt; 镜像加速器 -&gt; 复制加速器地址)</li>
+<li>网易云加速器 <a target="_blank" rel="noopener" href="https://www.163yun.com/help/documents/56918246390157312"><code>https://hub-mirror.c.163.com</code>(opens new window)</a></li>
+<li>百度云加速器 <a target="_blank" rel="noopener" href="https://cloud.baidu.com/doc/CCE/s/Yjxppt74z#使用dockerhub加速器"><code>https://mirror.baidubce.com</code>(opens new window)</a></li>
+<li>科大加速器 <code>https://docker.mirrors.ustc.edu.cn/</code></li>
+<li>七牛云加速器：<code>https://reg-mirror.qiniu.com</code></li>
+</ul>
+<p>Linux中设置<code>/etc/docker/daemon.json</code>：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">&#123;<br>  &quot;registry-mirrors&quot;: [<br>    &quot;https://hub-mirror.c.163.com&quot;,<br>    &quot;https://mirror.baidubce.com&quot;<br>  ]<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>Mac/Windows上设置：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">&#123;<br>  &quot;registry-mirrors&quot;: [<br>    &quot;https://hub-mirror.c.163.com&quot;,<br>    &quot;https://mirror.baidubce.com&quot;<br>  ]<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>使用<code>docker info</code>查看是否设置生效：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">Registry Mirrors:<br> https://hub-mirror.c.163.com/<br></code></pre></td></tr></table></figure>
+<h2 id="终端bash-amp-zsh-amp-fish对比"><a href="#终端bash-amp-zsh-amp-fish对比" class="headerlink" title="终端bash&amp;zsh&amp;fish对比"></a>终端bash&amp;zsh&amp;fish对比</h2><h3 id="bash"><a href="#bash" class="headerlink" title="bash"></a>bash</h3><p>默认的shell工具，大多的Linux系统自带的。</p>
+<p>bash2也有自动补全与语法高亮，工具<a target="_blank" rel="noopener" href="https://github.com/akinomyoga/ble.sh">bel.sh(opens new window)</a></p>
+<h3 id="zsh"><a href="#zsh" class="headerlink" title="zsh"></a>zsh</h3><p>zsh相对于bash 高可配置、高扩展。目前是mac上的默认的shell工具。推荐它的主题网址：<a target="_blank" rel="noopener" href="https://ohmyz.sh/">https://ohmyz.sh/(opens new window)</a></p>
+<p>通过扩展可以获得如下功能：</p>
+<ul>
+<li>自动补全</li>
+<li>语法高亮</li>
+<li>插件系统（插件管理）</li>
+<li>命令行提示（git仓库）</li>
+<li>颜色主题</li>
+</ul>
+<p>下面截图的就是一个示例，这些都需要手动设置。</p>
+<p><img src="Environment.assets/image-20220130112837562.3ba326aa.png" alt="image-20220130112837562"></p>
+<blockquote>
+<p>bash 与 zsh已经诞生大概有30年了历史了。</p>
+</blockquote>
+<h3 id="fish"><a href="#fish" class="headerlink" title="fish"></a>fish</h3><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>官网：<a target="_blank" rel="noopener" href="https://fishshell.com/">https://fishshell.com/(opens new window)</a></p>
+<p>相比于zsh，fish会有很多自动化的配置，默认的安装即可。</p>
+<p>特点：</p>
+<ul>
+<li>命令历史</li>
+<li>自动补全、自动搜索</li>
+<li>语法高亮</li>
+<li>运算+逻辑</li>
+<li>运行行颜色设置</li>
+</ul>
+<h3 id="安装方法"><a href="#安装方法" class="headerlink" title="安装方法"></a>安装方法</h3><p>安装方法：</p>
+<p>macOS上：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">brew install fish<br></code></pre></td></tr></table></figure>
+<p>windows上可以通过</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://msys2.github.io/">MSYS2 (opens new window)</a>命令：<code>pacman -S fish</code></li>
+<li>安装配置<a target="_blank" rel="noopener" href="https://cygwin.com/">CygWin (opens new window)</a>，在安装的过程中可以选择fish作为默认的shell</li>
+</ul>
+<h3 id="美化-amp-扩展"><a href="#美化-amp-扩展" class="headerlink" title="美化&amp;扩展"></a>美化&amp;扩展</h3><p>omf就是fish的一个插件管理工具，扩展fish主题配色，项目地址：<a target="_blank" rel="noopener" href="https://github.com/oh-my-fish/oh-my-fish">https://github.com/oh-my-fish/oh-my-fish (opens new window)</a>。</p>
+<blockquote>
+<p>还有一个插件管理工具是fisher：<a target="_blank" rel="noopener" href="https://github.com/jorgebucaran/fisher">https://github.com/jorgebucaran/fisher(opens new window)</a></p>
+</blockquote>
+<p>强烈推荐<code>starship</code>来美化你的fish shell，地址：<a target="_blank" rel="noopener" href="https://starship.rs/">https://starship.rs/ (opens new window)</a>，安装方式：</p>
+<ul>
+<li>brew方案：</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">brew install starship<br></code></pre></td></tr></table></figure>
+<ul>
+<li>Linux</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">sh -c &quot;$(curl -fsSL https://starship.rs/install.sh)&quot;<br></code></pre></td></tr></table></figure>
+<p>添加配置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># fish配置文件 ~/.config/fish/config.fish</span><br>starship init fish | <span class="hljs-built_in">source</span><br><br><span class="hljs-comment"># 选择一：~/.bashrc 针对于平时使用bash的小伙伴</span><br><span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(starship init bash)</span>&quot;</span><br><br><br><span class="hljs-comment"># 选择二：~/.zprofile 针对于平时使用zsh的小伙伴</span><br><span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-subst">$(starship init zsh)</span>&quot;</span><br></code></pre></td></tr></table></figure>  
+    <div class="footer">
+<script src="//m.servedby-buysellads.com/monetization.js" type="text/javascript"></script>
+<div id="bsa-native"></div>
+<script>
+_bsa.init('custom', 'CKYD62QM', 'placement:vuejsorg',
+  {
+    target: '#bsa-native',
+    template: '<a class="native-box" href="##statlink##"><div class="native-sponsor">Sponsor</div><div class="native-text"><strong>##company##</strong> — ##description##</div></a>'
+  }
+);
+</script>
+
+发现错误？想参与编辑？
+        <a
+            href="https://github.com/vuejs/v2.cn.vuejs.org/blob/master/src/tool/environment/index.md"
+            rel="noopener"
+            target="_blank"
+        >
+            在 GitHub 上编辑此页！
+        </a>
+        <!-- Deployed on
+    <a href="https://url.netlify.com/HJ8X2mxP8" rel="noopener" target="_blank">
+      Netlify
+    </a>. -->
+    </div>
+</div>
+
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- search -->
+    <link href="//code.bdstatic.com/npm/docsearch.js@1.5.0/dist/cdn/docsearch.min.css" rel='stylesheet' type='text/css'>
+    
+<link rel="stylesheet" href="/css/search.css">
+
+    <script src="//code.bdstatic.com/npm/docsearch.js@1.5.0/dist/cdn/docsearch.min.js"></script>
+    <script>
+    [
+      '#search-query-nav',
+      '#search-query-sidebar',
+      '#search-query-menu'
+    ].forEach(function (selector) {
+      if (!document.querySelector(selector)) return
+      docsearch({
+        appId: 'UURH1MHAF7',
+        apiKey: 'c23eb8e7895f42daeaf2bf6f63eb4bf6',
+        indexName: 'vuejs_cn2',
+        inputSelector: selector,
+        algoliaOptions: { facetFilters: ["version:v2"]},
+        autocompleteOptions: { hint: false, appendTo: 'body'}
+      })
+    })
+
+    // unregister service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for(let registration of registrations) {
+          registration.unregister()
+        }
+      })
+    }
+    </script>
+  </body>
+</html>

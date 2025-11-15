@@ -1,0 +1,597 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="with-v3-banner">
+  <head>
+    <title>Jenkins — zzf的个人博客笔记</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="alternate" hreflang="x-default" href="https://v2.vuejs.org/tool/jenkins/index.html">
+    <link rel="alternate" hreflang="zh" href="https://v2.cn.vuejs.org/tool/jenkins/index.html">
+    <link rel="alternate" hreflang="ja" href="https://jp.vuejs.org/tool/jenkins/index.html">
+    <link rel="alternate" hreflang="ru" href="https://ru.vuejs.org/tool/jenkins/index.html">
+    <link rel="alternate" hreflang="ko" href="https://kr.vuejs.org/tool/jenkins/index.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://br.vuejs.org/tool/jenkins/index.html">
+    <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/tool/jenkins/index.html">
+    <link rel="alternate" hreflang="es" href="https://es.vuejs.org/tool/jenkins/index.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Jenkins — Vue.js">
+    <meta property="og:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta property="og:image" content="https://v2.cn.vuejs.org/images/logo.png">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Jenkins — Vue.js">
+    <meta name="twitter:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="twitter:image" content="https://v2.cn.vuejs.org/images/logo.png">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+    <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
+    <link rel="icon" href="/images/logo.svg">
+
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin> -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com" rel="preconnect" crossorigin> -->
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono&display=swap" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Dosis:500&text=Vue.js&display=swap" rel="stylesheet"> -->
+
+    <link href="//code.bdstatic.com/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- main page styles -->
+    
+<link rel="stylesheet" href="/css/page.css">
+
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+
+    
+
+    <script>
+      Vue.config.productionTip = false
+      window.PAGE_TYPE = "jenkins"
+    </script>
+
+    <!-- Fathom - beautiful, simple website analytics -->
+    <script src="https://cdn.usefathom.com/script.js" data-site="KTDIHEIJ" defer></script>
+    <!-- / Fathom -->
+
+    <!-- vimeo analytics -->
+    <!-- <script type="text/javascript" defer="defer" src="https://extend.vimeocdn.com/ga/72160148.js"></script> -->
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Vue123.js" type="application/atom+xml">
+</head>
+  <body class="docs">
+
+    
+
+    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div>
+
+
+  <header id="header">
+    <a id="logo" href="/">
+      <!-- <img src="/images/logo.svg" alt="vue logo"> -->
+      <span>个人博客</span>
+    </a>
+    <ul id="nav">
+      <li>
+    <form id="search-form">
+        <input type="text" id="search-query-nav" class="search-query st-default-search-input" aria-label="搜索" />
+    </form>
+</li>
+<li class="nav-dropdown-container learn">
+    <a class="nav-link">前端基础</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li><h4>文档</h4></li>
+        <li>
+            <ul>
+                <li><a href="/v2/guide/" class="nav-link">HTML</a></li>
+        <li><a href="/v2/api/" class="nav-link">CSS</a></li>
+        <li><a href="/v2/style-guide/" class="nav-link">JS</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container framework">
+    <a class="nav-link">前端框架</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/framework/vue/" class="nav-link">vue</a></li>
+                  <li><a href="/framework/uniapp/" class="nav-link">uniapp</a></li>
+               
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container resources">
+    <a class="nav-link">网站部署</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/website/process/" class="nav-link">部署流程</a></li>
+                <li><a href="/website/hexo/" class="nav-link">HEXO</a></li>
+                <li><a href="/website/docker/" class="nav-link">Docker</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container tool">
+    <a class="nav-link current">工具</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/tool/environment/" class="nav-link">开发环境</a></li>
+                 <li><a href="/tool/git/" class="nav-link">git</a></li>
+                  <li><a href="/tool/webpack/" class="nav-link">webpack</a></li>
+                <li><a href="/tool/jenkins/" class="nav-link current">jenkins</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container backend">
+    <a class="nav-link">服务端</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/backend/node/" class="nav-link">node</a></li>
+                 <li><a href="/backend/MongoDB/" class="nav-link">MongoDB</a></li>
+                 
+            </ul>
+        </li>
+    </ul>
+</li>
+
+<!-- <li>
+    <a href="/eol/" class="badge-parent">终止支持 (EOL)<sup class="badge">新</sup></a>
+</li> -->
+
+    </ul>
+  </header>
+</div>
+
+    
+      <div id="main" class="fix-sidebar">
+         
+
+<div class="sidebar">
+    <div class="sidebar-inner">
+        
+        <div class="list"> <ul class="menu-root">
+  
+    
+    
+    <li>
+      <a href="/tool/jenkins/index.html" class="sidebar-link current">Jenkins</a>
+    </li>
+  
+</ul>
+ </div>
+    </div>
+</div>
+<!--
+
+<div id="sidebar-sponsors-platinum-right">
+  <div class="main-sponsor">
+    <span>白金赞助商</span>
+    <div>
+    <a href="https://www.vuemastery.com/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/vuemastery.png" alt="VueMastery">
+    </a>
+    <a href="https://vehikl.com/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/vehikl.png" alt="Vehikl">
+    </a>
+    <a href="https://vuejs.amsterdam/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/vue_js_amsterdam.png" alt="Vue.js Amsterdam">
+    </a>
+    <a href="https://www.storyblok.com" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/storyblok.png" alt="Storyblok">
+    </a>
+    <a href="https://opencollective.com/2021-frameworks-fund" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/chrome_frameworks_fund.png" alt="Chrome Frameworks Fund">
+    </a>
+    <a href="https://www.herodevs.com/support/vue" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/herodevs.png" alt="HeroDevs">
+    </a>
+    <a href="https://certificates.dev/javascript/?ref=vuejs-sponsor&friend=VUEJS" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/javascript_certification.png?v2" alt="JavaScript Certification">
+    </a>
+    <a href="https://www.coderabbit.ai?utm_source=github&utm_medium=sponsors&utm_campaign=evan_you_2025" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/coderabbit_.png" alt="CodeRabbit ">
+    </a>
+    <a href="https://imagekit.io/?utm_source=vuejs&utm_medium=referral&utm_campaign=oss-sponsorship&utm_content=homepage" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/imagekit_io.svg" alt="ImageKit.io">
+    </a>
+    <a href="https://www.greptile.com/?utm_source=vuejs&utm_medium=sponsorship&utm_campaign=vue_sponsor_page" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/greptile.png" alt="Greptile">
+    </a>
+    </div>
+  </div>
+  <a class="become-backer" href="/support-vuejs">
+    成为赞助者
+  </a>
+</div>
+
+
+-->
+ 
+<div
+    class="content jenkins with-sidebar "
+>
+      
+<div id="ad">
+  <!-- start: special logic for cn -->
+  <div
+    class="wwads-cn wwads-vertical"
+    data-id="53"
+    style="max-width: 200px"
+  ></div>
+  <script
+    type="text/javascript"
+    src="https://cdn.wwads.cn/js/makemoney.js"
+    async
+  ></script>
+  <!-- end: special logic for cn -->
+  <!-- <script
+    async
+    type="text/javascript"
+    src="//cdn.carbonads.com/carbon.js?serve=CEBDT27Y&placement=vuejsorg"
+    id="_carbonads_js"
+  ></script> -->
+</div>
+
+   
+    <h1>Jenkins</h1>
+    
+
+    <!-- start: special logic for cn -->
+    <!-- start: special logic for cn -->
+<!-- <div class="ad-pagetop">
+  <a href="http://www.vueshop.com.cn/index.php?http_referer=vuejs" target="_blank" rel="noopener noreferrer">
+    <span class="name">VUEshop</span>
+    <span class="description">中国免费商城系统 - 搜豹商城系统 - 免费50小时 Vue 视频教程</span>
+    <span class="action">立即查看 &gt;</span>
+  </a>
+</div> -->
+<!-- end: special logic for cn -->
+
+    <!-- end: special logic for cn -->
+
+     <h1 id="介绍-amp-安装"><a href="#介绍-amp-安装" class="headerlink" title="介绍&amp;安装"></a>介绍&amp;安装</h1><h2 id="什么是CI-CD"><a href="#什么是CI-CD" class="headerlink" title="#什么是CI/CD"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/#什么是ci-cd">#</a>什么是CI/CD</h2><p><code>CI/CD</code>即持续集成(Continuous Integration)、持续交付(Continuous Delivery)和持续部署(Continuous Deployment)，是一种通过引入自动化构建部署来频繁向客户交付的方法。<code>CI/CD</code>是<code>DevOps</code>的基础核心，如果没有<code>CI/CD</code>自动化的工具和流程，<code>DevOps</code>是没有意义的，来看下图<code>DevOps</code>工作流程图：</p>
+<p><img src="Jenkins.assets/20210308203919800.501d2337.png" alt="img"></p>
+<p>具体的流程为：</p>
+<ul>
+<li>先是计划<code>plan</code>，编码<code>code</code>，然后编译<code>build</code>，测试<code>test</code>（Dev）</li>
+<li>然后发布<code>release</code>，部署<code>deploy</code>，运维<code>operate</code>，监控<code>monitor</code>（Ops）</li>
+<li>然后发现问题或有新的需求，就重新计划plan…如此循环</li>
+</ul>
+<p>这就是完整的<code>DevOps</code>流程，试想如果没有自动化，那将是很繁重的任务。</p>
+<p>与传统的项目部署相比，自动化流程的意义：</p>
+<ul>
+<li>减少人为失误，提高软件质量</li>
+<li>效率迭代，便捷部署</li>
+<li>快速交付，便于管理</li>
+</ul>
+<p><strong>主流的自动化软件对比</strong></p>
+<p><img src="Jenkins.assets/2021031614533474.b5dcd7dd.png" alt="img"></p>
+<p>从上图可以看出主要的软件有<code>Jenkins</code>,<code>Travis CI</code>,<code>Circle CI</code>, 后面两个是云平台，而且只支持公有<code>Public</code>项目，私有项目需要付费；<code>Jenkins</code>支持本地化部署，而且免费，可高度配置，是开源CI&amp;CD软件领导者， 提供超过1000个插件来支持构建、部署、自动化， 满足任何项目的需要。</p>
+<h2 id="Jenkins-介绍"><a href="#Jenkins-介绍" class="headerlink" title="#Jenkins 介绍"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/#jenkins-介绍">#</a>Jenkins 介绍</h2><p>官网：<a target="_blank" rel="noopener" href="https://www.jenkins.io/">https://www.jenkins.io/(opens new window)</a></p>
+<p>Jenkins是一款开源 CI&amp;CD 软件，用于自动化各种任务，包括构建、测试和部署软件。<br>Jenkins 支持各种运行方式，可通过系统包、Docker 或者通过一个独立的 Java 程序。</p>
+<p><strong>Jenkins &amp; Gitee 持续集成流程</strong></p>
+<p><img src="Jenkins.assets/20210324230848552.465e7f47.png" alt="img"></p>
+<ul>
+<li>在本地编辑器编辑代码，提交到<code>Gitee</code></li>
+<li><code>git push</code> 操作触发 <code>Jenkins</code> 自动部署（<code>Jenkins</code> 安装在 <code>Docker</code> 中）</li>
+<li><code>Jenkins</code> 开始构建、打包、最后部署到云服务器</li>
+</ul>
+<p>提示</p>
+<p>除了Gitee，也可以使用GitLab,GitHub等代码仓库。</p>
+<h2 id="安装Jenkins"><a href="#安装Jenkins" class="headerlink" title="#安装Jenkins"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/#安装jenkins">#</a>安装Jenkins</h2><p>本节的步骤适用于本地机器上的 <code>Jenkins</code> 新安装。</p>
+<p><code>Jenkins</code> 通常作为一个独立的应用程序在其自己的流程中运行， 内置 <code>Java servlet</code> 容器/应用程序服务器（Jetty）。 <code>Jenkins</code> 也可以运行在不同的<code>Java servlet</code>容器(如Apache Tomcat 或 GlassFish)中作为servlet运行。</p>
+<p>尽管此页面重点关注<code>Jenkins</code>的本地安装，但此内容也可用于帮助在生产环境中设置<code>Jenkins</code>。</p>
+<h3 id="系统要求"><a href="#系统要求" class="headerlink" title="#系统要求"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/#系统要求">#</a>系统要求</h3><p>最低推荐配置:</p>
+<ul>
+<li>256MB可用内存</li>
+<li>1GB可用磁盘空间(作为一个Docker容器运行jenkins的话推荐10GB)</li>
+</ul>
+<p>为小团队推荐的硬件配置:</p>
+<ul>
+<li>1GB+可用内存</li>
+<li>50 GB+ 可用磁盘空间</li>
+</ul>
+<p>软件配置:</p>
+<ul>
+<li>Java 8—无论是Java运行时环境（JRE）还是Java开发工具包（JDK）都可以。</li>
+</ul>
+<p>注意</p>
+<p>将Jenkins作为Docker 容器运行，这不是必需的，也可以直接安装Jenkins。</p>
+<h3 id="Docker安装方式"><a href="#Docker安装方式" class="headerlink" title="#Docker安装方式"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/#docker安装方式">#</a>Docker安装方式</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ docker run --name jenkins_test -p 11005:8080 -p 50000:50000 jenkins/jenkins:lts<br></code></pre></td></tr></table></figure>
+<ul>
+<li>–name 容器名称定义为jenkins_test</li>
+<li>-p 将本地11005端口映射到Jenkins容器中的8080端口，这是访问Jenkins网页的端口</li>
+<li>-p 50000端口映射是与Jenkins主服务器上通信的端口号</li>
+</ul>
+<p>上面没有挂载 <code>volume</code>, 如果有必要可以使用 <code>-v</code> 来映射容器内部文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">-v jenkins-data:/var/jenkins_home<br></code></pre></td></tr></table></figure>
+<p>安装完成后这里提示有个初始密码，第一次登录需要用到，也可以在<code>/var/jenkins_home/secrets/initialAdminPassword</code>找到，通过 <code>docker ps | grep jenkins</code> 查看 Jenkins 是否已开启，如果没有开启可以使用 <code>docker start jenkins</code> 来开启。</p>
+<p>注意</p>
+<p>注意添加本地的端口(11005)到防火墙，还有注意云主机也开放了此端口，否则不能访问哦。</p>
+<p>在浏览器访问11005端口开始使用 <code>Jenkins</code> ：</p>
+<p><img src="Jenkins.assets/20210323231948966.749ec502.png" alt="解锁Jenkins"></p>
+<p>点击【继续】，然后开始安装插件：</p>
+<p><img src="Jenkins.assets/20210323233652482.232c8b89.png" alt="自定义Jenkins"></p>
+<p>选择【安装推荐的插件】开始安装：</p>
+<p><img src="Jenkins.assets/20210323233844979.44dcd290.png" alt="新手入门"></p>
+<p>创建第一个管理员用户：</p>
+<p><img src="Jenkins.assets/20210323234333756.c82428fe.png" alt="创建第一个管理员用户"></p>
+<p>确认<code>Jenkins</code>访问路径：</p>
+<p><img src="Jenkins.assets/20210323234459827.c21c5868.png" alt="实例配置"></p>
+<p>安装完毕，开始使用：</p>
+<p><img src="Jenkins.assets/20210323234535102.ceb5682c.png" alt="Jenkins已就绪"></p>
+<p>首页欢迎界面：</p>
+<p><img src="Jenkins.assets/20210323234642602.49144db2.png" alt="开始使用"></p>
+<h3 id="War包直装方式"><a href="#War包直装方式" class="headerlink" title="#War包直装方式"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/#war包直装方式">#</a>War包直装方式</h3><p>Jenkins的Web应用程序ARchive（WAR）文件版本可以安装在任何支持Java的操作系统或平台上。</p>
+<p><strong>要下载并运行Jenkins的WAR文件版本，请执行以下操作:</strong></p>
+<ol>
+<li>将<a target="_blank" rel="noopener" href="http://mirrors.jenkins.io/war-stable/latest/jenkins.war">最新的稳定Jenkins WAR包 (opens new window)</a>下载到您计算机上的相应目录。</li>
+<li>在下载的目录内打开一个终端/命令提示符窗口到。</li>
+<li>运行命令java -jar jenkins.war</li>
+<li>浏览<a href="http://localhost:8080并等到Unlock">http://localhost:8080并等到Unlock</a> Jenkins页面出现。</li>
+</ol>
+<h3 id="macOS系统"><a href="#macOS系统" class="headerlink" title="#macOS系统"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/#macos系统">#</a>macOS系统</h3><ol>
+<li>从网站安装的话使用这个包:</li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://mirrors.jenkins.io/osx/latest">Download the latest package(opens new window)</a></li>
+<li>打开包装并按照说明操作</li>
+</ul>
+<ol>
+<li>Jenkins 也可以使用<code>brew</code>以下方式安装：</li>
+</ol>
+<ul>
+<li>安装最新版本</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">brew install jenkins<br></code></pre></td></tr></table></figure>
+<ul>
+<li>安装 LTS 版本</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">brew install jenkins-lts<br></code></pre></td></tr></table></figure>
+<h1 id="插件下载"><a href="#插件下载" class="headerlink" title="#插件下载"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/01-插件下载.html#插件下载">#</a>插件下载</h1><p><code>Jenkins</code> 官方提供了大量的插件给用户下载，如Git相关插件可以连接代码仓库、SSH相关插件可以远程连接到服务器、NodeJS插件可以构建前端项目、权限管理插件可以方便管理多用户协作等，丰富的插件可以帮助我们更好的运行、管理我们的自动化流程。</p>
+<h2 id="配置国内加速源"><a href="#配置国内加速源" class="headerlink" title="#配置国内加速源"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/01-插件下载.html#配置国内加速源">#</a>配置国内加速源</h2><p>在安装插件之前我们先配置下国内加速源，这样下载插件更快些。</p>
+<p>首先打开<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/">清华大学开源软件镜像站 (opens new window)</a>，搜索<code>jenkins</code>，选择 <code>update</code> 目录，复制该目录下的 <code>update-center.json</code> 的地址；</p>
+<p>在<code>Jenkins</code>中打开Dashboard &gt; 插件管理[Plugin Manager] &gt; 高级[Advanced]：</p>
+<p><img src="Jenkins.assets/20210324140129446.171d7858.png" alt="插件管理"></p>
+<p>找到升级站点[Update Site]的位置，将刚才复制的清华源地址放进去，点击【提交】，那么后面更新插件都是从这个源下载安装，速度比较快。</p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAygAAAC0CAYAAAB/uAhUAAAgAElEQVR4Ae3d32sc19nA8d6/t/1P5koXBkPB0AtdRRQiCET0IiZglUBEaEQvGgJBgbAYXuFCcWhqAhEpYXXxIkMQbUAJZm26rCEg01TGhqV1320Vltfh3bxqnpdzZs7Mc87M7o7Gs7va0ddB2d35cX58zlnteXTOzP5ISv77x+mw5JEchgACCCCAAAIIIIAAAghUE/hR2dMIUMpKcRwCCCCAAAIIIIAAAghUFSBAqSrHeQgggAACCCCAAAIIIFC7AAFK7aQkiAACCCCAAAIIIIAAAlUFCFCqynEeAggggAACCCCAAAII1C5AgFI7KQkigAACCCCAAAIIIIBAVQEClKpynIcAAggggAACCCCAAAK1CxCg1E5KgggggAACCCCAAAIIIFBVgAClqhznIYAAAggggAACCCCAQO0CBCi1k5IgAggggAACCCCAAAIIVBUgQKkqx3kIIIAAAggggAACCCBQuwABSu2kJIgAAggggAACCCCAAAJVBQhQqspxHgIIIIAAAggggAACCNQuQIBSOykJIoAAAggggAACCCCAQFUBApSqcpyHAAIIIIAAAggggAACtQsQoNROSoIIIIAAAggggAACCCBQVYAApaoc5yGAAAIIIIAAAggggEDtAgQotZOSIAIIIIAAAggggAACCFQVIECpKsd5CCCAAAIIIIAAAgggULsAAUrtpCSIAAIIIIAAAggggAACVQUuZIAyGg5leJr9jM5KVu9sKIPTksfWedhoICePB6VSHH7Tkc697OekrvKejTyz4fNSxeEgBBBAAAEEEEAAAQQulMBiA5RkUN3/2gzYT2RoaQbSvhFJFLmfTWk/K2c2urcjK9GKXHujJe1uX0oHNuWS9486G0m/25bdX23IVVPWK9tyWCLY6N109YofW10/2cqvui1lFkl0s1c5KU5EAAEEEEAAAQQQQGBRAjMLUNwsSBx8dORo/47s3tqVnTfXZf2VtXhQnwYhZrC+LYc2QqkaoPRl71U1+E8DhoEcvmvyrPDz7qGMnxcJyxnJ6s2ejKa0JAHKFCB2I4AAAggggAACCFxqgZoDlJEcvaeCBC8Amb5950szvA8H/iVnUL6+Lasqv41PTpKGDdObXo509uZGe0KAIhLP2Oj0NmTv6eT+NLcARVmk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" alt="img"></p>
+<h2 id="在线安装插件"><a href="#在线安装插件" class="headerlink" title="#在线安装插件"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/01-插件下载.html#在线安装插件">#</a>在线安装插件</h2><p>在同一个目录的[可选插件] 选项卡，可以搜索没有安装的插件，勾选后点击下面的按钮即可安装（已经安装的插件只在[已安装]的选项卡）：</p>
+<p><img src="Jenkins.assets/20210324154028414.c73dba65.png" alt="插件管理"></p>
+<h2 id="离线安装插件"><a href="#离线安装插件" class="headerlink" title="#离线安装插件"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/01-插件下载.html#离线安装插件">#</a>离线安装插件</h2><p>若是本地环境或内网环境也可以使用离线安装的方式，可以去<code>Jenkins</code>的官网下载插件：<a target="_blank" rel="noopener" href="https://plugins.jenkins.io/">(opens new window)</a></p>
+<p><img src="Jenkins.assets/20210324140608399.6963a9f8.png" alt="插件管理"></p>
+<p>我们搜索一下 <code>Localization: Chinese</code> 然后就可以看到中文语言包：</p>
+<p><img src="Jenkins.assets/20210324141203664.fa134a91.png" alt="插件管理"></p>
+<p>点击版本号就开始下载了，得到了 <code>localization-zh-cn.hpi</code> 文件，然后来安装：</p>
+<p><img src="Jenkins.assets/20210324141425368.cbe4ef81.png" alt="img"></p>
+<p>选择下载的文件，点击【上传】，安装完后，勾选【重启】，完事后就重新登录即可。</p>
+<h1 id="权限管理"><a href="#权限管理" class="headerlink" title="#权限管理"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/02-权限管理.html#权限管理">#</a>权限管理</h1><p>权限管理的作用是给用户分配权限，方便多用户协作。</p>
+<p>首先我们来安装以下插件帮助我们管理安全配置：</p>
+<ul>
+<li>PAM Authentication plugin</li>
+<li>Matrix Authorization Strategy Plugin 对应下面的安全矩阵 -&gt; 需要安装插件<a target="_blank" rel="noopener" href="https://plugins.jenkins.io/matrix-auth/">https://plugins.jenkins.io/matrix-auth/(opens new window)</a></li>
+<li>Role-based Authorization Strategy(推荐) -&gt; 需要安装插件<a target="_blank" rel="noopener" href="https://plugins.jenkins.io/role-strategy/">https://plugins.jenkins.io/role-strategy/(opens new window)</a></li>
+<li>LDAP Plugin</li>
+</ul>
+<p>安装完成重启Jenkins后生效。</p>
+<h2 id="基于角色安全管理"><a href="#基于角色安全管理" class="headerlink" title="#基于角色安全管理"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/02-权限管理.html#基于角色安全管理">#</a>基于角色安全管理</h2><p>使用步骤：</p>
+<ul>
+<li>安装Role-based插件</li>
+<li>在系统安全中，设置插件激活状态</li>
+<li>配置角色 -&gt; 配置权限</li>
+<li>分配角色权限到用户</li>
+</ul>
+<p><img src="Jenkins.assets/image-20210730134531546.2c58a2a5.png" alt="image-20210730134531546"></p>
+<p>点击[系统管理] &gt; [安全] &gt; [全局安全配置] &gt; [授权策略]，选择 <code>Role-Based Strategy</code>，然后保存，再回退到[系统管理] &gt; [安全]，可以看到多出了一个菜单：</p>
+<p><img src="Jenkins.assets/20210324155532109.41af86c2.png" alt="角色安全"> <img src="Jenkins.assets/20210324155546563.7d26e8cb.png" alt="角色安全"></p>
+<p>如下，创建了一个三个角色：</p>
+<ul>
+<li><code>Annoymous</code>：未登录用户</li>
+<li><code>dev</code>：开发用户</li>
+<li><code>admin</code>：管理员用户</li>
+</ul>
+<p><img src="Jenkins.assets/image-20210730134650240.dc2f93d3.png" alt="image-20210730134650240"></p>
+<blockquote>
+<p>开发与设置小技巧：可以开一个chrome和另一个浏览器，使用两边登录不同的账号进行测试角色与权限的设置；</p>
+</blockquote>
+<h2 id="基于安全矩阵"><a href="#基于安全矩阵" class="headerlink" title="#基于安全矩阵"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/02-权限管理.html#基于安全矩阵">#</a>基于安全矩阵</h2><p>在[授权策略]中选择<code>安全矩阵</code>，这个是基于用户的权限配置，这里需要注意的是需要吧管理员添加进来，如果没有添加是没有权限做任何事的，切记！！！</p>
+<p><img src="Jenkins.assets/20210324160013818.f1ac911f.png" alt="img"></p>
+<h1 id="Gitee-Jenkins自动化实战"><a href="#Gitee-Jenkins自动化实战" class="headerlink" title="#Gitee + Jenkins自动化实战"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/03-gitee.html#gitee-jenkins自动化实战">#</a>Gitee + Jenkins自动化实战</h1><p>当我们熟悉了<code>Jenkins</code> 的使用后，接下来我们来配置一个基于 <code>vue-element-admin</code> 的实战项目，来感受一下自动化流程带给我们的优势。</p>
+<p>首先我们需要创建一个 <code>git</code> 项目，至于代码仓库可以自选，这里为了国内方便访问，我选择了 <code>Gitee</code> ，然后我们需要给 <code>Jenkins</code> 配置一些插件，比如 <code>NodeJS</code> 等，创建一个构建任务，关联 <code>git</code> 代码仓库，编写 <code>vue</code> 项目的编译打包脚本，再将打包后的产物部署到云服务器，这里演示的是阿里云的Nginx服务器。</p>
+<h2 id="创建git项目"><a href="#创建git项目" class="headerlink" title="#创建git项目"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/03-gitee.html#创建git项目">#</a>创建git项目</h2><p>这里以<code>Gitee</code>作为代码仓库，也可以使用<code>Github</code>/<code>Gitlab</code>等仓库。</p>
+<p>假设创建的仓库地址是：<code>https://gitee.com/xxx/jenkins_test.git</code>（创建过程很简单，就不演示了）</p>
+<p>提示</p>
+<p>Git 可以创建私有项目哦。</p>
+<h2 id="安装Jenkins插件"><a href="#安装Jenkins插件" class="headerlink" title="#安装Jenkins插件"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/03-gitee.html#安装jenkins插件">#</a>安装Jenkins插件</h2><p><strong>安装Gitee插件</strong></p>
+<p>因为这里使用了<code>Gitee</code>，我们需要在<code>Jenkins</code>中安装Gitee插件：</p>
+<p><img src="Jenkins.assets/20210324164001297.b71d3458.png" alt="img"></p>
+<p>注意</p>
+<p>安装完记得重启Jenkins，否则新安装的插件不会显示哦。</p>
+<p><strong>配置Gitee</strong></p>
+<p>在[Jenkins] &gt; [系统管理] &gt; [系统配置] &gt; [Gitee配置] 配置 <code>Gitee</code> 信息：</p>
+<p><img src="Jenkins.assets/20210324164650789.3187125d.png" alt="img"></p>
+<ul>
+<li>链接名：输入Gitee或随便输入你想要的名称</li>
+<li>Gitee域名URL：输入Gitee完整的URL地址 <code>https://gitee.com</code></li>
+<li>证书令牌：如没有添加需要新建一个，点击添加（如下图）</li>
+</ul>
+<p><img src="Jenkins.assets/20210324170014881.f7b7f626.png" alt="添加凭据"></p>
+<ul>
+<li>Domain：选择全局凭据</li>
+<li>类型：选择Gitee API令牌</li>
+<li>范围：选择全局</li>
+<li>Gitee APIV5 私人令牌，<a target="_blank" rel="noopener" href="https://gitee.com/profile/personal_access_tokens">点击获取(opens new window)</a></li>
+<li>ID 和 描述就随便写不一样的就行</li>
+</ul>
+<p>添加完令牌就直接选择就行，然后点击【测试链接】，如果出现<code>成功</code>则表示配置正确：</p>
+<p><img src="Jenkins.assets/20210324170446534.a760d866.png" alt="添加凭据"></p>
+<p><strong>安装NodeJS</strong></p>
+<p>因为我们的Vue项目是基于 <code>NodeJS</code> 来打包构建的，所以需要在 <code>Jenkins</code> 中安装插件：</p>
+<p><img src="Jenkins.assets/20210324203031178.576d221c.png" alt="img"></p>
+<p><strong>配置NodeJS</strong></p>
+<p>在[系统管理] &gt; [系统配置] &gt; [全局工具配置] &gt; [NodeJS] 点击【NodeJS安装】：</p>
+<p><img src="Jenkins.assets/20210420210529926.297820e6.png" alt="NodeJS"></p>
+<p>注意</p>
+<p><code>NodeJS</code> 版本不要选太高，选最新的LTS版本即可，否则可能因为版本不兼容导致构建失败，建议选择版本和本地开发的版本相同，这样就不会有问题了。</p>
+<h2 id="构建任务配置"><a href="#构建任务配置" class="headerlink" title="#构建任务配置"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/03-gitee.html#构建任务配置">#</a>构建任务配置</h2><p>在 <code>Jenkins</code> 首页点击【新建任务】开始第一个流水线的构建，选择<code>构建一个自由风格的软件项目</code> 点击保存即可创建构建项目：</p>
+<p><img src="Jenkins.assets/20210324170835154.98dd5a36.png" alt="NodeJS"></p>
+<p>新建完成后进入配置，流水线会按照 [General] &gt; [源码管理] &gt; [构建触发器] &gt; [构建环境] &gt; [构建] &gt; [构建后操作]的步骤来执行自动化任务。</p>
+<h3 id="General"><a href="#General" class="headerlink" title="#General"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/03-gitee.html#general">#</a>General</h3><p><img src="Jenkins.assets/20210324171712229.fd78fbad.png" alt="NodeJS"></p>
+<h3 id="源码管理"><a href="#源码管理" class="headerlink" title="#源码管理"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/03-gitee.html#源码管理">#</a>源码管理</h3><ul>
+<li>选择 <code>Git</code> 选项</li>
+<li>Repository URL: 创建的git项目地址</li>
+<li>Credentials：点击添加一个凭据（注意 <code>Gitee API Token</code> 凭据不可用于源码管理的凭据，只用于<code>gitee</code>插件的 API 调用凭据）</li>
+<li>点击【高级】 Advanced 按钮，Name输入<code>origin</code>，Refspec输入<code>+refs/heads/*:refs/remotes/origin/*</code></li>
+<li>指定分支：<code>master</code></li>
+</ul>
+<p><img src="Jenkins.assets/20210324194748464.279d34ce.png" alt="NodeJS"></p>
+<h3 id="触发器配置"><a href="#触发器配置" class="headerlink" title="#触发器配置"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/03-gitee.html#触发器配置">#</a>触发器配置</h3><p>这里选择配置 <code>push</code> 代码立即触发构建任务，勾选 <code>Gitee webhook触发构建</code>，后面有个地址这个后面需要配置到<code>Gitee</code>，<code>Gitee</code>触发构建策略勾选推送代码，其他先默认就行。</p>
+<p><img src="Jenkins.assets/20210324193112270.57b59266.png" alt="触发构建"></p>
+<p>后面有个 <code>Gitee WebHook密码</code> 栏位需要配置到Gitee，点击生成就会生成一个密码：</p>
+<p><img src="Jenkins.assets/20210324193145702.c6eb229f.png" alt="触发构建"></p>
+<p>打开 <code>Gitee</code> 项目的管理选项卡，左侧有个[WebHooks]菜单 ，点击【添加webHook】:</p>
+<p><img src="Jenkins.assets/20210324193317281.6ac38d30.png" alt="触发构建"></p>
+<p>将上一步 <code>Jenkins</code> 生成的<code>URL</code>和<code>密码</code>填进去，点击【添加】：</p>
+<p><img src="Jenkins.assets/20210324193430983.8d8d89dd.png" alt="img"></p>
+<h3 id="构建环境"><a href="#构建环境" class="headerlink" title="#构建环境"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/03-gitee.html#构建环境">#</a>构建环境</h3><p>修改构建任务的构建环境，勾选 <code>Provide Node &amp; npm bin/ folder to PATH</code> ，默认会选择<code>Jenkins</code>安装的<code>NodeJS</code>版本:</p>
+<p><img src="Jenkins.assets/20210420221323687.b509abed.png" alt="构建环境"></p>
+<h3 id="构建脚本"><a href="#构建脚本" class="headerlink" title="#构建脚本"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/03-gitee.html#构建脚本">#</a>构建脚本</h3><p>选择【执行shell】：</p>
+<p><img src="Jenkins.assets/20210324200306648.07f96ef5.png" alt="img"></p>
+<p>先随便写一个shell脚本试试：</p>
+<p><img src="Jenkins.assets/2021032420025598.4598b783.png" alt="img"></p>
+<p>保存后，触发一次提交，看看<code>控制台输出</code>：</p>
+<p><img src="Jenkins.assets/20210324201532828.fde990fb.png" alt="img"></p>
+<h2 id="构建及部署"><a href="#构建及部署" class="headerlink" title="#构建及部署"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/03-gitee.html#构建及部署">#</a>构建及部署</h2><p>背景介绍：jenkins通过Docker容器的方式安装</p>
+<p>需求：Vue项目打包发布到装有nginx的服务器</p>
+<p>思路：vue项目通过 <code>NodeJS</code> 构建后，需要将构建后的 <code>dist</code> 文件夹的内容部署到云服务器，因为 <code>Jenkins</code> 是 <code>Docker</code> 容器创建的，容器内部不能直接移动文件，因为没有挂载<code>volumn</code>，所以这里可以使用 <code>SSH</code> 的方式来传输容器的构建文件到<code>nginx</code>服务器。</p>
+<h3 id="安装插件Publish-Over-SSH"><a href="#安装插件Publish-Over-SSH" class="headerlink" title="#安装插件Publish Over SSH"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/03-gitee.html#安装插件publish-over-ssh">#</a>安装插件Publish Over SSH</h3><p>先来安装下<code>Publish over SSH</code>，进入插件管理：</p>
+<p><img src="Jenkins.assets/20210325193332944.fe606513.png" alt="img"></p>
+<p>安装完成后，在[系统管理] &gt; [系统配置] 会多出一个<code>Publish over SSH</code>:</p>
+<p>在需要部署的目标云服务器生成密钥：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ ssh-keygen -t rsa -C <span class="hljs-string">&quot;xxxx@qq.com&quot;</span><br><span class="hljs-comment"># 将公钥放到authorized_keys，否则SSH Server配置会不成功</span><br>$ <span class="hljs-built_in">cat</span> id_rsa.pub &gt;&gt; authorized_keys<br></code></pre></td></tr></table></figure>
+<p>在 <code>Key</code> 栏位填写私钥：</p>
+<p><img src="Jenkins.assets/20210406223639894.27cd7d8a.png" alt="img"></p>
+<p>设置 <code>SSH</code> 目标服务器的信息：</p>
+<p><img src="Jenkins.assets/2021040623530727.6144cbb9.png" alt="img"></p>
+<h3 id="配置Node-js环境"><a href="#配置Node-js环境" class="headerlink" title="#配置Node.js环境"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/03-gitee.html#配置node-js环境">#</a>配置Node.js环境</h3><p>安装Node插件：<a target="_blank" rel="noopener" href="https://plugins.jenkins.io/nodejs/">https://plugins.jenkins.io/nodejs/(opens new window)</a></p>
+<p>可以系统设置 -&gt; 全局工具配置 -&gt; 安装Node.js LTS版本</p>
+<p><img src="Jenkins.assets/image-20210730154148534.f63b8074.png" alt="image-20210730154148534"></p>
+<p>配置如下：</p>
+<p><img src="Jenkins.assets/image-20210730155447847.5acc54e7.png" alt="image-20210730155447847"></p>
+<h3 id="构建与发布"><a href="#构建与发布" class="headerlink" title="#构建与发布"></a><a target="_blank" rel="noopener" href="https://front-end.toimc.com/notes-page/devops/jenkins/03-gitee.html#构建与发布">#</a>构建与发布</h3><p>点击 【Test Configuration】按钮，左侧显示 <code>Success</code> 即表示<code>SSH</code>可以连接成功。</p>
+<p>[构建步骤]修改下 <code>shell</code> 脚本，进行 <code>vue</code> 的<code>安装</code>和<code>打包</code>：</p>
+<p><img src="Jenkins.assets/2021040811374362.8237423c.png" alt="img"></p>
+<p>先添加一个<code>Transfer Set</code>删除部署目录的文件，假如 <code>nginx</code> 配置的 <code>root</code> 目录为<code>/usr/share/nginx/flower_html/</code>：</p>
+<p><img src="Jenkins.assets/20210407153217299.ed823d71.png" alt="img"></p>
+<p>再加一个 <code>Transfer Set</code> 传送文件到部署目录：</p>
+<p><img src="Jenkins.assets/20210407153314897.43b70b62.png" alt="img"></p>
+<p>都设置好了，来触发一次构建，部署效果：</p>
+<p><img src="Jenkins.assets/2021040811382869.e60cb9be.png" alt="img"></p>
+<p>有了 <code>Jenkins</code> 自动化部署，以后我们只需要关注代码层面即可，修改完代码，提交到 <code>Git</code> 仓库，然后 <code>Jenkins</code> 会自动帮我们构建、打包、部署，是不是很方便呢。</p>
+  
+    <div class="footer">
+<script src="//m.servedby-buysellads.com/monetization.js" type="text/javascript"></script>
+<div id="bsa-native"></div>
+<script>
+_bsa.init('custom', 'CKYD62QM', 'placement:vuejsorg',
+  {
+    target: '#bsa-native',
+    template: '<a class="native-box" href="##statlink##"><div class="native-sponsor">Sponsor</div><div class="native-text"><strong>##company##</strong> — ##description##</div></a>'
+  }
+);
+</script>
+
+发现错误？想参与编辑？
+        <a
+            href="https://github.com/vuejs/v2.cn.vuejs.org/blob/master/src/tool/jenkins/index.md"
+            rel="noopener"
+            target="_blank"
+        >
+            在 GitHub 上编辑此页！
+        </a>
+        <!-- Deployed on
+    <a href="https://url.netlify.com/HJ8X2mxP8" rel="noopener" target="_blank">
+      Netlify
+    </a>. -->
+    </div>
+</div>
+
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- search -->
+    <link href="//code.bdstatic.com/npm/docsearch.js@1.5.0/dist/cdn/docsearch.min.css" rel='stylesheet' type='text/css'>
+    
+<link rel="stylesheet" href="/css/search.css">
+
+    <script src="//code.bdstatic.com/npm/docsearch.js@1.5.0/dist/cdn/docsearch.min.js"></script>
+    <script>
+    [
+      '#search-query-nav',
+      '#search-query-sidebar',
+      '#search-query-menu'
+    ].forEach(function (selector) {
+      if (!document.querySelector(selector)) return
+      docsearch({
+        appId: 'UURH1MHAF7',
+        apiKey: 'c23eb8e7895f42daeaf2bf6f63eb4bf6',
+        indexName: 'vuejs_cn2',
+        inputSelector: selector,
+        algoliaOptions: { facetFilters: ["version:v2"]},
+        autocompleteOptions: { hint: false, appendTo: 'body'}
+      })
+    })
+
+    // unregister service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for(let registration of registrations) {
+          registration.unregister()
+        }
+      })
+    }
+    </script>
+  </body>
+</html>
