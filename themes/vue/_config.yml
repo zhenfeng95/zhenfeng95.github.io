@@ -107,21 +107,12 @@ gold:
   - name: SocialBoosting
     url: https://www.socialboosting.com/
     img: socialboosting.png
-  - name: Daman Game
-    url: https://damanapp.download/
-    img: daman_game.png
-  - name: Buy YouTube Views on Buzzoid
-    url: https://buzzoid.com/buy-youtube-views/
-    img: buy_youtube_views_on_buzzoid.png
   - name: Tiranga Game
     url: https://tirangaagame.io/
     img: tiranga_game.png
   - name: Views4You
     url: https://views4you.com/buy-youtube-subscribers/
     img: views4you.png
-  - name: Daman club
-    url: https://damangame.club
-    img: daman_club.png
   - name: BDG Game
     url: https://www.bdggame.io
     img: bdg_game.png
@@ -144,9 +135,6 @@ silver:
   - name: Route Planner and Route Optimizer - Route4Me
     url: https://route4me.com
     img: route_planner_and_route_optimizer___route4me.png
-  - name: Optimizers
-    url: https://www.optimizers.nl
-    img: optimizers.png
   - name: Indy
     url: https://www.indy.fr/
     img: indy.png
@@ -169,12 +157,6 @@ bronze:
   - name: Posit
     url: https://posit.co/
     img: posit.png
-  - name: Liip AG
-    url: https://www.liip.ch/en
-    img: liip_ag.png
-  - name: Famoid
-    url: https://famoid.com/
-    img: famoid.png
   - name: codefortynine
     url: https://codefortynine.com
     img: codefortynine.png

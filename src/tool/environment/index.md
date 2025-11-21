@@ -171,6 +171,43 @@ brew update
 
 `homebrew-bottles`配置只能手动删除，将 `~/.zprofile` 文件中的 `HOMEBREW_BOTTLE_DOMAIN=https://mirrors.xxx.com`内容删除，并执行 `source ~/.zprofile`。
 
+### nuxt项目如何本地使用https
+
+1、开发环境使用** mkcert（最佳开发方案）**
+
+```bash
+# 安装 mkcert
+brew install mkcert 
+# 初始化本地 CA
+mkcert -install
+# 为开发环境生成可信证书
+mkcert "*.cyzone.cn" "cyzone.cn" "fresh.cyzone.cn" "localhost" "127.0.0.1"
+# 使用生成的证书文件
+mv _wildcard.cyzone.cn-key.pem cert.key
+mv _wildcard.cyzone.cn.pem cert.crt
+
+```
+
+**2、Node.js 如何设置信任 mkcert 生成的 CA 根证书**
+
+如果不设置，会导致 Nuxt 内部 fetch（例如 manifest.json）全部失败。
+
+```bash
+# 找到你的 mkcert 根证书
+mkcert -CAROOT
+# 它会输出一个目录，例如：
+# /Users/yourname/Library/Application Support/mkcert
+# 里面有两个核心文件：
+- rootCA.pem
+- rootCA-key.pem
+# 我们需要 **rootCA.pem**
+# 让 Node.js 信任 mkcert 的 CA
+# 在~/.zshrc文件中添加
+export NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"
+source ~/.zshrc
+# 重新启动项目，完美解决
+```
+
 ## 本地开发环境
 
 ### IDE
