@@ -10,9 +10,9 @@ order: 1
 
 #### 域名
 
-> * www.baidu.com
-> * www.taobao.com
-> * www.qq.com
+> -   www.baidu.com
+> -   www.taobao.com
+> -   www.qq.com
 
 > 域名俗称网址，是由一串用点分隔的名字组成，用于标识互联网上的计算机。
 > 原本用于标识互联网上计算机使用的是 IP 地址，但是由于 IP 地址不便于记忆，所以人们便设计出来比较容易记忆的域名，然后通过 DNS 将域名和 IP 地址关联，这样人们便可以通过记忆域名直接访问到对应的计算机。
@@ -30,7 +30,7 @@ order: 1
 > 服务器其实就是一台计算机，但是这台计算机并和我们自己的的 PC 不一样，不是日常使用的，而是提供某项互联网服务的。
 > 比如 web 服务器，能为我们提供网页服务，email 服务器，能为我们提供电子邮件服务，FTP 服务器能为我们提供文件存储服务等等。
 > 为计算机安装不同的服务应用程序，即可提供相应的服务。
-> 常见的web 服务应用程序： Apache、Nginx、IIS、Node.js
+> 常见的 web 服务应用程序： Apache、Nginx、IIS、Node.js
 
 ### 2、 网站请求流程（简化版）
 
@@ -49,7 +49,6 @@ order: 1
 前后端分离的页面请求分为两部分： 静态页面请求 + ajax 数据请求
 
 ![image](index.assets/1748243726987.png)
-
 
 ![image](index.assets/1748243333844.png)
 
@@ -83,16 +82,16 @@ order: 1
 
 **配置环境也可以参考[Docker](/website/docker/)，部署更方便**
 
-数据库环境：由于使用命令安装Mongodb，MySql数据库容易出现各种各样的问题，建议用Docker拉取镜像安装，用docker compose去管理
+数据库环境：由于使用命令安装 Mongodb，MySql 数据库容易出现各种各样的问题，建议用 Docker 拉取镜像安装，用 docker compose 去管理
 
-redis服务：建议用Docker拉取镜像安装
+redis 服务：建议用 Docker 拉取镜像安装
 
-Node项目：打包成 Docker 镜像，在项目中创建Dockerfile文件，文件内容包括拉取镜像，下载依赖，运行项目，在jenkins中配置shell脚本文件，或者在服务器上找个目录配置shell文件，具体参考下面的自动化部署
+Node 项目：打包成 Docker 镜像，在项目中创建 Dockerfile 文件，文件内容包括拉取镜像，下载依赖，运行项目，在 jenkins 中配置 shell 脚本文件，或者在服务器上找个目录配置 shell 文件，具体参考下面的自动化部署
 
-nginx和node可以直接在宿主机上进行下载
+nginx 和 node 可以直接在宿主机上进行下载
 
-配置服务器，Mac 系统下直接用终端就ok
-windows下需要用到 git bash, 或者别的工具（Putty）
+配置服务器，Mac 系统下直接用终端就 ok
+windows 下需要用到 git bash, 或者别的工具（Putty）
 
 ```shell
 # 需要用到的 Linux 系统操作命令
@@ -112,11 +111,11 @@ ls
 # 编辑文件
 vim 文件路径
 
-# 传输文件 
+# 传输文件
 scp 本地文件路径 root@域名:远程路径
 
 # 解压文件命令
-unzip 
+unzip
 ```
 
 #### 4.1 安装 CentOS 开发人员相关包
@@ -127,8 +126,7 @@ yum groupinstall 'Development tools'
 
 #### 4.2 配置免密登陆
 
-在自己电脑上 生成本地 秘钥对，参考[git如何生成密钥](/tool/git/)
-
+在自己电脑上 生成本地 秘钥对，参考[git 如何生成密钥](/tool/git/)
 
 ```shell
 # 生成的位置
@@ -151,7 +149,7 @@ echo "公钥内容" >> authorized_keys
 exit
 ```
 
-#### 4.3 安装Nginx
+#### 4.3 安装 Nginx
 
 ```shell
 # 添加 Nginx 源
@@ -164,12 +162,12 @@ sudo yum install nginx
 nginx
 
 # 配置防火墙规则
-sudo firewall-cmd --permanent --zone=public --add-service=http 
+sudo firewall-cmd --permanent --zone=public --add-service=http
 sudo firewall-cmd --permanent --zone=public --add-service=https
 sudo firewall-cmd --reload
 ```
 
-#### 4.4 安装Node.js
+#### 4.4 安装 Node.js
 
 ```shell
 # yum自带源中没有Node.js,所以首先要获取Node.js资源：
@@ -194,7 +192,7 @@ pm2 stop 文件名或者id
 pm2 delete 文件名或者id
 ```
 
-#### 4.5 安装MySQL
+#### 4.5 安装 MySQL
 
 ```shell
 # 下载并安装 MySQL 源
@@ -258,9 +256,9 @@ mv dist admin
 # 结果就是  /home/nginx/admin  这个文件夹中放的就是我们的网页文件了
 ```
 
-### 6、配置Nginx
+### 6、配置 Nginx
 
-创建一个ilovefe.conf文件
+创建一个 ilovefe.conf 文件
 
 ```shell
 cd /etc/nginx/conf.d
@@ -296,7 +294,8 @@ server {
 }
 ```
 
-完整的配置文件示例，开启了https
+完整的配置文件示例，开启了 https
+
 ```configure
 # nginx.conf 或 server 配置中添加
 map $http_user_agent $is_mobile {
@@ -362,62 +361,62 @@ server
     #REWRITE-START URL重写规则引用,修改后将导致面板设置的伪静态规则失效
     # include /www/server/panel/vhost/rewrite/zzf.net.cn.conf;
     #REWRITE-END
-    
-    
+
+
     # 默认根目录指向前台 dist
     root /www/wwwroot/zzf.net.cn/dist;
     index index.html index.htm;
-    
+
    location / {
      try_files $uri $uri/ /index.html;
      if ($is_mobile = 1) {
           return 301 https://m.zzf.net.cn$request_uri;
       }
     }
-    
+
      location /webhook {
         proxy_pass http://127.0.0.1:4000;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }
-    
+
     location /webhook-admin {
         proxy_pass http://127.0.0.1:4001;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }
-    
+
     location /webhook-server {
         proxy_pass http://127.0.0.1:4002;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }
-    
+
     location /webhook-h5 {
         proxy_pass http://127.0.0.1:4003;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }
-    
+
     location /webhook-compc {
         proxy_pass http://127.0.0.1:4005;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }
-    
+
     location /webhook-comkoa {
         proxy_pass http://127.0.0.1:4006;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
     }
-    
+
 
     location ^~ /api/ {
         rewrite ^/api/(.*)$ /api/$1 break;
         proxy_pass http://127.0.0.1:3001;
     }
 
-     
+
     #禁止访问的文件或目录
     location ~ ^/(\.user.ini|\.htaccess|\.git|\.env|\.svn|\.project|LICENSE|README.md)
     {
@@ -458,16 +457,16 @@ server
 2. 上传项目压缩文件到服务器
 3. 在服务器上解压项目文件到 /home/nginx/ilovefeadmin
 4. 为项目安装依赖项 npm i
-5. 修改mysql数据库 密码规则
+5. 修改 mysql 数据库 密码规则
 
 ```mysql
 use mysql;
 ALTER USER 'root'@'localhost' IDENTIFIED BY '新密码' PASSWORD EXPIRE NEVER;
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '新密码';
-  
+
 # 查看是否已经修改成功
-select user,host,plugin from user where user='root'; 
-  
+select user,host,plugin from user where user='root';
+
 ```
 
 6. 创建新的数据库
@@ -476,7 +475,7 @@ select user,host,plugin from user where user='root';
 create database mysite;
 ```
 
-7. nginx配置文件中添加反向代理的配置：
+7. nginx 配置文件中添加反向代理的配置：
 
 ```
 
@@ -486,7 +485,7 @@ location ^\~ /api/ {
 }
 ```
 
-8. nginx配置后台管理系统的目录：
+8. nginx 配置后台管理系统的目录：
 
 ```
 location /admin {
@@ -496,7 +495,7 @@ location /admin {
 }
 ```
 
-9. nginx配置静态文件服务器：
+9. nginx 配置静态文件服务器：
 
 ```
 
@@ -505,27 +504,25 @@ location /static/ {
 }
 ```
 
-
-
 ## 三、自动化部署
 
-**自动化部署常用的插件是jenkins，参考[Docker安装jenkins](/website/docker/)，如果你不想借助jenkins，可以参考以下解决方案**
+**自动化部署常用的插件是 jenkins，参考[Docker 安装 jenkins](/website/docker/)，如果你不想借助 jenkins，可以参考以下解决方案**
 
 通过配置 Webhook + Shell 脚本 来实现「Git 有最新提交时，仅拉取指定文件」的部署需求
 当远程 Git 仓库有新提交时，只拉取特定文件（如 /dist/\*\* 或 /public/index.html）而不是整个项目
 
 ### 1、准备条件
 
-* 你已有 Git 仓库（GitHub、Gitee 等）
-* 宝塔服务器已安装 Git、Node.js、PM2（可选）
-* 项目已初始化为 Git 仓库（git clone 方式）
+-   你已有 Git 仓库（GitHub、Gitee 等）
+-   宝塔服务器已安装 Git、Node.js、PM2（可选）
+-   项目已初始化为 Git 仓库（git clone 方式）
 
 ### 2、创建自动拉取脚本（只同步指定文件）
 
 #### 前端项目的做法
 
 假设前端项目部署在 /www/wwwroot/zzf.net.cn，你只想更新仓库中的 dist/ 到这个目录
-（1）在服务器上创建一个暂存文件，拉取完整仓库到缓存目录，如果想使用ssh方式拉取代码，可以参考[git](/tool/git/)
+（1）在服务器上创建一个暂存文件，拉取完整仓库到缓存目录，如果想使用 ssh 方式拉取代码，可以参考[git](/tool/git/)
 
 ```bash
 mkdir -p /www/git-temp
@@ -574,9 +571,9 @@ git checkout origin/main -- index.html
 git clone https://github.com/zhenfeng95/community-koa.git
 ```
 
-**Docker镜像做法**
+**Docker 镜像做法**
 
-（2）创建部署脚本 /www/deploy/deploy-comkoa.sh，该脚本文件会读取项目根目录下的Dockerfile文件，并生成一个web_api的镜像，运行镜像即可访问后端服务，通过docker ps | grep web_api查看是否运行
+（2）创建部署脚本 /www/deploy/deploy-comkoa.sh，该脚本文件会读取项目根目录下的 Dockerfile 文件，并生成一个 web_api 的镜像，运行镜像即可访问后端服务，通过 docker ps | grep web_api 查看是否运行
 
 ```shell
 #!/bin/bash
@@ -590,6 +587,7 @@ git pull origin main
 
 CONTAINER="web_api"
 PORT=11005
+PORT_WEBSOCKET=11007 # 启动websocket服务
 image_name="web_api"
 tag="1.0"
 
@@ -608,14 +606,14 @@ fi
 if [ $RUNNING == "false" ]; then
 	echo "$CONTAINER is not running"
     return 2
-else  
+else
 	echo "$CONTAINER is running"
     # 删除相同名字的容器
     matchingStarted=$(docker ps --filter="name=$CONTAINER" -q | xargs)
     if [ -n $matchingStarted ]; then
     	docker stop $matchingStarted
     fi
-    
+
     matching=$(docker ps -a --filter="name=$CONTAINER" -q | xargs)
     if [ -n $matching ]; then
     	docker rm $matching
@@ -623,20 +621,20 @@ else
 fi
 
 echo "RUNNING is ${RUNNING}"
-    
+
 # 运行镜像
 # docker run -itd --name $CONTAINER -p $PORT:3002 ${image_name}:${tag}
 
-docker run -d --name $CONTAINER -p $PORT:3002 ${image_name}:${tag}
+docker run -d --name $CONTAINER -p $PORT:3002 -p $PORT_WEBSOCKET:3003 ${image_name}:${tag}
 
 echo "Deploy finished at $(date)"
 
 exit 0
 ```
 
-**普通Node项目做法**
+**普通 Node 项目做法**
 
-（2）创建部署脚本 /www/deploy/deploy-server.sh，用pm2即可访问后端服务
+（2）创建部署脚本 /www/deploy/deploy-server.sh，用 pm2 即可访问后端服务
 
 ```shell
 #!/bin/bash
@@ -674,31 +672,31 @@ npm install express body-parser
 创建 index.js：
 
 ```js
-const express = require('express')
-const bodyParser = require('body-parser')
-const { exec } = require('child_process')
+const express = require('express');
+const bodyParser = require('body-parser');
+const { exec } = require('child_process');
 
-const app = express()
-app.use(bodyParser.json())
+const app = express();
+app.use(bodyParser.json());
 
 app.post('/webhook', (req, res) => {
-  console.log('Git 推送事件已接收')
-  exec('sh /www/deploy/deploy.sh', (err, stdout, stderr) => {
-    if (err) {
-      console.error('执行失败', stderr)
-      return res.status(500).send('error')
-    }
-    console.log('部署成功', stdout)
-    res.send('部署成功')
-  })
-})
+    console.log('Git 推送事件已接收');
+    exec('sh /www/deploy/deploy.sh', (err, stdout, stderr) => {
+        if (err) {
+            console.error('执行失败', stderr);
+            return res.status(500).send('error');
+        }
+        console.log('部署成功', stdout);
+        res.send('部署成功');
+    });
+});
 
-app.listen(4000,'0.0.0.0', () => {
-  console.log('Webhook 服务已运行，端口 4000')
-})
+app.listen(4000, '0.0.0.0', () => {
+    console.log('Webhook 服务已运行，端口 4000');
+});
 ```
 
-**在阿里云后台安全组中的入方向一定要放开4000的端口**
+**在阿里云后台安全组中的入方向一定要放开 4000 的端口**
 启动服务（建议用 pm2 保活）：
 
 ```bash
@@ -706,34 +704,33 @@ npm install -g pm2
 pm2 start index.js --name webhook
 ```
 
-对于Docker镜像运行的项目，在创建webhook时，由于构建镜像需要时间，所以要提前给github返回状态
+对于 Docker 镜像运行的项目，在创建 webhook 时，由于构建镜像需要时间，所以要提前给 github 返回状态
 
 ```js
-const express = require('express')
-const bodyParser = require('body-parser')
-const { exec } = require('child_process')
+const express = require('express');
+const bodyParser = require('body-parser');
+const { exec } = require('child_process');
 
-const app = express()
-app.use(bodyParser.json())
+const app = express();
+app.use(bodyParser.json());
 
 app.post('/webhook-comkoa', (req, res) => {
-  console.log('Git 推送事件已接收')
-  res.send('已接收，正在后台部署中...') 
-  exec('sh /www/deploy/deploy-comkoa.sh', (err, stdout, stderr) => {
-    if (err) {
-      console.error('执行失败', stderr)
-      return
-      // return res.status(500).send('error')
-    }
-    console.log('部署成功', stdout)
-    // res.send('后台部署成功')
-  })
-})
+    console.log('Git 推送事件已接收');
+    res.send('已接收，正在后台部署中...');
+    exec('sh /www/deploy/deploy-comkoa.sh', (err, stdout, stderr) => {
+        if (err) {
+            console.error('执行失败', stderr);
+            return;
+            // return res.status(500).send('error')
+        }
+        console.log('部署成功', stdout);
+        // res.send('后台部署成功')
+    });
+});
 
-app.listen(4006,'0.0.0.0', () => {
-  console.log('Webhook 服务已运行，端口 4006')
-})
-
+app.listen(4006, '0.0.0.0', () => {
+    console.log('Webhook 服务已运行，端口 4006');
+});
 ```
 
 ### 4、在 GitHub/Gitee 中配置 Webhook
@@ -741,13 +738,11 @@ app.listen(4006,'0.0.0.0', () => {
 前往仓库设置：
 
 1. 找到具体项目，进入 Settings > Webhooks > Add Webhook。
-2. Payload URL: http://你的服务器公网IP:4000/webhook（注意公网可访问）
+2. Payload URL: http://你的服务器公网 IP:4000/webhook（注意公网可访问）
 3. Content type: application/json
 4. Secret: （可选，用于校验）
 5. 事件类型：只选 push
 6. 保存
-
-
 
 ## 四、申请免费证书文件
 
@@ -758,69 +753,72 @@ app.listen(4006,'0.0.0.0', () => {
 ```bash
 curl https://get.acme.sh | sh -s email=my@example.com
 ```
+
 安装成功后重新登录终端，或者执行：
+
 ```bash
 source ~/.bashrc
 ```
+
 确认是否安装成功：
+
 ```bash
 acme.sh --version
 ```
 
-### 2、使用DSAPI的方式
+### 2、使用 DSAPI 的方式
 
 打开链接：[dsnpi](https://github.com/acmesh-official/acme.sh/wiki/dnsapi)
-在这个页面中找到Aliyun，在阿里云后台创建子用户，获取到Ali_Key和Ali_Secret，然后到控制台输入下面两条命令
+在这个页面中找到 Aliyun，在阿里云后台创建子用户，获取到 Ali_Key 和 Ali_Secret，然后到控制台输入下面两条命令
 
 步骤一：进入阿里云 RAM 控制台
 
-​					登录阿里云后台 [RAM 控制台](https://ram.console.aliyun.com/users)
+​ 登录阿里云后台 [RAM 控制台](https://ram.console.aliyun.com/users)
 
-​					左侧点击 用户 → 创建用户
+​ 左侧点击 用户 → 创建用户
 
 步骤二：创建子用户
 
-​					选择 普通用户（RAM 用户）
+​ 选择 普通用户（RAM 用户）
 
-​					填写用户名（随便，比如 acme-cert-user，https等）
+​ 填写用户名（随便，比如 acme-cert-user，https 等）
 
-​					勾选AccessKey 访问（AccessKey 方式）
+​ 勾选 AccessKey 访问（AccessKey 方式）
 
-​					不要选控制台访问，否则多余
+​ 不要选控制台访问，否则多余
 
-​					点击 确认。
+​ 点击 确认。
 
 步骤三：给用户授权
 
-​					创建完成后，进入刚建好的用户详情页
+​ 创建完成后，进入刚建好的用户详情页
 
-​					找到 权限管理 → 添加权限
+​ 找到 权限管理 → 添加权限
 
-​					搜索 AliyunDNSFullAccess
+​ 搜索 AliyunDNSFullAccess
 
-​					勾选该策略，点击 确定
+​ 勾选该策略，点击 确定
 
-​					这样，这个用户就有了对阿里云 DNS 服务的完全操作权限。
+​ 这样，这个用户就有了对阿里云 DNS 服务的完全操作权限。
 
 步骤四：生成 AccessKey
 
-​					在用户详情页 → 安全设置 → AccessKey 管理
+​ 在用户详情页 → 安全设置 → AccessKey 管理
 
-​					点击 创建 AccessKey
+​ 点击 创建 AccessKey
 
-​					系统会生成 AccessKeyId 和 AccessKeySecret
+​ 系统会生成 AccessKeyId 和 AccessKeySecret
 
-​					记得保存下来，Secret 只会显示一次。
+​ 记得保存下来，Secret 只会显示一次。
 
 步骤五：在服务器配置环境变量
 
-​					在你的阿里云服务器终端执行：
+​ 在你的阿里云服务器终端执行：
 
 ```bash
 export Ali_Key="<key>"
 export Ali_Secret="<secret>"
 ```
-
 
 为了长期生效，可以写入 ~/.bashrc：
 
@@ -830,31 +828,35 @@ echo 'export Ali_Secret="你的AccessKeySecret"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-切换CA：使用 Let's Encrypt 替代 ZeroSSL
+切换 CA：使用 Let's Encrypt 替代 ZeroSSL
+
 ```bash
 acme.sh --set-default-ca --server letsencrypt
 ```
 
 步骤六：测试
 
-​					执行以下命令测试申请证书：
+​ 执行以下命令测试申请证书：
 
-​					然后执行下面的命令：
+​ 然后执行下面的命令：
+
 ```bash
 acme.sh --issue --dns dns_ali -d zzf.net.cn -d *.zzf.net.cn
 ```
-​					如果执行命令报错可能没注册账号，执行以下命令
+
+​ 如果执行命令报错可能没注册账号，执行以下命令
+
 ```bash
 acme.sh --register-account -m your@email.com
 ```
 
-
-如果配置正确，acme.sh 会自动在[阿里云 DNS](https://dnsnext.console.aliyun.com/authoritative) 里添加 _acme-challenge.zzf.net.cn 这种 TXT 记录，并通过验证，最终生成证书。
+如果配置正确，acme.sh 会自动在[阿里云 DNS](https://dnsnext.console.aliyun.com/authoritative) 里添加 \_acme-challenge.zzf.net.cn 这种 TXT 记录，并通过验证，最终生成证书。
 
 🚀 到这一步，你的 acme.sh + 阿里云 DNS 自动化申请 SSL 证书就可以跑通了。
 
-如果生成的证书文件不在nginx配置中的路径时，需要执行以下命令，才能确保acme自动续期后的文件自动同步到对应的文件夹下，如果nginx配置的路径直接指向acme的目录文件，则不需要执行以下的操作
+如果生成的证书文件不在 nginx 配置中的路径时，需要执行以下命令，才能确保 acme 自动续期后的文件自动同步到对应的文件夹下，如果 nginx 配置的路径直接指向 acme 的目录文件，则不需要执行以下的操作
 nginx：
+
 ```shell
 acme.sh --install-cert -d yourdomain.com \
 --key-file /etc/nginx/ssl/yourdomain.key \
@@ -866,11 +868,12 @@ acme.sh --install-cert -d yourdomain.com \
 
 宝塔一般存放证书的路径是：
 
- ```shell
+```shell
 /www/server/panel/vhost/cert/yourdomain.com/
- ```
+```
 
 可以这样安装：
+
 ```shell
 acme.sh --install-cert -d yourdomain.com \
 --key-file /www/server/panel/vhost/cert/yourdomain.com/privkey.pem \
@@ -884,8 +887,3 @@ acme.sh --install-cert -d zzf.net.cn \
 --fullchain-file /www/server/panel/vhost/cert/zzf.net.cn/fullchain.pem \
 --reloadcmd "bt reload"
 ```
-
-
-
-
-
