@@ -410,10 +410,26 @@ server
         proxy_set_header X-Real-IP $remote_addr;
     }
 
-
+    # 代理后端接口服务
     location ^~ /api/ {
         rewrite ^/api/(.*)$ /api/$1 break;
         proxy_pass http://127.0.0.1:3001;
+    }
+
+    # 代理websocket服务
+    location ^~ /websocket {
+        proxy_pass http://127.0.0.1:11007/;  # 内部转发到11007端口
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # 超时设置
+        proxy_read_timeout 3600s;
+        proxy_send_timeout 3600s;
     }
 
 
@@ -550,6 +566,96 @@ cp -r dist/* /www/wwwroot/zzf.net.cn/dist/
 echo "Deploy finished at $(date)"
 ```
 
+带邮件通知的做法，用的是centos系统自带curl发送邮件的
+
+```shell
+#!/bin/bash
+# deploy_with_email.sh
+
+# ========== 配置 ==========
+CONFIG_QQ_EMAIL="您的QQ邮箱@qq.com"
+CONFIG_QQ_AUTH_CODE="您的授权码"
+CONFIG_TO_EMAIL="您的接收邮箱@example.com"
+PROJECT_NAME="您的项目名字"
+# ==========================
+
+# 邮件发送函数
+send_deploy_email() {
+    local status=$1  # 0=成功, 1=失败
+    local message="$2"
+    
+    if [ $status -eq 0 ]; then
+        subject="✅ ${PROJECT_NAME}部署成功 - $(date '+%m-%d %H:%M')"
+    else
+        subject="❌ ${PROJECT_NAME}部署失败 - $(date '+%m-%d %H:%M')"
+    fi
+    
+    # 创建邮件内容
+    cat > /tmp/deploy_email.txt << EOF
+From: ${CONFIG_QQ_EMAIL}
+To: ${CONFIG_TO_EMAIL}
+Subject: ${subject}
+Date: $(date -R)
+
+项目: ${PROJECT_NAME}
+时间: $(date)
+服务器: $(hostname)
+状态: ${subject%% *}
+
+详情:
+${message}
+
+文件统计:
+$(find /www/wwwroot/mgt.zzf.net.cn/dist/ -type f 2>/dev/null | wc -l) 个文件
+
+--- 自动发送 ---
+EOF
+    
+    # 发送邮件
+    curl --ssl-reqd --silent \
+      --url 'smtps://smtp.qq.com:465' \
+      --user "${CONFIG_QQ_EMAIL}:${CONFIG_QQ_AUTH_CODE}" \
+      --mail-from "${CONFIG_QQ_EMAIL}" \
+      --mail-rcpt "${CONFIG_TO_EMAIL}" \
+      --upload-file /tmp/deploy_email.txt
+    
+    rm -f /tmp/deploy_email.txt
+}
+
+# 主部署流程
+main() {
+    echo "开始部署..."
+    
+    # 原有部署步骤
+    cd /www/git-temp/community-admin || {
+        send_deploy_email 1 "无法进入目录 /www/git-temp/community-admin"
+        exit 1
+    }
+    
+    git reset --hard HEAD
+    git clean -df
+    
+    if ! git pull origin main; then
+        send_deploy_email 1 "Git拉取失败"
+        exit 1
+    fi
+    
+    if cp -r dist/* /www/wwwroot/mgt.zzf.net.cn/dist/; then
+        file_count=$(find /www/wwwroot/mgt.zzf.net.cn/dist/ -type f | wc -l)
+        send_deploy_email 0 "成功同步 ${file_count} 个文件"
+        echo "✅ 部署完成"
+    else
+        send_deploy_email 1 "文件拷贝失败"
+        exit 1
+    fi
+}
+
+# 运行
+main
+```
+
+
+
 保存后赋权：
 
 ```bash
@@ -631,6 +737,856 @@ echo "Deploy finished at $(date)"
 
 exit 0
 ```
+
+
+
+带邮件通知的做法：
+
+（1）包含热更新流程（服务中断<30秒），使后端服务没有长时间的暂停（推荐）
+
+```shell
+代码拉取 → 构建镜像 → 启动新容器 → 等待就绪 → 快速切换 → 清理旧容器
+                                 ↑
+                         仅此阶段服务中断
+```
+
+```shell
+#!/bin/bash
+# ============================================
+# 热更新部署脚本 - 修复健康检查问题版
+# ============================================
+
+# --------------------------------
+# 配置区域，参数需要改动
+# --------------------------------
+PROJECT_NAME="community-koa"
+PROJECT_PATH="/www/wwwroot/${PROJECT_NAME}"
+GIT_BRANCH="main"
+
+# 容器配置
+CONTAINER_NAME="web_api"
+CONTAINER_NEW_NAME="web_api_new"
+IMAGE_NAME="web_api"
+IMAGE_TAG="1.0"
+
+# 端口配置
+STANDARD_WEB_PORT=11005      # 最终Web端口
+STANDARD_WS_PORT=11007       # 最终WebSocket端口
+TEMP_WEB_PORT=11015          # 临时Web端口（标准+10）
+TEMP_WS_PORT=11017           # 临时WebSocket端口（标准+10）
+CONTAINER_PORT_WEB=3002
+CONTAINER_PORT_WS=3003
+
+# 邮件配置，参数需要改动
+QQ_EMAIL="您的QQ邮箱@qq.com"
+QQ_AUTH_CODE="您的QQ邮箱授权码"
+NOTIFY_EMAIL="接收通知的邮箱@example.com"
+
+# 部署参数
+MAX_STARTUP_WAIT=45          # 增加到45秒（Koa应用启动可能需要更长时间）
+HEALTH_CHECK_INTERVAL=3      # 检查间隔增加到3秒
+
+# 健康检查配置
+HEALTH_CHECK_PATH="/"        # 健康检查路径，根据您的应用调整
+HEALTH_CHECK_TIMEOUT=5       # curl超时时间
+READINESS_KEYWORDS="listening|started|ready|Server running|MongoDB.*connection opened"  # 应用就绪关键词
+
+# 日志配置
+LOG_FILE="/var/log/deploy_${PROJECT_NAME}.log"
+# --------------------------------
+
+# 全局变量
+DEPLOY_START_TIME=""
+DEPLOY_DETAILS=""
+CURRENT_STAGE=""
+
+# 初始化
+init_deployment() {
+    DEPLOY_START_TIME=$(date '+%Y-%m-%d %H:%M:%S')
+    echo "========== 热更新部署开始: ${DEPLOY_START_TIME} ==========" | tee -a "$LOG_FILE"
+    log "INFO" "使用临时端口避免冲突: ${TEMP_WEB_PORT}/${TEMP_WS_PORT}"
+}
+
+# 设置当前阶段（修复缺失的函数）
+set_stage() {
+    CURRENT_STAGE="$1"
+    log "INFO" "=== ${CURRENT_STAGE} ==="
+}
+
+# 日志函数
+log() {
+    local level="$1"
+    local message="$2"
+    local timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+    echo "[${timestamp}] [${level}] ${message}" | tee -a "$LOG_FILE"
+}
+
+# 发送邮件函数（简版，确保可用）
+send_deploy_email() {
+    local status="$1"
+    local subject="$2"
+    local message="$3"
+    
+    local email_subject="${status} ${PROJECT_NAME}部署${subject} - $(date '+%m-%d %H:%M')"
+    local mail_file="/tmp/deploy_email_$(date +%s).txt"
+    
+    cat > "$mail_file" << EOF
+From: ${QQ_EMAIL}
+To: ${NOTIFY_EMAIL}
+Subject: ${email_subject}
+Date: $(date -R)
+
+项目: ${PROJECT_NAME}
+状态: ${status}
+时间: $(date '+%Y-%m-%d %H:%M:%S')
+服务器: $(hostname)
+
+${message}
+
+最近日志:
+$(tail -20 "$LOG_FILE" 2>/dev/null || echo "无日志")
+EOF
+    
+    curl --ssl-reqd --silent \
+        --url 'smtps://smtp.qq.com:465' \
+        --user "${QQ_EMAIL}:${QQ_AUTH_CODE}" \
+        --mail-from "${QQ_EMAIL}" \
+        --mail-rcpt "${NOTIFY_EMAIL}" \
+        --upload-file "$mail_file"
+    
+    local result=$?
+    rm -f "$mail_file"
+    
+    if [ $result -eq 0 ]; then
+        log "INFO" "邮件发送成功"
+    else
+        log "ERROR" "邮件发送失败"
+    fi
+    
+    return $result
+}
+
+# 检查端口占用
+check_port_availability() {
+    local port=$1
+    local type=$2
+    
+    if ss -tulpn | grep -q ":${port}\s"; then
+        log "WARN" "端口 ${port} (${type}) 已被占用"
+        return 1
+    else
+        log "INFO" "端口 ${port} (${type}) 可用"
+        return 0
+    fi
+}
+
+# 检查应用健康状态（多维度检查）
+check_container_health() {
+    local container_name="$1"
+    local port="$2"
+    
+    # 1. 检查容器进程状态
+    if [ "$(docker inspect -f '{{.State.Running}}' "$container_name" 2>/dev/null)" != "true" ]; then
+        log "DEBUG" "容器进程未运行"
+        return 1
+    fi
+    
+    # 2. 检查应用日志中的就绪关键词
+    local container_logs=$(docker logs --tail=10 "$container_name" 2>&1)
+    if echo "$container_logs" | grep -q -E -i "$READINESS_KEYWORDS"; then
+        log "DEBUG" "日志检查通过，找到就绪关键词"
+        return 0
+    fi
+    
+    # 3. HTTP健康检查（可选，如果应用有HTTP接口）
+    if command -v curl &> /dev/null; then
+        if curl -s -f --max-time "$HEALTH_CHECK_TIMEOUT" \
+           "http://localhost:${port}${HEALTH_CHECK_PATH}" > /dev/null 2>&1; then
+            log "DEBUG" "HTTP健康检查通过 (端口:${port})"
+            return 0
+        fi
+    fi
+    
+    # 4. 检查特定进程是否在运行（例如node进程）
+    if docker exec "$container_name" ps aux 2>/dev/null | grep -q -E "node|npm"; then
+        log "DEBUG" "应用进程在运行"
+        return 0
+    fi
+    
+    return 1
+}
+
+# 启动新容器（使用临时端口）
+start_new_container_temp_port() {
+    set_stage "阶段2：启动新容器(临时端口)"
+    
+    log "INFO" "检查临时端口可用性..."
+    check_port_availability "$TEMP_WEB_PORT" "临时Web"
+    check_port_availability "$TEMP_WS_PORT" "临时WebSocket"
+    
+    log "INFO" "使用临时端口启动新容器..."
+    log "INFO" "临时端口: ${TEMP_WEB_PORT}->${CONTAINER_PORT_WEB}, ${TEMP_WS_PORT}->${CONTAINER_PORT_WS}"
+    
+    # 启动新容器（临时端口）
+    local container_id
+    if ! container_id=$(docker run -d \
+        --name "$CONTAINER_NEW_NAME" \
+        -p "${TEMP_WEB_PORT}:${CONTAINER_PORT_WEB}" \
+        -p "${TEMP_WS_PORT}:${CONTAINER_PORT_WS}" \
+        "${IMAGE_NAME}:${IMAGE_TAG}" 2>&1); then
+        log "ERROR" "新容器启动失败: ${container_id}"
+        return 1
+    fi
+    
+    # 提取容器ID
+    container_id=$(echo "$container_id" | tr -d '\n')
+    if [ ${#container_id} -eq 64 ]; then
+        log "INFO" "新容器启动成功，ID: ${container_id:0:12}"
+        log "INFO" "临时访问地址: http://$(hostname -I | awk '{print $1}'):${TEMP_WEB_PORT}"
+        
+        # 立即查看启动日志
+        sleep 2
+        local startup_logs=$(docker logs --tail=5 "$CONTAINER_NEW_NAME" 2>&1)
+        log "DEBUG" "容器启动日志: ${startup_logs}"
+        
+        DEPLOY_DETAILS="${DEPLOY_DETAILS}新容器ID: ${container_id:0:12}\n临时端口: ${TEMP_WEB_PORT},${TEMP_WS_PORT}\n"
+        return 0
+    else
+        log "ERROR" "获取容器ID失败: ${container_id}"
+        return 1
+    fi
+}
+
+# 等待新容器就绪（改进的健康检查）
+wait_for_new_container_temp() {
+    set_stage "阶段3：检查新容器健康"
+    
+    log "INFO" "等待新容器就绪，最多${MAX_STARTUP_WAIT}秒..."
+    log "INFO" "就绪关键词: ${READINESS_KEYWORDS}"
+    
+    local wait_time=0
+    local last_log_check=0
+    local consecutive_healthy_checks=0
+    local required_healthy_checks=2  # 需要连续2次检查通过
+    
+    while [ $wait_time -lt $MAX_STARTUP_WAIT ]; do
+        # 定期输出日志（每10秒）
+        if [ $((wait_time % 10)) -eq 0 ]; then
+            log "INFO" "等待容器启动... ${wait_time}/${MAX_STARTUP_WAIT}秒"
+            
+            # 每10秒输出一次最新日志
+            if [ $last_log_check -eq 0 ] || [ $((wait_time - last_log_check)) -ge 10 ]; then
+                local recent_logs=$(docker logs --tail=5 "$CONTAINER_NEW_NAME" 2>&1 | sed ':a;N;$!ba;s/\n/; /g')
+                if [ -n "$recent_logs" ]; then
+                    log "DEBUG" "最近日志: ${recent_logs}"
+                fi
+                last_log_check=$wait_time
+            fi
+        fi
+        
+        # 检查容器健康状态
+        if check_container_health "$CONTAINER_NEW_NAME" "$TEMP_WEB_PORT"; then
+            consecutive_healthy_checks=$((consecutive_healthy_checks + 1))
+            log "DEBUG" "健康检查通过 (${consecutive_healthy_checks}/${required_healthy_checks})"
+            
+            if [ $consecutive_healthy_checks -ge $required_healthy_checks ]; then
+                # 最终确认：输出完整就绪日志
+                local ready_logs=$(docker logs "$CONTAINER_NEW_NAME" 2>&1 | grep -E -i "$READINESS_KEYWORDS" | tail -3)
+                log "INFO" "✅ 新容器就绪！等待时间: ${wait_time}秒"
+                log "INFO" "就绪日志: ${ready_logs}"
+                
+                DEPLOY_DETAILS="${DEPLOY_DETAILS}容器就绪时间: ${wait_time}秒\n"
+                return 0
+            fi
+        else
+            consecutive_healthy_checks=0
+        fi
+        
+        sleep "$HEALTH_CHECK_INTERVAL"
+        wait_time=$((wait_time + HEALTH_CHECK_INTERVAL))
+    done
+    
+    # 超时处理：输出详细日志
+    log "ERROR" "新容器在${MAX_STARTUP_WAIT}秒内未就绪"
+    log "ERROR" "=== 容器最后20行日志 ==="
+    docker logs --tail=20 "$CONTAINER_NEW_NAME" 2>&1 | tee -a "$LOG_FILE"
+    log "ERROR" "=== 容器状态 ==="
+    docker inspect --format='{{json .State}}' "$CONTAINER_NEW_NAME" 2>&1 | tee -a "$LOG_FILE"
+    
+    return 1
+}
+
+# 执行热切换
+perform_hot_swap_with_ports() {
+    set_stage "阶段4：执行热切换"
+    
+    local swap_start=$(date +%s)
+    log "INFO" "开始热切换（服务中断开始）..."
+    
+    # 1. 停止旧容器（释放标准端口）
+    if docker inspect "$CONTAINER_NAME" > /dev/null 2>&1; then
+        log "INFO" "停止旧容器: ${CONTAINER_NAME}"
+        if docker stop "$CONTAINER_NAME"; then
+            log "INFO" "旧容器已停止"
+            sleep 2  # 等待端口释放
+        else
+            log "WARN" "停止旧容器失败，可能已不存在"
+        fi
+    fi
+    
+    # 2. 停止新容器（临时端口）
+    log "INFO" "停止新容器准备端口切换..."
+    docker stop "$CONTAINER_NEW_NAME"
+    
+    # 3. 移除旧容器
+    docker rm "$CONTAINER_NAME" 2>/dev/null && log "INFO" "旧容器已移除"
+    
+    # 4. 重命名新容器
+    docker rename "$CONTAINER_NEW_NAME" "$CONTAINER_NAME"
+    
+    # 5. 修改容器端口绑定（需要重新创建容器）
+    log "INFO" "重新创建容器使用标准端口: ${STANDARD_WEB_PORT}/${STANDARD_WS_PORT}"
+    
+    # 先获取容器的其他配置（环境变量、卷等）
+    local env_vars=$(docker inspect --format='{{range .Config.Env}}{{println .}}{{end}}' "$CONTAINER_NAME" 2>/dev/null | grep -v "^$" | sed 's/^/-e "/;s/$/"/' | tr '\n' ' ')
+    
+    # 移除旧容器实例
+    docker rm "$CONTAINER_NAME" 2>/dev/null
+    
+    # 使用标准端口重新创建
+    if ! docker run -d \
+        --name "$CONTAINER_NAME" \
+        -p "${STANDARD_WEB_PORT}:${CONTAINER_PORT_WEB}" \
+        -p "${STANDARD_WS_PORT}:${CONTAINER_PORT_WS}" \
+        ${env_vars} \
+        "${IMAGE_NAME}:${IMAGE_TAG}"; then
+        log "ERROR" "重新创建容器失败"
+        return 1
+    fi
+    
+    # 6. 验证最终容器
+    sleep 3
+    if check_container_health "$CONTAINER_NAME" "$STANDARD_WEB_PORT"; then
+        log "INFO" "✅ 最终容器运行正常"
+    else
+        log "ERROR" "最终容器健康检查失败"
+        docker logs --tail=10 "$CONTAINER_NAME" 2>&1 | tee -a "$LOG_FILE"
+        return 1
+    fi
+    
+    local swap_end=$(date +%s)
+    local swap_duration=$((swap_end - swap_start))
+    
+    log "INFO" "热切换完成，耗时: ${swap_duration}秒"
+    DEPLOY_DETAILS="${DEPLOY_DETAILS}热切换耗时: ${swap_duration}秒\n"
+    
+    return 0
+}
+
+# 主部署流程
+main_deployment() {
+    init_deployment
+    
+    set_stage "阶段1：准备工作"
+    cd "$PROJECT_PATH" || {
+        log "ERROR" "项目目录不存在: ${PROJECT_PATH}"
+        send_deploy_email "failure" "目录错误" "项目目录不存在"
+        return 1
+    }
+    
+    # 拉取代码
+    log "INFO" "拉取最新代码..."
+    if ! git pull origin "$GIT_BRANCH"; then
+        log "ERROR" "代码拉取失败"
+        send_deploy_email "failure" "代码拉取失败" "无法从${GIT_BRANCH}分支拉取代码"
+        return 1
+    fi
+    
+    # 构建镜像
+    log "INFO" "构建Docker镜像..."
+    if ! docker build --no-cache -t "${IMAGE_NAME}:${IMAGE_TAG}" .; then
+        log "ERROR" "镜像构建失败"
+        send_deploy_email "failure" "镜像构建失败" "Docker镜像构建失败，请检查Dockerfile"
+        return 1
+    fi
+    
+    # 启动新容器
+    if ! start_new_container_temp_port; then
+        log "ERROR" "新容器启动失败"
+        send_deploy_email "failure" "容器启动失败" "无法启动新容器"
+        return 1
+    fi
+    
+    # 等待新容器就绪
+    if ! wait_for_new_container_temp; then
+        log "ERROR" "新容器健康检查失败"
+        docker stop "$CONTAINER_NEW_NAME" 2>/dev/null
+        docker rm "$CONTAINER_NEW_NAME" 2>/dev/null
+        send_deploy_email "failure" "健康检查失败" "新容器在${MAX_STARTUP_WAIT}秒内未通过健康检查"
+        return 1
+    fi
+    
+    # 执行热切换
+    if ! perform_hot_swap_with_ports; then
+        log "ERROR" "热切换失败"
+        send_deploy_email "failure" "热切换失败" "端口切换过程中出错"
+        return 1
+    fi
+    
+    # 部署成功
+    set_stage "阶段5：部署完成"
+    
+    local success_message="✅ 热更新部署成功完成\n\n项目: ${PROJECT_NAME}\n服务中断时间: <30秒\n最终端口: ${STANDARD_WEB_PORT} (Web), ${STANDARD_WS_PORT} (WebSocket)\n数据库连接: 正常\n应用状态: 运行中"
+    
+    echo ""
+    echo "✅ 部署成功完成！"
+    echo "   应用已运行在端口: ${STANDARD_WEB_PORT}"
+    echo "   可通过 http://$(hostname -I | awk '{print $1}'):${STANDARD_WEB_PORT} 访问"
+    echo ""
+    
+    send_deploy_email "success" "成功" "$success_message"
+    
+    return 0
+}
+
+# 异常处理
+handle_error() {
+    local error_line="${BASH_LINENO[0]}"
+    local error_code=$?
+    
+    log "ERROR" "部署失败于第${error_line}行 (退出码: ${error_code})"
+    
+    # 清理临时容器
+    docker stop "$CONTAINER_NEW_NAME" 2>/dev/null
+    docker rm "$CONTAINER_NEW_NAME" 2>/dev/null
+    
+    # 尝试恢复旧服务
+    if docker ps -a --filter "name=${CONTAINER_NAME}" | grep -q "${CONTAINER_NAME}"; then
+        docker start "$CONTAINER_NAME" 2>/dev/null
+        log "INFO" "已恢复旧容器服务"
+    fi
+    
+    echo ""
+    echo "❌ 部署失败！已恢复旧服务。"
+    echo "   请查看日志: ${LOG_FILE}"
+    echo ""
+    
+    send_deploy_email "failure" "脚本错误" "部署脚本在第${error_line}行失败，错误码: ${error_code}"
+    
+    exit $error_code
+}
+
+# 设置错误处理
+trap 'handle_error' ERR
+
+# 执行主函数
+main_deployment
+```
+
+（2）没有热更新，较长时间服务的暂停
+
+```shell
+代码拉取 → 停止旧容器 → 构建镜像 → 启动新容器
+整个过程服务中断
+```
+
+
+
+```shell
+#!/bin/bash
+# ================================
+# 基于Docker的Koa应用部署脚本
+# 支持邮件通知、自动构建和容器管理
+# ================================
+
+# --------------------------------
+# 配置区域 (请根据实际情况修改)
+# --------------------------------
+# 项目配置
+PROJECT_NAME="community-koa"
+PROJECT_PATH="/www/wwwroot/${PROJECT_NAME}"
+GIT_BRANCH="main"
+
+# Docker配置
+CONTAINER_NAME="web_api"
+IMAGE_NAME="web_api"
+IMAGE_TAG="1.0"
+PORT_WEB=11005          # 外部Web访问端口
+PORT_WEBSOCKET=11007    # 外部WebSocket访问端口
+CONTAINER_PORT_WEB=3002 # 容器内部Web端口
+CONTAINER_PORT_WS=3003  # 容器内部WebSocket端口
+
+# 邮件通知配置 (使用curl发送邮件)
+QQ_EMAIL="您的QQ邮箱@qq.com"
+QQ_AUTH_CODE="您的QQ邮箱授权码"
+NOTIFY_EMAIL="接收通知的邮箱@example.com"
+
+# 日志配置
+LOG_FILE="/var/log/deploy_${PROJECT_NAME}.log"
+# --------------------------------
+
+# 初始化日志
+init_log() {
+    echo "========== 部署开始: $(date '+%Y-%m-%d %H:%M:%S') ==========" | tee -a "$LOG_FILE"
+}
+
+# 记录日志函数
+log() {
+    local level="$1"
+    local message="$2"
+    local timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+    echo "[${timestamp}] [${level}] ${message}" | tee -a "$LOG_FILE"
+}
+
+# 发送邮件函数 (使用curl)
+send_deploy_email() {
+    local status="$1"      # "success" 或 "failure"
+    local subject="$2"
+    local message="$3"
+    
+    # 根据状态设置主题前缀
+    if [ "$status" = "success" ]; then
+        email_prefix="✅"
+    else
+        email_prefix="❌"
+    fi
+    
+    local full_subject="${email_prefix} ${PROJECT_NAME}部署${subject} - $(date '+%m-%d %H:%M')"
+    
+    # 创建邮件内容文件
+    local mail_file="/tmp/deploy_email_$(date +%s).txt"
+    cat > "$mail_file" << EOF
+From: ${QQ_EMAIL}
+To: ${NOTIFY_EMAIL}
+Subject: ${full_subject}
+Date: $(date -R)
+Content-Type: text/plain; charset="utf-8"
+
+项目名称: ${PROJECT_NAME}
+部署状态: ${status}
+通知时间: $(date '+%Y-%m-%d %H:%M:%S')
+服务器信息: $(hostname) ($(curl -s ifconfig.me 2>/dev/null || echo "N/A"))
+
+${message}
+
+===== 部署详情 =====
+${DEPLOY_DETAILS:-"无额外详情"}
+
+===== 最近日志 =====
+$(tail -10 "$LOG_FILE" 2>/dev/null || echo "日志文件不存在")
+
+---
+此邮件由部署系统自动发送
+EOF
+    
+    # 使用curl发送邮件
+    log "INFO" "正在发送${status}通知邮件..."
+    curl --ssl-reqd --silent \
+        --url 'smtps://smtp.qq.com:465' \
+        --user "${QQ_EMAIL}:${QQ_AUTH_CODE}" \
+        --mail-from "${QQ_EMAIL}" \
+        --mail-rcpt "${NOTIFY_EMAIL}" \
+        --upload-file "$mail_file"
+    
+    local curl_result=$?
+    
+    if [ $curl_result -eq 0 ]; then
+        log "INFO" "邮件发送成功"
+    else
+        log "ERROR" "邮件发送失败 (curl返回值: ${curl_result})"
+    fi
+    
+    # 清理临时文件
+    rm -f "$mail_file"
+    return $curl_result
+}
+
+# 检查并进入项目目录
+check_project_dir() {
+    log "INFO" "检查项目目录: ${PROJECT_PATH}"
+    
+    if [ ! -d "$PROJECT_PATH" ]; then
+        log "ERROR" "项目目录不存在: ${PROJECT_PATH}"
+        send_deploy_email "failure" "目录检查失败" "项目目录不存在: ${PROJECT_PATH}"
+        return 1
+    fi
+    
+    cd "$PROJECT_PATH" || {
+        log "ERROR" "无法进入项目目录: ${PROJECT_PATH}"
+        send_deploy_email "failure" "目录访问失败" "无法进入项目目录: ${PROJECT_PATH}"
+        return 1
+    }
+    
+    log "INFO" "当前目录: $(pwd)"
+    return 0
+}
+
+# 拉取最新代码
+pull_latest_code() {
+    log "INFO" "从GitHub拉取最新代码 (分支: ${GIT_BRANCH})..."
+    
+    # 检查git仓库
+    if [ ! -d ".git" ]; then
+        log "ERROR" "当前目录不是Git仓库"
+        send_deploy_email "failure" "Git仓库检查失败" "当前目录不是Git仓库"
+        return 1
+    fi
+    
+    # 拉取代码
+    git fetch origin
+    if ! git pull origin "$GIT_BRANCH"; then
+        log "ERROR" "Git拉取失败"
+        send_deploy_email "failure" "代码拉取失败" "从${GIT_BRANCH}分支拉取代码失败"
+        return 1
+    fi
+    
+    local latest_commit=$(git log -1 --oneline 2>/dev/null || echo "未知")
+    log "INFO" "代码拉取成功，最新提交: ${latest_commit}"
+    
+    # 记录部署详情
+    DEPLOY_DETAILS="代码分支: ${GIT_BRANCH}\n最新提交: ${latest_commit}\n拉取时间: $(date '+%H:%M:%S')"
+    
+    return 0
+}
+
+# 检查Docker容器状态
+check_container_status() {
+    log "INFO" "检查Docker容器状态: ${CONTAINER_NAME}"
+    
+    # 检查容器是否存在
+    if ! docker inspect "$CONTAINER_NAME" > /dev/null 2>&1; then
+        log "INFO" "容器不存在: ${CONTAINER_NAME}"
+        CONTAINER_EXISTS=false
+        CONTAINER_RUNNING=false
+        return 0
+    fi
+    
+    CONTAINER_EXISTS=true
+    
+    # 检查容器是否在运行
+    if [ "$(docker inspect -f '{{.State.Running}}' "$CONTAINER_NAME" 2>/dev/null)" = "true" ]; then
+        log "INFO" "容器正在运行: ${CONTAINER_NAME}"
+        CONTAINER_RUNNING=true
+        
+        # 获取容器ID
+        CONTAINER_ID=$(docker ps -q --filter "name=${CONTAINER_NAME}")
+        log "INFO" "容器ID: ${CONTAINER_ID}"
+    else
+        log "INFO" "容器已停止: ${CONTAINER_NAME}"
+        CONTAINER_RUNNING=false
+    fi
+    
+    return 0
+}
+
+# 停止并移除旧容器
+cleanup_old_container() {
+    log "INFO" "清理旧容器..."
+    
+    # 停止正在运行的容器
+    local running_containers=$(docker ps -q --filter "name=${CONTAINER_NAME}")
+    if [ -n "$running_containers" ]; then
+        log "INFO" "停止运行中的容器: ${running_containers}"
+        docker stop $running_containers
+    fi
+    
+    # 移除已停止的容器
+    local all_containers=$(docker ps -aq --filter "name=${CONTAINER_NAME}")
+    if [ -n "$all_containers" ]; then
+        log "INFO" "移除容器: ${all_containers}"
+        docker rm $all_containers
+    fi
+    
+    # 清理未使用的镜像
+    log "INFO" "清理未使用的Docker资源..."
+    docker system prune -f
+    
+    return 0
+}
+
+# 构建Docker镜像
+build_docker_image() {
+    log "INFO" "构建Docker镜像: ${IMAGE_NAME}:${IMAGE_TAG}"
+    
+    # 检查Dockerfile
+    if [ ! -f "Dockerfile" ]; then
+        log "ERROR" "Dockerfile不存在"
+        send_deploy_email "failure" "Docker构建失败" "Dockerfile不存在"
+        return 1
+    fi
+    
+    # 构建镜像
+    if ! docker build --no-cache -t "${IMAGE_NAME}:${IMAGE_TAG}" .; then
+        log "ERROR" "Docker镜像构建失败"
+        send_deploy_email "failure" "Docker构建失败" "镜像构建失败，请检查Dockerfile"
+        return 1
+    fi
+    
+    log "INFO" "Docker镜像构建成功: ${IMAGE_NAME}:${IMAGE_TAG}"
+    
+    # 记录镜像信息
+    local image_info=$(docker images | grep "${IMAGE_NAME}" | grep "${IMAGE_TAG}" | head -1)
+    DEPLOY_DETAILS="${DEPLOY_DETAILS}\nDocker镜像: ${image_info}"
+    
+    return 0
+}
+
+# 运行Docker容器
+run_docker_container() {
+    log "INFO" "启动Docker容器..."
+    
+    # 检查端口是否被占用
+    if ss -tulpn | grep -q ":${PORT_WEB}\s"; then
+        log "WARN" "端口 ${PORT_WEB} 可能已被占用"
+    fi
+    
+    if ss -tulpn | grep -q ":${PORT_WEBSOCKET}\s"; then
+        log "WARN" "端口 ${PORT_WEBSOCKET} 可能已被占用"
+    fi
+    
+    # 运行容器
+    local run_cmd="docker run -d \
+        --name ${CONTAINER_NAME} \
+        -p ${PORT_WEB}:${CONTAINER_PORT_WEB} \
+        -p ${PORT_WEBSOCKET}:${CONTAINER_PORT_WS} \
+        ${IMAGE_NAME}:${IMAGE_TAG}"
+    
+    log "INFO" "执行命令: ${run_cmd}"
+    
+    if ! eval "$run_cmd"; then
+        log "ERROR" "容器启动失败"
+        send_deploy_email "failure" "容器启动失败" "Docker容器启动失败，命令: ${run_cmd}"
+        return 1
+    fi
+    
+    # 等待容器启动
+    sleep 3
+    
+    # 验证容器运行状态
+    if [ "$(docker inspect -f '{{.State.Running}}' "$CONTAINER_NAME")" = "true" ]; then
+        log "INFO" "容器启动成功: ${CONTAINER_NAME}"
+        
+        # 获取容器信息
+        local container_id=$(docker ps -q --filter "name=${CONTAINER_NAME}")
+        local container_ip=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' "$CONTAINER_NAME")
+        
+        DEPLOY_DETAILS="${DEPLOY_DETAILS}\n容器状态: 运行中\n容器ID: ${container_id}\n内部IP: ${container_ip}\n映射端口: ${PORT_WEB}->${CONTAINER_PORT_WEB}, ${PORT_WEBSOCKET}->${CONTAINER_PORT_WS}"
+        
+        return 0
+    else
+        log "ERROR" "容器启动后未运行"
+        send_deploy_email "failure" "容器启动异常" "容器${CONTAINER_NAME}启动后未进入运行状态"
+        return 1
+    fi
+}
+
+# 验证部署结果
+verify_deployment() {
+    log "INFO" "验证部署结果..."
+    
+    # 检查容器是否响应
+    local max_retries=10
+    local retry_count=0
+    
+    while [ $retry_count -lt $max_retries ]; do
+        if docker logs "$CONTAINER_NAME" 2>&1 | tail -5 | grep -q "listening\|started\|running"; then
+            log "INFO" "应用启动成功检测到"
+            break
+        fi
+        
+        retry_count=$((retry_count + 1))
+        log "INFO" "等待应用启动... (${retry_count}/${max_retries})"
+        sleep 2
+    done
+    
+    # 获取容器日志
+    local container_logs=$(docker logs "$CONTAINER_NAME" 2>&1 | tail -20)
+    DEPLOY_DETAILS="${DEPLOY_DETAILS}\n应用日志: ${container_logs}"
+    
+    return 0
+}
+
+# 主部署流程
+main_deployment() {
+    init_log
+    
+    log "INFO" "开始部署项目: ${PROJECT_NAME}"
+    
+    # 步骤1: 检查项目目录
+    if ! check_project_dir; then
+        return 1
+    fi
+    
+    # 步骤2: 拉取最新代码
+    if ! pull_latest_code; then
+        return 1
+    fi
+    
+    # 步骤3: 检查容器状态
+    check_container_status
+    
+    # 步骤4: 清理旧容器
+    if ! cleanup_old_container; then
+        send_deploy_email "failure" "容器清理失败" "清理旧Docker容器时出错"
+        return 1
+    fi
+    
+    # 步骤5: 构建Docker镜像
+    if ! build_docker_image; then
+        return 1
+    fi
+    
+    # 步骤6: 运行Docker容器
+    if ! run_docker_container; then
+        return 1
+    fi
+    
+    # 步骤7: 验证部署
+    verify_deployment
+    
+    # 步骤8: 发送成功通知
+    local success_message="✅ 部署成功完成\n\n项目: ${PROJECT_NAME}\n时间: $(date '+%Y-%m-%d %H:%M:%S')\n状态: 所有步骤执行成功\n\n访问地址:\n- Web: http://服务器IP:${PORT_WEB}\n- WebSocket: ws://服务器IP:${PORT_WEBSOCKET}"
+    
+    if send_deploy_email "success" "成功" "$success_message"; then
+        log "INFO" "========== 部署成功完成: $(date '+%Y-%m-%d %H:%M:%S') =========="
+        echo "✅ 部署成功完成!"
+        echo "   项目: ${PROJECT_NAME}"
+        echo "   容器: ${CONTAINER_NAME}"
+        echo "   端口: ${PORT_WEB} (Web), ${PORT_WEBSOCKET} (WebSocket)"
+        echo "   时间: $(date '+%Y-%m-%d %H:%M:%S')"
+    else
+        log "WARN" "部署成功但邮件通知发送失败"
+        echo "⚠️  部署成功，但邮件通知发送失败"
+    fi
+    
+    return 0
+}
+
+# 异常处理
+handle_error() {
+    local error_code=$?
+    local error_message="部署过程在第${BASH_LINENO[0]}行发生错误 (退出码: ${error_code})"
+    
+    log "ERROR" "$error_message"
+    
+    # 发送失败邮件
+    local failure_message="❌ 部署失败\n\n项目: ${PROJECT_NAME}\n时间: $(date '+%Y-%m-%d %H:%M:%S')\n错误: ${error_message}\n\n请查看服务器日志: ${LOG_FILE}"
+    
+    send_deploy_email "failure" "失败" "$failure_message"
+    
+    echo "❌ 部署失败!"
+    echo "   错误详情请查看: ${LOG_FILE}"
+    exit $error_code
+}
+
+# 设置错误处理
+trap handle_error ERR
+
+# 执行主函数
+main_deployment
+```
+
+
 
 **普通 Node 项目做法**
 
@@ -773,47 +1729,47 @@ acme.sh --version
 
 步骤一：进入阿里云 RAM 控制台
 
-​ 登录阿里云后台 [RAM 控制台](https://ram.console.aliyun.com/users)
+ 登录阿里云后台 [RAM 控制台](https://ram.console.aliyun.com/users)
 
-​ 左侧点击 用户 → 创建用户
+ 左侧点击 用户 → 创建用户
 
 步骤二：创建子用户
 
-​ 选择 普通用户（RAM 用户）
+ 选择 普通用户（RAM 用户）
 
-​ 填写用户名（随便，比如 acme-cert-user，https 等）
+ 填写用户名（随便，比如 acme-cert-user，https 等）
 
-​ 勾选 AccessKey 访问（AccessKey 方式）
+ 勾选 AccessKey 访问（AccessKey 方式）
 
-​ 不要选控制台访问，否则多余
+ 不要选控制台访问，否则多余
 
-​ 点击 确认。
+ 点击 确认。
 
 步骤三：给用户授权
 
-​ 创建完成后，进入刚建好的用户详情页
+ 创建完成后，进入刚建好的用户详情页
 
-​ 找到 权限管理 → 添加权限
+ 找到 权限管理 → 添加权限
 
-​ 搜索 AliyunDNSFullAccess
+ 搜索 AliyunDNSFullAccess
 
-​ 勾选该策略，点击 确定
+ 勾选该策略，点击 确定
 
-​ 这样，这个用户就有了对阿里云 DNS 服务的完全操作权限。
+ 这样，这个用户就有了对阿里云 DNS 服务的完全操作权限。
 
 步骤四：生成 AccessKey
 
-​ 在用户详情页 → 安全设置 → AccessKey 管理
+ 在用户详情页 → 安全设置 → AccessKey 管理
 
-​ 点击 创建 AccessKey
+ 点击 创建 AccessKey
 
-​ 系统会生成 AccessKeyId 和 AccessKeySecret
+ 系统会生成 AccessKeyId 和 AccessKeySecret
 
-​ 记得保存下来，Secret 只会显示一次。
+ 记得保存下来，Secret 只会显示一次。
 
 步骤五：在服务器配置环境变量
 
-​ 在你的阿里云服务器终端执行：
+ 在你的阿里云服务器终端执行：
 
 ```bash
 export Ali_Key="<key>"
@@ -836,15 +1792,15 @@ acme.sh --set-default-ca --server letsencrypt
 
 步骤六：测试
 
-​ 执行以下命令测试申请证书：
+ 执行以下命令测试申请证书：
 
-​ 然后执行下面的命令：
+ 然后执行下面的命令：
 
 ```bash
 acme.sh --issue --dns dns_ali -d zzf.net.cn -d *.zzf.net.cn
 ```
 
-​ 如果执行命令报错可能没注册账号，执行以下命令
+ 如果执行命令报错可能没注册账号，执行以下命令
 
 ```bash
 acme.sh --register-account -m your@email.com

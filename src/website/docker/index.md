@@ -4,99 +4,94 @@ type: docker
 order: 1
 ---
 
-## Docker容器技术的特点
+## Docker 容器技术的特点
 
 1. 文件系统隔离：每个进程容器运行在完全独立的根文件系统里。
 
-2. 资源隔离：可以使用cgroup为每个进程容器分配不同的系统资源，例如CPU和内存。
+2. 资源隔离：可以使用 cgroup 为每个进程容器分配不同的系统资源，例如 CPU 和内存。
 
-3. 网络隔离：每个进程容器运行在自己的网络命名空间里，拥有自己的虚拟接口和IP地址。
+3. 网络隔离：每个进程容器运行在自己的网络命名空间里，拥有自己的虚拟接口和 IP 地址。
 
 4. 写时复制：采用写时复制方式创建根文件系统，这让部署变得极其快捷，并且节省内存和硬盘空间。
 
-5. 日志记录：Docker将会收集和记录每个进程容器的标准流（stdout/stderr/stdin），用于实时检索或批量检索。
+5. 日志记录：Docker 将会收集和记录每个进程容器的标准流（stdout/stderr/stdin），用于实时检索或批量检索。
 
 6. 变更管理：容器文件系统的变更可以提交到新的映像中，并可重复使用以创建更多的容器。无需使用模板或手动配置。
 
-7. 交互式Shell：Docker可以分配一个虚拟终端并关联到任何容器的标准输入上，例如运行一个一次性交互shell。
+7. 交互式 Shell：Docker 可以分配一个虚拟终端并关联到任何容器的标准输入上，例如运行一个一次性交互 shell。
 
-8. 
-   Docker 几乎可以安装（更准确地说是运行）任何服务，包括：
+8. Docker 几乎可以安装（更准确地说是运行）任何服务，包括：
 
-   * MySQL（数据库）
+    - MySQL（数据库）
 
+    - MongoDB（NoSQL 数据库）
 
-   * MongoDB（NoSQL 数据库）
+    - Node.js（应用运行环境）
 
+    - Nginx（反向代理 / 静态资源服务器）
 
-   * Node.js（应用运行环境）
+    - 这些服务都是 Docker 的“经典组合”，在实际项目部署中非常常见。
 
+## Docker 的安装与使用
 
-   * Nginx（反向代理 / 静态资源服务器）
-
-
-   * 这些服务都是 Docker 的“经典组合”，在实际项目部署中非常常见。
-
-## Docker的安装与使用
-
-docker服务可以通过宝塔面板安装
+docker 服务可以通过宝塔面板安装
 
 1. 安装 MongoDB
 
-   ```shell
-   docker run -d \
-     --name mongo \
-     -v /data/mongo:/data/db \
-     -p 27017:27017 \
-     mongo:latest
-   ```
+    ```shell
+    docker run -d \
+      --name mongo \
+      -v /data/mongo:/data/db \
+      -p 27017:27017 \
+      mongo:latest
+    ```
 
 2. 安装 MySQL
 
-   ```shell
-   docker run -d \
-     --name mysql \
-     -v /data/mysql:/var/lib/mysql \
-     -e MYSQL_ROOT_PASSWORD=123456 \
-     -p 3306:3306 \
-     mysql:8.0
-   ```
+    ```shell
+    docker run -d \
+      --name mysql \
+      -v /data/mysql:/var/lib/mysql \
+      -e MYSQL_ROOT_PASSWORD=123456 \
+      -p 3306:3306 \
+      mysql:8.0
+    ```
 
 3. 安装 Nginx
 
-   ```shell
-   docker run -d \
-     --name nginx \
-     -v /data/nginx/html:/usr/share/nginx/html \
-     -v /data/nginx/conf:/etc/nginx/conf.d \
-     -p 80:80 \
-     nginx:latest
-   ```
+    ```shell
+    docker run -d \
+      --name nginx \
+      -v /data/nginx/html:/usr/share/nginx/html \
+      -v /data/nginx/conf:/etc/nginx/conf.d \
+      -p 80:80 \
+      nginx:latest
+    ```
 
 4. 安装 Node.js 应用
 
-   ```shell
-   docker run -d \
-     --name nodeapp \
-     -v /data/nodeapp:/app \
-     -w /app \
-     -p 3000:3000 \
-     node:18 \
-     node index.js
-   ```
+    ```shell
+    docker run -d \
+      --name nodeapp \
+      -v /data/nodeapp:/app \
+      -w /app \
+      -p 3000:3000 \
+      node:18 \
+      node index.js
+    ```
 
 ## Docker 的优势
 
-| 功能         | 传统安装（宝塔）       | Docker 安装      |
-| ------------ | ---------------------- | ---------------- |
+| 功能         | 传统安装（宝塔）        | Docker 安装       |
+| ------------ | ----------------------- | ----------------- |
 | 环境一致性   | ❌ 容易出错（版本差异） | ✅ 一致，可复制   |
-| 安装速度     | 慢                     | ⚡ 快（几秒启动） |
+| 安装速度     | 慢                      | ⚡ 快（几秒启动） |
 | 升级维护     | ⚠️ 易冲突               | ✅ 可随时换版本   |
-| 数据备份迁移 | 手动复制               | 直接拷贝挂载目录 |
-| 多版本共存   | 几乎不可能             | ✅ 完全隔离       |
-| 系统污染     | 安装包多               | ✅ 不污染系统环境 |
+| 数据备份迁移 | 手动复制                | 直接拷贝挂载目录  |
+| 多版本共存   | 几乎不可能              | ✅ 完全隔离       |
+| 系统污染     | 安装包多                | ✅ 不污染系统环境 |
 
-## Docker常用命令
+## Docker 常用命令
 
 查看所有容器运行状态
 
@@ -131,7 +126,7 @@ docker compose down
 启动所有服务
 
 ```bash
-docker compose up -d 
+docker compose up -d
 ```
 
 启动单个服务
@@ -150,14 +145,13 @@ docker compose restart mongo
 
 在生产部署中，通常这样安装环境：
 
-* Mongo + MySQL 都用 Docker 启动，挂载数据卷；
+-   Mongo + MySQL 都用 Docker 启动，挂载数据卷；
 
-* Node 项目打包成 Docker 镜像；
+-   Node 项目打包成 Docker 镜像；
 
-* Nginx 作为反向代理放在最前端；
+-   Nginx 作为反向代理放在最前端；
 
-* 所有容器用 Docker Compose 一键管理启动。
-
+-   所有容器用 Docker Compose 一键管理启动。
 
 例如一个典型的 docker-compose.yml：
 
@@ -179,7 +173,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root # 数据库账号
       MONGO_INITDB_ROOT_PASSWORD: 密码 # 数据库密码
     command: ["--auth", "--bind_ip_all"]
-    
+
   # 安装并启动redis服务
   redis:
     image: redis
@@ -190,7 +184,7 @@ services:
     ports:
       - "6379:6379"
     command: ["redis-server", "--requirepass", "密码"]
-  
+
   # 安装并启动jenkins服务
   jenkins:
     image: jenkins/jenkins:lts
@@ -223,10 +217,11 @@ services:
     volumes:
       - /var/lib/mysql:/var/lib/mysql  # 数据持久化目录
       - /var/lib/mysql/conf.d:/etc/mysql/conf.d  # 自定义配置（可选）
-    
+
 ```
 
 创建宿主机容器目录
+
 ```bash
 mkdir -p /var/lib/mysql
 chmod -R 777 /var/lib/mysql
@@ -265,14 +260,14 @@ docker exec -it mysql_server mysql -u root -p
 # 输入 root123456
 ```
 
-登录redis测试：
+登录 redis 测试：
 
 ```bash
 1.进入redis交互式终端：docker exec -it redis redis-cli
 2.登录：auth 密码
 ```
 
-登录MongoDB测试：
+登录 MongoDB 测试：
 
 ```bash
 1.连接数据库，进入mongodb的交互式终端，这一步不需要输入用户名和密码
@@ -301,65 +296,68 @@ db.users.insertOne({name:'koa',age:7})
 /www/
 ├── docker-compose.yml
 ├── wwwroot/
-│   └── zzf.net.cn/
-│       ├── server/        # Node.js 后端项目
-│       ├── web/           # 前端打包文件
-│       └── nginx_conf/    # Nginx 配置文件
-├── mongo_data/            # Mongo 数据持久化
-└── mysql_data/            # MySQL 数据持久化
+│ └── zzf.net.cn/
+│ ├── server/ # Node.js 后端项目
+│ ├── web/ # 前端打包文件
+│ └── nginx_conf/ # Nginx 配置文件
+├── mongo_data/ # Mongo 数据持久化
+└── mysql_data/ # MySQL 数据持久化
 
-## Docker安装jenkins的详细步骤
+## Docker 安装 jenkins 的详细步骤
 
-1. 参考上面配置好的docker-compose.yml文件
+1. 参考上面配置好的 docker-compose.yml 文件
 
 2. 创建宿主机容器目录
-   ```bash
-   mkdir -p /var/lib/jenkins
-   chmod -R 777 /var/lib/jenkins
-   ```
 
-3. 启动jenkins容器
+    ```bash
+    mkdir -p /var/lib/jenkins
+    chmod -R 777 /var/lib/jenkins
+    ```
 
-   ```bash
-   docker compose up -d jenkins
-   如果容器已经存在，先停止容器，然后再删除容易
-   docker stop jenkins && docker rm jenkins
-   ```
+3. 启动 jenkins 容器
+
+    ```bash
+    docker compose up -d jenkins
+    如果容器已经存在，先停止容器，然后再删除容易
+    docker stop jenkins && docker rm jenkins
+    ```
 
 4. 查看初始密码
 
-   ```bash
-   docker logs -f jenkins
-   ```
-5. 在云服务平台安全组放行jenkins端口
+    ```bash
+    docker logs -f jenkins
+    ```
 
-6. 用ip+端口访问jenkins服务
+5. 在云服务平台安全组放行 jenkins 端口
+
+6. 用 ip+端口访问 jenkins 服务
 
 7. 选择默认插件安装，创建用户
 
 8. 如果不能科学上网，可以设置国内加速源下载插件
 
-  ![1](index.assets/1.png)
+![1](index.assets/1.png)
 
 8. 安装以下插件
-  GitHub Integration
-  Generic Webhook Trigger
-  下面这些插件会在初始化中默认安装
-  Git
-  GitHub Branch Source
-  Pipeline: GitHub Groovy Libraries
-  Credentials Binding
-  GitHub API
+   GitHub Integration
+   Generic Webhook Trigger
+   下面这些插件会在初始化中默认安装
+   Git
+   GitHub Branch Source
+   Pipeline: GitHub Groovy Libraries
+   Credentials Binding
+   GitHub API
 
-9. 如何备份jenkinns数据，先进入tmp目录
+9. 如何备份 jenkinns 数据，先进入 tmp 目录
 
-   ```bash
-   cd /tmp
-   docker ps | grep jenkins
-   找到运行的ID
-   docker cp 15fe80dc5a43:/var/jenkins_home /tmp/
-   复制完成后，可以移动到其他目录，因为tmp目录的内容在云服务器重启后会清空
-   ```
+    ```bash
+    cd /tmp
+    docker ps | grep jenkins
+    找到运行的ID
+    docker cp 15fe80dc5a43:/var/jenkins_home /tmp/
+    复制完成后，可以移动到其他目录，因为tmp目录的内容在云服务器重启后会清空
+    ```
+
 10. 如何配置权限，安装以下插件
     pam
     role
@@ -396,7 +394,7 @@ db.users.insertOne({name:'koa',age:7})
     （3）在 Jenkins 中配置 GitHub Server
 
     ```basic
-    Manage Jenkins → Configure System → GitHub
+    Manage Jenkins → System → GitHub
     添加 GitHub Server，选择上面添加的凭据
     点击 “Test Connection” 确认连接成功，若成功，会显示 GitHub 用户名
     ```
@@ -410,9 +408,9 @@ db.users.insertOne({name:'koa',age:7})
     事件：Just the push event
     ```
 
-    （5）在jenkins创建一个项目任务，选择自由风格项目
+    （5）在 jenkins 创建一个项目任务，选择自由风格项目
 
-    （6）在General中勾选参数化构建过程，添加几对字符参数，下面shell脚本中在创建web_pc镜像过程中会用到，分别是
+    （6）在 General 中勾选参数化构建过程，添加几对字符参数，下面 shell 脚本中在创建 web_pc 镜像过程中会用到，分别是
 
     ```basic
     名称：container_name
@@ -429,53 +427,51 @@ db.users.insertOne({name:'koa',age:7})
 
     （8）在 Credentials（凭证） 下拉框中，选择你刚才配置的 GitHub Token（github-token），如果仓库是私有的，必须选择凭证
 
-    （9）在Branches to build中，确保分支是：*/main
+    （9）在 Branches to build 中，确保分支是：\*/main
 
-    （10）配置构建触发器（Build Triggers），勾选GitHub hook trigger for GITScm polling，前提是 GitHub 仓库中配置了 Webhook
+    （10）配置构建触发器（Build Triggers），勾选 GitHub hook trigger for GITScm polling，前提是 GitHub 仓库中配置了 Webhook
 
-    （11）配置构建步骤（Build Steps），选择shell，然后输入以下命令
+    （11）配置构建步骤（Build Steps），选择 shell，然后输入以下命令
 
     ```bash
     #!/bin/bash
     CONTAINER=${container_name}
     PORT=${port}
-    
+
     # echo $CONTAINER
     # echo $PORT
     # 完成镜像的构建
     # docker built -t web_pc:1.0 .
     # 后面的.代表使用工程目录下面的Docker file文件
     docker build --no-cache -t ${image_name}:${tag} .
-    
+
     RUNNING=${docker inspect --format="{{ .State.Running}}" $CONTAINER 2 > /dev/null}
     # 条件判断
     if [ ! -n $RUNNING ]; then
     	echo "$CONTAINER does not exit"
         return 1
     fi
-    
+
     if [ $RUNNING == "false" ]; then
     	echo "$CONTAINER is not running"
         return 2
-    else  
+    else
     	echo "$CONTAINER is running"
         # 删除相同名字的容器
         matchingStarted=$(docker ps --filter="name=$CONTAINER" -q | xargs)
         if [ -n $matchingStarted ]; then
         	docker stop $matchingStarted
         fi
-        
+
         matching=$(docker ps -a --filter="name=$CONTAINER" -q | xargs)
         if [ -n $matching ]; then
         	docker rm $matching
         fi
     fi
-    
+
     echo "RUNNING is ${RUNNING}"
-        
+
     # 运行镜像
     docker run -itd --name $CONTAINER -p $PORT:80 ${image_name}:${tag}
     # echo "开始构建 Vue 项目"
     ```
-
-    

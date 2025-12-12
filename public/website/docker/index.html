@@ -29,7 +29,7 @@
     <meta name="twitter:description" content="Vue.js - The Progressive JavaScript Framework">
     <meta name="twitter:image" content="https://v2.cn.vuejs.org/images/logo.png">
 
-    <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-icon-57x57.png">
+    <!-- <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/images/icons/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-icon-76x76.png">
@@ -38,12 +38,12 @@
     <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/images/icons/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/icons/android-icon-192x192.png"> -->
+    <!-- <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png"> -->
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon.png">
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png"> -->
     <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
-    <link rel="icon" href="/images/logo.svg">
+    <!-- <link rel="icon" href="/images/logo.svg"> -->
 
     <meta name="msapplication-TileColor" content="#4fc08d">
     <meta name="theme-color" content="#4fc08d">
@@ -287,52 +287,49 @@
 
     <!-- end: special logic for cn -->
 
-     <h2 id="Docker容器技术的特点"><a href="#Docker容器技术的特点" class="headerlink" title="Docker容器技术的特点"></a>Docker容器技术的特点</h2><ol>
+     <h2 id="Docker-容器技术的特点"><a href="#Docker-容器技术的特点" class="headerlink" title="Docker 容器技术的特点"></a>Docker 容器技术的特点</h2><ol>
 <li><p>文件系统隔离：每个进程容器运行在完全独立的根文件系统里。</p>
 </li>
-<li><p>资源隔离：可以使用cgroup为每个进程容器分配不同的系统资源，例如CPU和内存。</p>
+<li><p>资源隔离：可以使用 cgroup 为每个进程容器分配不同的系统资源，例如 CPU 和内存。</p>
 </li>
-<li><p>网络隔离：每个进程容器运行在自己的网络命名空间里，拥有自己的虚拟接口和IP地址。</p>
+<li><p>网络隔离：每个进程容器运行在自己的网络命名空间里，拥有自己的虚拟接口和 IP 地址。</p>
 </li>
 <li><p>写时复制：采用写时复制方式创建根文件系统，这让部署变得极其快捷，并且节省内存和硬盘空间。</p>
 </li>
-<li><p>日志记录：Docker将会收集和记录每个进程容器的标准流（stdout/stderr/stdin），用于实时检索或批量检索。</p>
+<li><p>日志记录：Docker 将会收集和记录每个进程容器的标准流（stdout/stderr/stdin），用于实时检索或批量检索。</p>
 </li>
 <li><p>变更管理：容器文件系统的变更可以提交到新的映像中，并可重复使用以创建更多的容器。无需使用模板或手动配置。</p>
 </li>
-<li><p>交互式Shell：Docker可以分配一个虚拟终端并关联到任何容器的标准输入上，例如运行一个一次性交互shell。</p>
+<li><p>交互式 Shell：Docker 可以分配一个虚拟终端并关联到任何容器的标准输入上，例如运行一个一次性交互 shell。</p>
 </li>
 <li><p>Docker 几乎可以安装（更准确地说是运行）任何服务，包括：</p>
 <ul>
-<li>MySQL（数据库）</li>
+<li><p>MySQL（数据库）</p>
+</li>
+<li><p>MongoDB（NoSQL 数据库）</p>
+</li>
+<li><p>Node.js（应用运行环境）</p>
+</li>
+<li><p>Nginx（反向代理 / 静态资源服务器）</p>
+</li>
+<li><p>这些服务都是 Docker 的“经典组合”，在实际项目部署中非常常见。</p>
+</li>
 </ul>
 </li>
 </ol>
-<ul>
-<li>MongoDB（NoSQL 数据库）</li>
-</ul>
-<ul>
-<li>Node.js（应用运行环境）</li>
-</ul>
-<ul>
-<li>Nginx（反向代理 / 静态资源服务器）</li>
-</ul>
-<ul>
-<li>这些服务都是 Docker 的“经典组合”，在实际项目部署中非常常见。</li>
-</ul>
-<h2 id="Docker的安装与使用"><a href="#Docker的安装与使用" class="headerlink" title="Docker的安装与使用"></a>Docker的安装与使用</h2><p>docker服务可以通过宝塔面板安装</p>
+<h2 id="Docker-的安装与使用"><a href="#Docker-的安装与使用" class="headerlink" title="Docker 的安装与使用"></a>Docker 的安装与使用</h2><p>docker 服务可以通过宝塔面板安装</p>
 <ol>
 <li><p>安装 MongoDB</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker run -d \<br>  --name mongo \<br>  -v /data/mongo:/data/db \<br>  -p 27017:27017 \<br>  mongo:latest<br></code></pre></td></tr></table></figure>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker run -d \<br>  --name mongo \<br>  -v /data/mongo:/data/db \<br>  -p 27017:27017 \<br>  mongo:latest<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>安装 MySQL</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker run -d \<br>  --name mysql \<br>  -v /data/mysql:/var/lib/mysql \<br>  -e MYSQL_ROOT_PASSWORD=123456 \<br>  -p 3306:3306 \<br>  mysql:8.0<br></code></pre></td></tr></table></figure>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker run -d \<br>  --name mysql \<br>  -v /data/mysql:/var/lib/mysql \<br>  -e MYSQL_ROOT_PASSWORD=123456 \<br>  -p 3306:3306 \<br>  mysql:8.0<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>安装 Nginx</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker run -d \<br>  --name nginx \<br>  -v /data/nginx/html:/usr/share/nginx/html \<br>  -v /data/nginx/conf:/etc/nginx/conf.d \<br>  -p 80:80 \<br>  nginx:latest<br></code></pre></td></tr></table></figure>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker run -d \<br>  --name nginx \<br>  -v /data/nginx/html:/usr/share/nginx/html \<br>  -v /data/nginx/conf:/etc/nginx/conf.d \<br>  -p 80:80 \<br>  nginx:latest<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>安装 Node.js 应用</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker run -d \<br>  --name nodeapp \<br>  -v /data/nodeapp:/app \<br>  -w /app \<br>  -p 3000:3000 \<br>  node:18 \<br>  node index.js<br></code></pre></td></tr></table></figure>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">docker run -d \<br>  --name nodeapp \<br>  -v /data/nodeapp:/app \<br>  -w /app \<br>  -p 3000:3000 \<br>  node:18 \<br>  node index.js<br></code></pre></td></tr></table></figure>
 </li>
 </ol>
 <h2 id="Docker-的优势"><a href="#Docker-的优势" class="headerlink" title="Docker 的优势"></a>Docker 的优势</h2><table>
@@ -376,7 +373,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="Docker常用命令"><a href="#Docker常用命令" class="headerlink" title="Docker常用命令"></a>Docker常用命令</h2><p>查看所有容器运行状态</p>
+<h2 id="Docker-常用命令"><a href="#Docker-常用命令" class="headerlink" title="Docker 常用命令"></a>Docker 常用命令</h2><p>查看所有容器运行状态</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker ps<br></code></pre></td></tr></table></figure>
 <p>查看某个容器的运行状态</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker ps | grep mongodb<br></code></pre></td></tr></table></figure>
@@ -387,7 +384,7 @@
 <p>停止所有服务</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker compose down<br></code></pre></td></tr></table></figure>
 <p>启动所有服务</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker compose up -d <br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker compose up -d<br></code></pre></td></tr></table></figure>
 <p>启动单个服务</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker compose up -d mongo<br></code></pre></td></tr></table></figure>
 <p>重启单个服务</p>
@@ -404,8 +401,9 @@
 </li>
 </ul>
 <p>例如一个典型的 docker-compose.yml：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">version: &quot;3&quot;<br>services:<br><span class="hljs-meta prompt_">	# </span><span class="language-bash">安装并启动mongodb服务</span><br>  mongo:<br>    image: mongo<br>    container_name: &quot;mongodb&quot;<br>    restart: always<br>    volumes: # 挂载宿主机目录<br>      - /var/lib/mongodb:/data/db  # 数据持久化目录<br>      - /var/lib/mongodb/initdb.d:/docker-entrypoint-initdb.d/ # 自定义配置（可选）<br>      # .sh &amp; .js<br>    ports:<br>      - &quot;27018:27017&quot; # 宿主机端口:镜像端口，将镜像的27017端口映射到宿主机的27018端口，也可以映射到27017端口<br>    environment:<br>      MONGO_INITDB_ROOT_USERNAME: root # 数据库账号<br>      MONGO_INITDB_ROOT_PASSWORD: 密码 # 数据库密码<br>    command: [&quot;--auth&quot;, &quot;--bind_ip_all&quot;]<br>    <br><span class="hljs-meta prompt_">  # </span><span class="language-bash">安装并启动redis服务</span><br>  redis:<br>    image: redis<br>    container_name: &quot;redis&quot;<br>    restart: always<br>    volumes:<br>      - /var/lib/redis:/data<br>    ports:<br>      - &quot;6379:6379&quot;<br>    command: [&quot;redis-server&quot;, &quot;--requirepass&quot;, &quot;密码&quot;]<br>  <br><span class="hljs-meta prompt_">  # </span><span class="language-bash">安装并启动jenkins服务</span><br>  jenkins:<br>    image: jenkins/jenkins:lts<br>    container_name: &quot;jenkins&quot;<br>    restart: always<br>    user: root<br>    ports:<br>      - &quot;10050:8080&quot;<br>      - &quot;50000:50000&quot;<br>      - &quot;10051:10051&quot;<br>    environment:<br>      - JAVA_OPTS=-Xms256m -Xmx768m<br>    volumes:<br>      - /var/lib/jenkins:/var/jenkins_home<br>      - /usr/bin/docker:/usr/bin/docker<br>      - /var/run/docker.sock:/var/run/docker.sock<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">	# </span><span class="language-bash">安装并启动mysql服务</span><br>  mysql:<br>    image: mysql<br>    container_name: &quot;mysql_server&quot;<br>    restart: always<br>    ports:<br>      - &quot;3306:3306&quot;  # 映射到宿主机3306端口<br>    environment:<br>      MYSQL_ROOT_PASSWORD: root123456       # root用户密码<br>      MYSQL_DATABASE: mydb                  # 初始化创建的数据库<br>      MYSQL_USER: myuser                    # 普通用户<br>      MYSQL_PASSWORD: mypassword            # 普通用户密码<br>    volumes:<br>      - /var/lib/mysql:/var/lib/mysql  # 数据持久化目录<br>      - /var/lib/mysql/conf.d:/etc/mysql/conf.d  # 自定义配置（可选）<br>    <br></code></pre></td></tr></table></figure>
-<p>创建宿主机容器目录<br><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p /var/lib/mysql<br><span class="hljs-built_in">chmod</span> -R 777 /var/lib/mysql<br><span class="hljs-built_in">mkdir</span> -p /var/lib/redis<br><span class="hljs-built_in">chmod</span> -R 777 /var/lib/redis<br><span class="hljs-built_in">mkdir</span> -p /var/lib/mongodb<br><span class="hljs-built_in">chmod</span> -R 777 /var/lib/mongodb<br></code></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">version: &quot;3&quot;<br>services:<br><span class="hljs-meta prompt_">	# </span><span class="language-bash">安装并启动mongodb服务</span><br>  mongo:<br>    image: mongo<br>    container_name: &quot;mongodb&quot;<br>    restart: always<br>    volumes: # 挂载宿主机目录<br>      - /var/lib/mongodb:/data/db  # 数据持久化目录<br>      - /var/lib/mongodb/initdb.d:/docker-entrypoint-initdb.d/ # 自定义配置（可选）<br>      # .sh &amp; .js<br>    ports:<br>      - &quot;27018:27017&quot; # 宿主机端口:镜像端口，将镜像的27017端口映射到宿主机的27018端口，也可以映射到27017端口<br>    environment:<br>      MONGO_INITDB_ROOT_USERNAME: root # 数据库账号<br>      MONGO_INITDB_ROOT_PASSWORD: 密码 # 数据库密码<br>    command: [&quot;--auth&quot;, &quot;--bind_ip_all&quot;]<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">  # </span><span class="language-bash">安装并启动redis服务</span><br>  redis:<br>    image: redis<br>    container_name: &quot;redis&quot;<br>    restart: always<br>    volumes:<br>      - /var/lib/redis:/data<br>    ports:<br>      - &quot;6379:6379&quot;<br>    command: [&quot;redis-server&quot;, &quot;--requirepass&quot;, &quot;密码&quot;]<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">  # </span><span class="language-bash">安装并启动jenkins服务</span><br>  jenkins:<br>    image: jenkins/jenkins:lts<br>    container_name: &quot;jenkins&quot;<br>    restart: always<br>    user: root<br>    ports:<br>      - &quot;10050:8080&quot;<br>      - &quot;50000:50000&quot;<br>      - &quot;10051:10051&quot;<br>    environment:<br>      - JAVA_OPTS=-Xms256m -Xmx768m<br>    volumes:<br>      - /var/lib/jenkins:/var/jenkins_home<br>      - /usr/bin/docker:/usr/bin/docker<br>      - /var/run/docker.sock:/var/run/docker.sock<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">	# </span><span class="language-bash">安装并启动mysql服务</span><br>  mysql:<br>    image: mysql<br>    container_name: &quot;mysql_server&quot;<br>    restart: always<br>    ports:<br>      - &quot;3306:3306&quot;  # 映射到宿主机3306端口<br>    environment:<br>      MYSQL_ROOT_PASSWORD: root123456       # root用户密码<br>      MYSQL_DATABASE: mydb                  # 初始化创建的数据库<br>      MYSQL_USER: myuser                    # 普通用户<br>      MYSQL_PASSWORD: mypassword            # 普通用户密码<br>    volumes:<br>      - /var/lib/mysql:/var/lib/mysql  # 数据持久化目录<br>      - /var/lib/mysql/conf.d:/etc/mysql/conf.d  # 自定义配置（可选）<br><br></code></pre></td></tr></table></figure>
+<p>创建宿主机容器目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p /var/lib/mysql<br><span class="hljs-built_in">chmod</span> -R 777 /var/lib/mysql<br><span class="hljs-built_in">mkdir</span> -p /var/lib/redis<br><span class="hljs-built_in">chmod</span> -R 777 /var/lib/redis<br><span class="hljs-built_in">mkdir</span> -p /var/lib/mongodb<br><span class="hljs-built_in">chmod</span> -R 777 /var/lib/mongodb<br></code></pre></td></tr></table></figure>
 <p>👉 然后只需执行：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker compose up -d<br></code></pre></td></tr></table></figure>
 <p>注意：compose 是新版命令，如果你是旧版 docker，请用 docker-compose up -d</p>
@@ -416,35 +414,39 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it 容器名称 指令名称<br></code></pre></td></tr></table></figure>
 <p>登录 MySQL 测试：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it mysql_server mysql -u root -p<br><span class="hljs-comment"># 输入 root123456</span><br></code></pre></td></tr></table></figure>
-<p>登录redis测试：</p>
+<p>登录 redis 测试：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">1.进入redis交互式终端：docker <span class="hljs-built_in">exec</span> -it redis redis-cli<br>2.登录：auth 密码<br></code></pre></td></tr></table></figure>
-<p>登录MongoDB测试：</p>
+<p>登录 MongoDB 测试：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">1.连接数据库，进入mongodb的交互式终端，这一步不需要输入用户名和密码<br>docker <span class="hljs-built_in">exec</span> -it mongodb mongosh<br>2.切换到管理员数据库，登录上去<br>use admin<br>db.auth(<span class="hljs-string">&#x27;root&#x27;</span>,<span class="hljs-string">&#x27;Feng950925@&#x27;</span>)<br>3.使用show dbs，如果能显示数据库名称，则登录成功，拥有管理员操作权限<br>4.创建一个新的数据库，<br>use 数据库名称<br>5.为该数据库配置一个用户<br>db.createUser(&#123;user:<span class="hljs-string">&#x27;koa&#x27;</span>,<span class="hljs-built_in">pwd</span>:<span class="hljs-string">&#x27;925926&#x27;</span>,roles:[&#123;role:<span class="hljs-string">&#x27;dbOwner&#x27;</span>,db:<span class="hljs-string">&#x27;koa&#x27;</span>&#125;]&#125;)<br>6.鉴权登录<br>db.auth(<span class="hljs-string">&#x27;koa&#x27;</span>,<span class="hljs-string">&#x27;925926&#x27;</span>)<br>7.为该数据库添加一个表，并且添加一条数据<br>db.users.insertOne(&#123;name:<span class="hljs-string">&#x27;koa&#x27;</span>,age:7&#125;)<br>8.如何备份数据<br>备份：docker <span class="hljs-built_in">exec</span> -it mongodb mongodump -h localhost -u root -p Feng950925@ -o /tmp/test<br>拷贝出来到主机：docker <span class="hljs-built_in">cp</span> mongodb:/tmp/test /tmp/test<br>9.如何恢复数据<br>拷贝出来到容器: docker <span class="hljs-built_in">cp</span> /tmp/test mongodb:/tmp/test<br>恢复：docker <span class="hljs-built_in">exec</span> -it mongodb mongorestore -h localhost -u root -p Feng950925@ --<span class="hljs-built_in">dir</span> /tmp/test<br></code></pre></td></tr></table></figure>
-<p>📁 推荐目录结构<br>/www/<br>├── docker-compose.yml<br>├── wwwroot/<br>│   └── zzf.net.cn/<br>│       ├── server/        # Node.js 后端项目<br>│       ├── web/           # 前端打包文件<br>│       └── nginx_conf/    # Nginx 配置文件<br>├── mongo_data/            # Mongo 数据持久化<br>└── mysql_data/            # MySQL 数据持久化</p>
-<h2 id="Docker安装jenkins的详细步骤"><a href="#Docker安装jenkins的详细步骤" class="headerlink" title="Docker安装jenkins的详细步骤"></a>Docker安装jenkins的详细步骤</h2><ol>
-<li><p>参考上面配置好的docker-compose.yml文件</p>
+<p>📁 推荐目录结构<br>/www/<br>├── docker-compose.yml<br>├── wwwroot/<br>│ └── zzf.net.cn/<br>│ ├── server/ # Node.js 后端项目<br>│ ├── web/ # 前端打包文件<br>│ └── nginx_conf/ # Nginx 配置文件<br>├── mongo_data/ # Mongo 数据持久化<br>└── mysql_data/ # MySQL 数据持久化</p>
+<h2 id="Docker-安装-jenkins-的详细步骤"><a href="#Docker-安装-jenkins-的详细步骤" class="headerlink" title="Docker 安装 jenkins 的详细步骤"></a>Docker 安装 jenkins 的详细步骤</h2><ol>
+<li><p>参考上面配置好的 docker-compose.yml 文件</p>
 </li>
 <li><p>创建宿主机容器目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p /var/lib/jenkins<br><span class="hljs-built_in">chmod</span> -R 777 /var/lib/jenkins<br></code></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p /var/lib/jenkins<br><span class="hljs-built_in">chmod</span> -R 777 /var/lib/jenkins<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>启动jenkins容器</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker compose up -d jenkins<br>如果容器已经存在，先停止容器，然后再删除容易<br>docker stop jenkins &amp;&amp; docker <span class="hljs-built_in">rm</span> jenkins<br></code></pre></td></tr></table></figure>
+<li><p>启动 jenkins 容器</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker compose up -d jenkins<br>如果容器已经存在，先停止容器，然后再删除容易<br>docker stop jenkins &amp;&amp; docker <span class="hljs-built_in">rm</span> jenkins<br></code></pre></td></tr></table></figure>
 </li>
 <li><p>查看初始密码</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker logs -f jenkins<br></code></pre></td></tr></table></figure></li>
-<li><p>在云服务平台安全组放行jenkins端口</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker logs -f jenkins<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>用ip+端口访问jenkins服务</p>
+<li><p>在云服务平台安全组放行 jenkins 端口</p>
+</li>
+<li><p>用 ip+端口访问 jenkins 服务</p>
 </li>
 <li><p>选择默认插件安装，创建用户</p>
 </li>
 <li><p>如果不能科学上网，可以设置国内加速源下载插件</p>
-<p><img src="index.assets/1.png" alt="1"></p>
 </li>
+</ol>
+<p><img src="index.assets/1.png" alt="1"></p>
+<ol start="8">
 <li><p>安装以下插件<br>GitHub Integration<br>Generic Webhook Trigger<br>下面这些插件会在初始化中默认安装<br>Git<br>GitHub Branch Source<br>Pipeline: GitHub Groovy Libraries<br>Credentials Binding<br>GitHub API</p>
 </li>
-<li><p>如何备份jenkinns数据，先进入tmp目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /tmp<br>docker ps | grep jenkins<br>找到运行的ID<br>docker <span class="hljs-built_in">cp</span> 15fe80dc5a43:/var/jenkins_home /tmp/<br>复制完成后，可以移动到其他目录，因为tmp目录的内容在云服务器重启后会清空<br></code></pre></td></tr></table></figure></li>
+<li><p>如何备份 jenkinns 数据，先进入 tmp 目录</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /tmp<br>docker ps | grep jenkins<br>找到运行的ID<br>docker <span class="hljs-built_in">cp</span> 15fe80dc5a43:/var/jenkins_home /tmp/<br>复制完成后，可以移动到其他目录，因为tmp目录的内容在云服务器重启后会清空<br></code></pre></td></tr></table></figure>
+</li>
 <li><p>如何配置权限，安装以下插件<br>pam<br>role<br>默认已经安装过的<br>Matrix Authorization Strategy<br>LDAP</p>
 </li>
 <li><p>以下可选插件<br>slaves<br>Dashboard View<br>ThinBackup<br>AnsiColor<br>Build With Parameters</p>
@@ -454,18 +456,18 @@
 <p>（2）在 Jenkins 中添加凭据</p>
 <figure class="highlight basic"><table><tr><td class="code"><pre><code class="hljs basic">打开 Manage Jenkins → Credentials → <span class="hljs-keyword">System</span> → Global credentials<br>添加：<br>类型：Secret Text<br>ID：github-token<br>Secret：粘贴 Token<br></code></pre></td></tr></table></figure>
 <p>（3）在 Jenkins 中配置 GitHub Server</p>
-<figure class="highlight basic"><table><tr><td class="code"><pre><code class="hljs basic">Manage Jenkins → Configure <span class="hljs-keyword">System</span> → GitHub<br>添加 GitHub Server，选择上面添加的凭据<br>点击 “Test Connection” 确认连接成功，若成功，会显示 GitHub 用户名<br></code></pre></td></tr></table></figure>
+<figure class="highlight basic"><table><tr><td class="code"><pre><code class="hljs basic">Manage Jenkins → <span class="hljs-keyword">System</span> → GitHub<br>添加 GitHub Server，选择上面添加的凭据<br>点击 “Test Connection” 确认连接成功，若成功，会显示 GitHub 用户名<br></code></pre></td></tr></table></figure>
 <p>（4）在 GitHub 上配置 Webhook</p>
 <figure class="highlight basic"><table><tr><td class="code"><pre><code class="hljs basic">填入 Jenkins 的 webhook 地址：<br>http://&lt;你的Jenkins服务器&gt;:<span class="hljs-number">8080</span>/github-webhook/<br>Content type 选：application/json<br>事件：Just the push event<br></code></pre></td></tr></table></figure>
-<p>（5）在jenkins创建一个项目任务，选择自由风格项目</p>
-<p>（6）在General中勾选参数化构建过程，添加几对字符参数，下面shell脚本中在创建web_pc镜像过程中会用到，分别是</p>
+<p>（5）在 jenkins 创建一个项目任务，选择自由风格项目</p>
+<p>（6）在 General 中勾选参数化构建过程，添加几对字符参数，下面 shell 脚本中在创建 web_pc 镜像过程中会用到，分别是</p>
 <figure class="highlight basic"><table><tr><td class="code"><pre><code class="hljs basic">名称：container_name<br>默认值：web_pc<br>名称：port<br>默认值：<span class="hljs-number">11006</span><br>名称：image_name<br>默认值：web_pc<br>名称：tag<br>默认值：<span class="hljs-number">1.0</span><br></code></pre></td></tr></table></figure>
 <p>（7）配置源码管理，选择 Git，在 Repository URL 填入你的 GitHub 仓库地址，例如：<a target="_blank" rel="noopener" href="https://github.com/yourname/yourrepo.git">https://github.com/yourname/yourrepo.git</a></p>
 <p>（8）在 Credentials（凭证） 下拉框中，选择你刚才配置的 GitHub Token（github-token），如果仓库是私有的，必须选择凭证</p>
-<p>（9）在Branches to build中，确保分支是：*/main</p>
-<p>（10）配置构建触发器（Build Triggers），勾选GitHub hook trigger for GITScm polling，前提是 GitHub 仓库中配置了 Webhook</p>
-<p>（11）配置构建步骤（Build Steps），选择shell，然后输入以下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br>CONTAINER=<span class="hljs-variable">$&#123;container_name&#125;</span><br>PORT=<span class="hljs-variable">$&#123;port&#125;</span><br><br><span class="hljs-comment"># echo $CONTAINER</span><br><span class="hljs-comment"># echo $PORT</span><br><span class="hljs-comment"># 完成镜像的构建</span><br><span class="hljs-comment"># docker built -t web_pc:1.0 .</span><br><span class="hljs-comment"># 后面的.代表使用工程目录下面的Docker file文件</span><br>docker build --no-cache -t <span class="hljs-variable">$&#123;image_name&#125;</span>:<span class="hljs-variable">$&#123;tag&#125;</span> .<br><br>RUNNING=<span class="hljs-variable">$&#123;docker inspect --format=&quot;&#123;&#123; .State.Running&#125;</span>&#125;<span class="hljs-string">&quot; <span class="hljs-variable">$CONTAINER</span> 2 &gt; /dev/null&#125;</span><br><span class="hljs-string"># 条件判断</span><br><span class="hljs-string">if [ ! -n <span class="hljs-variable">$RUNNING</span> ]; then</span><br><span class="hljs-string">	echo &quot;</span><span class="hljs-variable">$CONTAINER</span> does not <span class="hljs-built_in">exit</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">    return 1</span><br><span class="hljs-string">fi</span><br><span class="hljs-string"></span><br><span class="hljs-string">if [ <span class="hljs-variable">$RUNNING</span> == &quot;</span><span class="hljs-literal">false</span><span class="hljs-string">&quot; ]; then</span><br><span class="hljs-string">	echo &quot;</span><span class="hljs-variable">$CONTAINER</span> is not running<span class="hljs-string">&quot;</span><br><span class="hljs-string">    return 2</span><br><span class="hljs-string">else  </span><br><span class="hljs-string">	echo &quot;</span><span class="hljs-variable">$CONTAINER</span> is running<span class="hljs-string">&quot;</span><br><span class="hljs-string">    # 删除相同名字的容器</span><br><span class="hljs-string">    matchingStarted=<span class="hljs-subst">$(docker ps --filter=<span class="hljs-string">&quot;name=<span class="hljs-variable">$CONTAINER</span>&quot;</span> -q | xargs)</span></span><br><span class="hljs-string">    if [ -n <span class="hljs-variable">$matchingStarted</span> ]; then</span><br><span class="hljs-string">    	docker stop <span class="hljs-variable">$matchingStarted</span></span><br><span class="hljs-string">    fi</span><br><span class="hljs-string">    </span><br><span class="hljs-string">    matching=<span class="hljs-subst">$(docker ps -a --filter=<span class="hljs-string">&quot;name=<span class="hljs-variable">$CONTAINER</span>&quot;</span> -q | xargs)</span></span><br><span class="hljs-string">    if [ -n <span class="hljs-variable">$matching</span> ]; then</span><br><span class="hljs-string">    	docker rm <span class="hljs-variable">$matching</span></span><br><span class="hljs-string">    fi</span><br><span class="hljs-string">fi</span><br><span class="hljs-string"></span><br><span class="hljs-string">echo &quot;</span>RUNNING is <span class="hljs-variable">$&#123;RUNNING&#125;</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">    </span><br><span class="hljs-string"># 运行镜像</span><br><span class="hljs-string">docker run -itd --name <span class="hljs-variable">$CONTAINER</span> -p <span class="hljs-variable">$PORT</span>:80 <span class="hljs-variable">$&#123;image_name&#125;</span>:<span class="hljs-variable">$&#123;tag&#125;</span></span><br><span class="hljs-string"># echo &quot;</span>开始构建 Vue 项目<span class="hljs-string">&quot;</span><br></code></pre></td></tr></table></figure>
+<p>（9）在 Branches to build 中，确保分支是：*/main</p>
+<p>（10）配置构建触发器（Build Triggers），勾选 GitHub hook trigger for GITScm polling，前提是 GitHub 仓库中配置了 Webhook</p>
+<p>（11）配置构建步骤（Build Steps），选择 shell，然后输入以下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br>CONTAINER=<span class="hljs-variable">$&#123;container_name&#125;</span><br>PORT=<span class="hljs-variable">$&#123;port&#125;</span><br><br><span class="hljs-comment"># echo $CONTAINER</span><br><span class="hljs-comment"># echo $PORT</span><br><span class="hljs-comment"># 完成镜像的构建</span><br><span class="hljs-comment"># docker built -t web_pc:1.0 .</span><br><span class="hljs-comment"># 后面的.代表使用工程目录下面的Docker file文件</span><br>docker build --no-cache -t <span class="hljs-variable">$&#123;image_name&#125;</span>:<span class="hljs-variable">$&#123;tag&#125;</span> .<br><br>RUNNING=<span class="hljs-variable">$&#123;docker inspect --format=&quot;&#123;&#123; .State.Running&#125;</span>&#125;<span class="hljs-string">&quot; <span class="hljs-variable">$CONTAINER</span> 2 &gt; /dev/null&#125;</span><br><span class="hljs-string"># 条件判断</span><br><span class="hljs-string">if [ ! -n <span class="hljs-variable">$RUNNING</span> ]; then</span><br><span class="hljs-string">	echo &quot;</span><span class="hljs-variable">$CONTAINER</span> does not <span class="hljs-built_in">exit</span><span class="hljs-string">&quot;</span><br><span class="hljs-string">    return 1</span><br><span class="hljs-string">fi</span><br><span class="hljs-string"></span><br><span class="hljs-string">if [ <span class="hljs-variable">$RUNNING</span> == &quot;</span><span class="hljs-literal">false</span><span class="hljs-string">&quot; ]; then</span><br><span class="hljs-string">	echo &quot;</span><span class="hljs-variable">$CONTAINER</span> is not running<span class="hljs-string">&quot;</span><br><span class="hljs-string">    return 2</span><br><span class="hljs-string">else</span><br><span class="hljs-string">	echo &quot;</span><span class="hljs-variable">$CONTAINER</span> is running<span class="hljs-string">&quot;</span><br><span class="hljs-string">    # 删除相同名字的容器</span><br><span class="hljs-string">    matchingStarted=<span class="hljs-subst">$(docker ps --filter=<span class="hljs-string">&quot;name=<span class="hljs-variable">$CONTAINER</span>&quot;</span> -q | xargs)</span></span><br><span class="hljs-string">    if [ -n <span class="hljs-variable">$matchingStarted</span> ]; then</span><br><span class="hljs-string">    	docker stop <span class="hljs-variable">$matchingStarted</span></span><br><span class="hljs-string">    fi</span><br><span class="hljs-string"></span><br><span class="hljs-string">    matching=<span class="hljs-subst">$(docker ps -a --filter=<span class="hljs-string">&quot;name=<span class="hljs-variable">$CONTAINER</span>&quot;</span> -q | xargs)</span></span><br><span class="hljs-string">    if [ -n <span class="hljs-variable">$matching</span> ]; then</span><br><span class="hljs-string">    	docker rm <span class="hljs-variable">$matching</span></span><br><span class="hljs-string">    fi</span><br><span class="hljs-string">fi</span><br><span class="hljs-string"></span><br><span class="hljs-string">echo &quot;</span>RUNNING is <span class="hljs-variable">$&#123;RUNNING&#125;</span><span class="hljs-string">&quot;</span><br><span class="hljs-string"></span><br><span class="hljs-string"># 运行镜像</span><br><span class="hljs-string">docker run -itd --name <span class="hljs-variable">$CONTAINER</span> -p <span class="hljs-variable">$PORT</span>:80 <span class="hljs-variable">$&#123;image_name&#125;</span>:<span class="hljs-variable">$&#123;tag&#125;</span></span><br><span class="hljs-string"># echo &quot;</span>开始构建 Vue 项目<span class="hljs-string">&quot;</span><br></code></pre></td></tr></table></figure>
 </li>
 </ol>
   

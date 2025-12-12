@@ -73,10 +73,6 @@ gold:
   - name: LambdaTest
     url: https://lambdatest.com/
     img: lambdatest.svg
-  - name: Vue PDF Viewer
-    url: >-
-      https://www.vue-pdf-viewer.dev/?utm_source=vuejs&utm_medium=referral&utm_campaign=sponsorship
-    img: vue_pdf_viewer.svg
   - name: Crisp
     url: https://crisp.chat/en/
     img: crisp.png
@@ -107,24 +103,21 @@ gold:
   - name: SocialBoosting
     url: https://www.socialboosting.com/
     img: socialboosting.png
-  - name: Tiranga Game
-    url: https://tirangaagame.io/
-    img: tiranga_game.png
-  - name: Views4You
-    url: https://views4you.com/buy-youtube-subscribers/
-    img: views4you.png
-  - name: BDG Game
-    url: https://www.bdggame.io
-    img: bdg_game.png
-  - name: Sikkim Game
-    url: https://sikkimgames.io/
-    img: sikkim_game.png
-  - name: Daman Game
-    url: https://damanappdownload.io/
-    img: daman_game.png
   - name: Guidebook.BetWinner
     url: https://guidebook.betwinner.com/
     img: guidebook_betwinner.png
+  - name: Tiranga Game
+    url: https://tirangaagame.games/
+    img: tiranga_game.png
+  - name: BDG Game
+    url: https://www.bdggame.io
+    img: bdg_game.png
+  - name: Daman Game
+    url: https://damanapp.download/
+    img: daman_game.png
+  - name: Ok Win
+    url: https://okwin-official.uk.com/
+    img: ok_win.png
 silver:
   - name: Doximity
     url: https://technology.doximity.com/
@@ -148,18 +141,21 @@ bronze:
   - name: Derek Pollard
     url: https://polyglotengineer.com/derek.pollard
     img: derek_pollard.png
-  - name: Routr
-    url: http://www.routr.com
-    img: routr.png
   - name: BGASoft
     url: https://www.bgasoft.com
     img: bgasoft.png
   - name: Posit
     url: https://posit.co/
     img: posit.png
+  - name: Liip AG
+    url: https://www.liip.ch/en
+    img: liip_ag.png
   - name: codefortynine
     url: https://codefortynine.com
     img: codefortynine.png
+  - name: Famety - Buy Instagram Followers
+    url: https://www.famety.net/
+    img: famety___buy_instagram_followers.png
 platinum_china:
   - name: CRMEB
     url: http://github.crmeb.net/u/vue
