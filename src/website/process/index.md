@@ -1615,6 +1615,104 @@ echo "Deploy finished at $(date)"
 
 ```
 
+pm2部署成功发送邮件的做法
+
+```shell
+#!/bin/bash
+# deploy_with_email.sh
+
+# ========== 配置 ==========
+CONFIG_QQ_EMAIL="您的QQ邮箱@qq.com"
+CONFIG_QQ_AUTH_CODE="您的QQ邮箱授权码"
+CONFIG_TO_EMAIL="接收通知的邮箱@example.com"
+PROJECT_NAME="mysite-express"
+# ==========================
+
+
+# 邮件发送函数
+send_deploy_email() {
+    local status=$1  # 0=成功, 1=失败
+    local message="$2"
+    
+    if [ $status -eq 0 ]; then
+        subject="✅ ${PROJECT_NAME}部署成功 - $(date '+%m-%d %H:%M')"
+    else
+        subject="❌ ${PROJECT_NAME}部署失败 - $(date '+%m-%d %H:%M')"
+    fi
+    
+    # 创建邮件内容
+    cat > /tmp/deploy_email.txt << EOF
+From: ${CONFIG_QQ_EMAIL}
+To: ${CONFIG_TO_EMAIL}
+Subject: ${subject}
+Date: $(date -R)
+
+项目: ${PROJECT_NAME}
+时间: $(date)
+服务器: $(hostname)
+状态: ${subject%% *}
+
+
+--- 自动发送 ---
+EOF
+    
+    # 发送邮件
+    curl --ssl-reqd --silent \
+      --url 'smtps://smtp.qq.com:465' \
+      --user "${CONFIG_QQ_EMAIL}:${CONFIG_QQ_AUTH_CODE}" \
+      --mail-from "${CONFIG_QQ_EMAIL}" \
+      --mail-rcpt "${CONFIG_TO_EMAIL}" \
+      --upload-file /tmp/deploy_email.txt
+    
+    rm -f /tmp/deploy_email.txt
+}
+
+# 主部署流程
+main() {
+    echo "开始部署..."
+    
+    # 原有部署步骤
+    cd /www/wwwroot/mysite-express || {
+        send_deploy_email 1 "无法进入目录 /www/wwwroot/mysite-express"
+        exit 1
+    }
+    
+    
+    if ! git pull origin main; then
+        send_deploy_email 1 "Git拉取失败"
+        exit 1
+    fi
+
+    if ! npm install; then
+        send_deploy_email 1 "npm安装失败"
+        exit 1
+    fi
+
+    if ! npm run build; then
+        send_deploy_email 1 "构建失败"
+        exit 1
+    fi
+
+    if ! pm2 restart server; then
+        send_deploy_email 1 "PM2重启失败"
+        exit 1
+    fi
+
+    pm2 save
+
+     # 发送成功通知
+    send_deploy_email 0 "所有步骤执行成功"
+    echo "部署完成于 $(date)"
+    
+}
+
+# 运行
+main
+
+```
+
+
+
 ### 3、创建 webhook 接收服务（Node 示例）
 
 安装依赖：
