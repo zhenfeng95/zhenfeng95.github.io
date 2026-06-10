@@ -1,0 +1,13 @@
+<li class="nav-dropdown-container interview">
+    <a class="nav-link<%- page.path.match(/\/(interview(?!\/team.html$)|javascript|MongoDB)(\/|$)/) ? ' current' : '' %>">面试题</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="<%- url_for("/interview/javascript/") %>" class="nav-link<%- page.path.match(/\/javascript(\/|$)/) ? ' current' : '' %>">javascript</a></li>
+
+
+            </ul>
+        </li>
+    </ul>
+</li>
