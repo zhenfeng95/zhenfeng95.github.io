@@ -5,27 +5,27 @@
 <!DOCTYPE html>
 <html lang="zh-CN" class="with-v3-banner">
   <head>
-    <title>CSS — zzf的个人博客笔记</title>
+    <title>Search Vue.js — zzf的个人博客笔记</title>
     <meta charset="utf-8">
     <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="alternate" hreflang="x-default" href="https://v2.vuejs.org/v2/api/index.html">
-    <link rel="alternate" hreflang="zh" href="https://v2.cn.vuejs.org/v2/api/index.html">
-    <link rel="alternate" hreflang="ja" href="https://jp.vuejs.org/v2/api/index.html">
-    <link rel="alternate" hreflang="ru" href="https://ru.vuejs.org/v2/api/index.html">
-    <link rel="alternate" hreflang="ko" href="https://kr.vuejs.org/v2/api/index.html">
-    <link rel="alternate" hreflang="pt-BR" href="https://br.vuejs.org/v2/api/index.html">
-    <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/v2/api/index.html">
-    <link rel="alternate" hreflang="es" href="https://es.vuejs.org/v2/api/index.html">
+    <link rel="alternate" hreflang="x-default" href="https://v2.vuejs.org/base/search/index.html">
+    <link rel="alternate" hreflang="zh" href="https://v2.cn.vuejs.org/base/search/index.html">
+    <link rel="alternate" hreflang="ja" href="https://jp.vuejs.org/base/search/index.html">
+    <link rel="alternate" hreflang="ru" href="https://ru.vuejs.org/base/search/index.html">
+    <link rel="alternate" hreflang="ko" href="https://kr.vuejs.org/base/search/index.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://br.vuejs.org/base/search/index.html">
+    <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/base/search/index.html">
+    <link rel="alternate" hreflang="es" href="https://es.vuejs.org/base/search/index.html">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="CSS — Vue.js">
+    <meta property="og:title" content="Search Vue.js — Vue.js">
     <meta property="og:description" content="Vue.js - The Progressive JavaScript Framework">
     <meta property="og:image" content="https://v2.cn.vuejs.org/images/logo.png">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="CSS — Vue.js">
+    <meta name="twitter:title" content="Search Vue.js — Vue.js">
     <meta name="twitter:description" content="Vue.js - The Progressive JavaScript Framework">
     <meta name="twitter:image" content="https://v2.cn.vuejs.org/images/logo.png">
 
@@ -71,7 +71,7 @@
 
     <script>
       Vue.config.productionTip = false
-      window.PAGE_TYPE = "api"
+      window.PAGE_TYPE = "search"
     </script>
 
     <!-- Fathom - beautiful, simple website analytics -->
@@ -201,10 +201,7 @@
 <div class="sidebar">
     <div class="sidebar-inner">
         
-        <div class="list"> <ul class="menu-root">
-  
-</ul>
- </div>
+        <div class="list"></div>
     </div>
 </div>
 <!--
@@ -257,7 +254,7 @@
 -->
  
 <div
-    class="content api with-sidebar "
+    class="content search with-sidebar "
 >
       
 <div id="ad">
@@ -282,7 +279,7 @@
 </div>
 
    
-    <h1>CSS</h1>
+    <h1>Search Vue.js</h1>
     
 
     <!-- start: special logic for cn -->
@@ -298,7 +295,186 @@
 
     <!-- end: special logic for cn -->
 
-     <h2 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h2>  
+     <div id="search-page">
+  <form class="search-form" @submit="submit">
+    <input
+      class="search-query"
+      v-model="search"
+      placeholder="Search Vue.js"
+      aria-label="Search"
+    >
+    <div class="search-footer">
+      <p>
+        <template v-if="totalResults">
+          <strong>{{ totalResults }} results</strong> found in {{ queryTime }}ms
+        </template>
+      </p>
+      <a target="_blank" rel="noopener" href="https://www.algolia.com/" aria-label="Search">
+          <img src="/images/search-by-algolia.png" height="16">
+      </a>
+    </div>
+  </form>
+
+  <template v-if="results.length">
+    <search-result
+      v-for="(result, i) in results"
+      :key="i"
+      :result="result"
+    ></search-result>
+  </template>
+
+  <p v-else>No results were found.</p>
+
+  <div ref="infiniteScrollAnchor"></div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
+<script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
+<script>
+var match = window.location.pathname.match(/^\/(v\d+)/)
+var version = match ? match[1] : 'v2'
+var algolia = algoliasearch('BH4D9OD16A', '5638280abff9d207417bb03be05f0b25')
+var algoliaHelper = algoliasearchHelper(algolia, 'vuejs_cn2', {
+  hitsPerPage: 15,
+  maxValuesPerFacet: 10,
+  advancedSyntax: true,
+  facets: ['version'],
+})
+
+algoliaHelper.addFacetRefinement('version', version)
+algoliaHelper.on('result', parseSearchResults)
+
+var searchPage = new Vue({
+  el: '#search-page',
+  components: {
+    'search-result': {
+      props: {
+        result: {
+          type: Object,
+          required: true,
+        },
+      },
+      render(h) {
+        var content = []
+        content.push(h('a', {
+          attrs: {
+            class: 'title',
+            href: this.result.url,
+          },
+          domProps: { innerHTML: this.result.title },
+        }))
+        if (this.result.summary) {
+          content.push(h('p', {
+            attrs: { class: 'summary' },
+            domProps: { innerHTML: this.result.summary },
+          }))
+        }
+        content.push(h(
+          'div',
+          { attrs: { class: 'breadcrumbs'} },
+          this.result.breadcrumbs.map(function(breadcrumb) {
+            return h('span', {
+              attrs: { class: 'breadcrumb' },
+              domProps: { innerHTML: breadcrumb },
+            })
+          })
+        ))
+        return h('div', { attrs: { class: 'search-result' } }, content)
+      }
+    }
+  },
+  data: {
+    search: (new URL(location)).searchParams.get('q') || '',
+    totalResults: 0,
+    queryTime: 0,
+    results: [],
+    totalPages: 0,
+    lastPage: 0,
+  },
+  watch: {
+    search() {
+      this.updateSearch()
+      window.history.pushState(
+        {},
+        'Vue.js Search',
+        window.location.origin + window.location.pathname + '?q=' + encodeURIComponent(this.search)
+      )
+    }
+  },
+  created() {
+    this.updateSearch()
+  },
+  mounted() {
+    var observer = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting && searchPage.totalPages > searchPage.lastPage + 1) {
+        searchPage.addPage()
+      }
+    })
+    observer.observe(this.$refs.infiniteScrollAnchor)
+  },
+  methods: {
+    addPage() {
+      algoliaHelper.setCurrentPage(this.lastPage + 1).search()
+    },
+    updateSearch() {
+      algoliaHelper.setCurrentPage(0).setQuery(this.search).search()
+    },
+    submit(e) {
+      e.preventDefault()
+      if (this.results.length > 0) {
+        window.location = this.results[0].url
+      }
+    }
+  }
+})
+
+function parseSearchResults(content) {
+  if (content.query === '' || !(content.hits instanceof Array)) {
+    searchPage.totalResults = 0
+    searchPage.queryTime = 0
+    searchPage.results = []
+    searchPage.totalPages = 0
+    searchPage.lastPage = 0
+    return
+  }
+
+  var results = []
+
+  for (var hit of content.hits) {
+    var hierarchy = hit._highlightResult.hierarchy
+    var titles = []
+    var level = 0
+    var levelName
+    while ((levelName = 'lvl' + level++) in hierarchy) {
+      titles.push(hierarchy[levelName].value)
+    }
+    var summary
+    if (hit._snippetResult && hit._snippetResult.content) {
+      summary = hit._snippetResult.content.value + '...'
+    }
+    results.push({
+      title: titles.pop(),
+      url: hit.url,
+      summary: summary,
+      breadcrumbs: titles,
+    })
+  }
+
+  searchPage.totalResults = content.nbHits
+  searchPage.queryTime = content.processingTimeMS
+  searchPage.totalPages = content.nbPages
+  searchPage.lastPage = content.page
+
+  if (searchPage.lastPage === 0) {
+    searchPage.results = results
+  } else {
+    searchPage.results = searchPage.results.concat(results)
+  }
+}
+</script>
+  
     <div class="footer">
 <script src="//m.servedby-buysellads.com/monetization.js" type="text/javascript"></script>
 <div id="bsa-native"></div>
@@ -313,7 +489,7 @@ _bsa.init('custom', 'CKYD62QM', 'placement:vuejsorg',
 
 发现错误？想参与编辑？
         <a
-            href="https://github.com/vuejs/v2.cn.vuejs.org/blob/master/src/v2/api/index.md"
+            href="https://github.com/vuejs/v2.cn.vuejs.org/blob/master/src/base/search/index.md"
             rel="noopener"
             target="_blank"
         >

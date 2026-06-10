@@ -1,0 +1,460 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="with-v3-banner">
+  <head>
+    <title>TypeScript介绍 — zzf的个人博客笔记</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="alternate" hreflang="x-default" href="https://v2.vuejs.org/base/ts/index.html">
+    <link rel="alternate" hreflang="zh" href="https://v2.cn.vuejs.org/base/ts/index.html">
+    <link rel="alternate" hreflang="ja" href="https://jp.vuejs.org/base/ts/index.html">
+    <link rel="alternate" hreflang="ru" href="https://ru.vuejs.org/base/ts/index.html">
+    <link rel="alternate" hreflang="ko" href="https://kr.vuejs.org/base/ts/index.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://br.vuejs.org/base/ts/index.html">
+    <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/base/ts/index.html">
+    <link rel="alternate" hreflang="es" href="https://es.vuejs.org/base/ts/index.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="TypeScript介绍 — Vue.js">
+    <meta property="og:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta property="og:image" content="https://v2.cn.vuejs.org/images/logo.png">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="TypeScript介绍 — Vue.js">
+    <meta name="twitter:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="twitter:image" content="https://v2.cn.vuejs.org/images/logo.png">
+
+    <!-- <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/icons/android-icon-192x192.png"> -->
+    <!-- <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png"> -->
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon.png">
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png"> -->
+    <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
+    <!-- <link rel="icon" href="/images/logo.svg"> -->
+
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin> -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com" rel="preconnect" crossorigin> -->
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono&display=swap" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Dosis:500&text=Vue.js&display=swap" rel="stylesheet"> -->
+
+    <link href="//code.bdstatic.com/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- main page styles -->
+    
+<link rel="stylesheet" href="/css/page.css">
+
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+
+    
+
+    <script>
+      Vue.config.productionTip = false
+      window.PAGE_TYPE = "ts"
+    </script>
+
+    <!-- Fathom - beautiful, simple website analytics -->
+    <script src="https://cdn.usefathom.com/script.js" data-site="KTDIHEIJ" defer></script>
+    <!-- / Fathom -->
+
+    <!-- vimeo analytics -->
+    <!-- <script type="text/javascript" defer="defer" src="https://extend.vimeocdn.com/ga/72160148.js"></script> -->
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Vue123.js" type="application/atom+xml">
+</head>
+  <body class="docs">
+
+    
+
+    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div>
+
+
+  <header id="header">
+    <a id="logo" href="/">
+      <!-- <img src="/images/logo.svg" alt="vue logo"> -->
+      <span>个人博客</span>
+    </a>
+    <ul id="nav">
+      <li>
+    <form id="search-form">
+        <input type="text" id="search-query-nav" class="search-query st-default-search-input" aria-label="搜索" />
+    </form>
+</li>
+<li class="nav-dropdown-container learn">
+    <a class="nav-link current">前端基础</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li><h4>文档</h4></li>
+        <li>
+            <ul>
+                <li><a href="/base/html/" class="nav-link">HTML</a></li>
+                <li><a href="/base/css/" class="nav-link">CSS</a></li>
+                <li><a href="/base/js/" class="nav-link">JavaScript</a></li>
+                 <li><a href="/base/ts/" class="nav-link current">TypeScript</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container framework">
+    <a class="nav-link">前端框架</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/framework/vue/" class="nav-link">vue</a></li>
+                  <li><a href="/framework/uniapp/" class="nav-link">uniapp</a></li>
+               
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container resources">
+    <a class="nav-link">网站部署</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/website/process/" class="nav-link">部署流程</a></li>
+                <li><a href="/website/hexo/" class="nav-link">HEXO</a></li>
+                <li><a href="/website/docker/" class="nav-link">Docker</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container tool">
+    <a class="nav-link">工具</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/tool/environment/" class="nav-link">开发环境</a></li>
+                 <li><a href="/tool/git/" class="nav-link">git</a></li>
+                  <li><a href="/tool/webpack/" class="nav-link">webpack</a></li>
+                <li><a href="/tool/jenkins/" class="nav-link">jenkins</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container backend">
+    <a class="nav-link">服务端</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/backend/node/" class="nav-link">node</a></li>
+                 <li><a href="/backend/MongoDB/" class="nav-link">MongoDB</a></li>
+                 
+            </ul>
+        </li>
+    </ul>
+</li>
+<li class="nav-dropdown-container interview">
+    <a class="nav-link">面试题</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/interview/javascript/" class="nav-link">javascript</a></li>
+
+
+            </ul>
+        </li>
+    </ul>
+</li>
+
+<!-- <li>
+    <a href="/eol/" class="badge-parent">终止支持 (EOL)<sup class="badge">新</sup></a>
+</li> -->
+
+    </ul>
+  </header>
+</div>
+
+    
+      <div id="main" class="fix-sidebar">
+         
+
+<div class="sidebar">
+    <div class="sidebar-inner">
+        
+        <div class="list"> <ul class="menu-root">
+  
+    
+    
+    <li>
+      <a href="/base/ts/index.html" class="sidebar-link current">TypeScript介绍</a>
+    </li>
+  
+</ul>
+ </div>
+    </div>
+</div>
+<!--
+
+<div id="sidebar-sponsors-platinum-right">
+  <div class="main-sponsor">
+    <span>白金赞助商</span>
+    <div>
+    <a href="https://www.vuemastery.com/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/vuemastery.png" alt="VueMastery">
+    </a>
+    <a href="https://vehikl.com/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/vehikl.png" alt="Vehikl">
+    </a>
+    <a href="https://vuejs.amsterdam/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/vue_js_amsterdam.png" alt="Vue.js Amsterdam">
+    </a>
+    <a href="https://www.storyblok.com" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/storyblok.png" alt="Storyblok">
+    </a>
+    <a href="https://opencollective.com/2021-frameworks-fund" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/chrome_frameworks_fund.png" alt="Chrome Frameworks Fund">
+    </a>
+    <a href="https://www.herodevs.com/support/vue" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/herodevs.png" alt="HeroDevs">
+    </a>
+    <a href="https://certificates.dev/javascript/?ref=vuejs-sponsor&friend=VUEJS" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/javascript_certification.png?v2" alt="JavaScript Certification">
+    </a>
+    <a href="https://www.coderabbit.ai?utm_source=github&utm_medium=sponsors&utm_campaign=evan_you_2025" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/coderabbit_.png" alt="CodeRabbit ">
+    </a>
+    <a href="https://imagekit.io/?utm_source=vuejs&utm_medium=referral&utm_campaign=oss-sponsorship&utm_content=homepage" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/imagekit_io.svg" alt="ImageKit.io">
+    </a>
+    <a href="https://www.greptile.com/?utm_source=vuejs&utm_medium=sponsorship&utm_campaign=vue_sponsor_page" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/greptile.png" alt="Greptile">
+    </a>
+    <a href="https://serpapi.com/?utm_source=vuejs" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/serpapi.png" alt="SerpApi">
+    </a>
+    </div>
+  </div>
+  <a class="become-backer" href="/support-vuejs">
+    成为赞助者
+  </a>
+</div>
+
+
+-->
+ 
+<div
+    class="content ts with-sidebar "
+>
+      
+<div id="ad">
+  <!-- start: special logic for cn -->
+  <div
+    class="wwads-cn wwads-vertical"
+    data-id="53"
+    style="max-width: 200px"
+  ></div>
+  <script
+    type="text/javascript"
+    src="https://cdn.wwads.cn/js/makemoney.js"
+    async
+  ></script>
+  <!-- end: special logic for cn -->
+  <!-- <script
+    async
+    type="text/javascript"
+    src="//cdn.carbonads.com/carbon.js?serve=CEBDT27Y&placement=vuejsorg"
+    id="_carbonads_js"
+  ></script> -->
+</div>
+
+   
+    <h1>TypeScript介绍</h1>
+    
+
+    <!-- start: special logic for cn -->
+    <!-- start: special logic for cn -->
+<!-- <div class="ad-pagetop">
+  <a href="http://www.vueshop.com.cn/index.php?http_referer=vuejs" target="_blank" rel="noopener noreferrer">
+    <span class="name">VUEshop</span>
+    <span class="description">中国免费商城系统 - 搜豹商城系统 - 免费50小时 Vue 视频教程</span>
+    <span class="action">立即查看 &gt;</span>
+  </a>
+</div> -->
+<!-- end: special logic for cn -->
+
+    <!-- end: special logic for cn -->
+
+     <h2 id="类型理解"><a href="#类型理解" class="headerlink" title="类型理解"></a>类型理解</h2><h3 id="any"><a href="#any" class="headerlink" title="any"></a>any</h3><p>在TS中，编译时一切都要有类型，如果你和TS类型检查器无法确定类型是什么，默认为<code>any</code>。这是兜底的类型，是TS中所有类型的教父。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> <span class="hljs-attr">a</span>: any = <span class="hljs-number">666</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">b</span>: any = [<span class="hljs-string">&#x27;danger&#x27;</span>];<br><span class="hljs-keyword">let</span> c = a + b;<br></code></pre></td></tr></table></figure>
+<p>正常情况下，第三个语句应该在TS中报错才对（谁会去计算一个数字和一个数组之和呢？）</p>
+<p>但是如果显示声明了any标注，就不会报错，其实这里的做法就和原生JS的处理一模一样了。</p>
+<p>换句话说，如果要使用any，一定要显示标注，如果TS推导出值的类型为any（例如忘记注解函数的参数，或者引入没有类型的JavaScript模块），将抛出运行时异常。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> foo; <span class="hljs-comment">// any</span><br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">func</span>(<span class="hljs-params">foo, bar</span>) &#123;&#125; <span class="hljs-comment">// error 参数&quot;foo&quot;,&quot;bar&quot;隐式具有“any”类型。</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>默认情况下，Typescript是宽容的，在推导出类型为any时其实不会报错，如果在<code>tsconfig.json</code>中启用了<code>noImplcitAny</code>标志，就会遇到隐式any类型时报错。</p>
+<p><code>noImplcitAny</code>隶属于TSC的<code>strict</code>标志家族，如果已经在<code>tsconfig.json</code>中启用了<code>strict</code>，那就不需要专门设置<code>noImplcitAny</code>标志了，效果是一样的。</p>
+</blockquote>
+<p>有时候我们可能确实需要一个表示任意类型的变量，特别是从javascript代码移植到typescript的时候。比较明显的比如<code>console.log()</code>方法就能接收任意类型的参数。</p>
+<p>当然默认情况下，你看到的应该是这样的</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-title function_">log</span>(...<span class="hljs-attr">data</span>: any[]): <span class="hljs-keyword">void</span>;<br></code></pre></td></tr></table></figure>
+<p>我们现在能看到类型提示，这是由于VS Code编辑器结合着<code>lib.dom.d.ts</code>文件提供的TS支持。</p>
+<p>如果已经安装了<code>@types/node</code>，可以得到nodejs对于<code>console.log</code>函数更加细致的提示：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-title function_">log</span>(message?: any, ...<span class="hljs-attr">optionalParams</span>: any[]): <span class="hljs-keyword">void</span>;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>关于@types的内容，我们在快速入门中已经讲过。</p>
+<p>Node.js 的核心模块和某些第三方模块并不是天然支持Typescript的。这就意味着，如果在 TypeScript 项目中使用这些模块时，编译器无法得知这些模块的类型信息，从而无法提供类型检查和自动补全的功能。比如下面的代码会报错：</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>); <span class="hljs-comment">// error 找不到名称require,需要Nodejs类型定义</span><br></code></pre></td></tr></table></figure>
+<p>我们可以手动安装nodejs的TypeScript 社区<a target="_blank" rel="noopener" href="https://github.com/DefinitelyTyped/DefinitelyTyped">DefinitelyTyped</a> 提供的声明文件库。当使用 TypeScript 开发 Node.js 项目时，<code>@types/node</code> 库可以为 Node.js 的核心模块和常用的第三方模块提供类型定义，以便在开发过程中获得类型检查和自动补全的支持。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">npm i @types/node -D<br></code></pre></td></tr></table></figure>
+<p>这样上面代码<code>const fs = require(&#39;fs&#39;);</code>也找到的对应的类型支持，在TS文件中不会再报错了。</p>
+</blockquote>
+<p>总的来说，你可以在 any 类型变量上任意地进行操作，包括赋值、访问、方法调用等等，此时可以认为类型推导与检查是被完全禁用的：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> <span class="hljs-attr">anyVar</span>: any = <span class="hljs-literal">null</span>;<br>anyVar.<span class="hljs-property">foo</span>.<span class="hljs-property">bar</span>.<span class="hljs-title function_">fn</span>();<br>anyVar[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>][<span class="hljs-number">2</span>].<span class="hljs-property">prop</span>;<br></code></pre></td></tr></table></figure>
+<p>正如我们一开始就强调的<strong>【any兜底的类型，是TS中所有类型的教父】</strong></p>
+<blockquote>
+<p><strong>any能兼容所有类型，也能够被所有类型兼容</strong></p>
+</blockquote>
+<p>这一作用其实也意味着类型世界给你开了一个外挂，无论什么时候，你都可以使用 any 类型跳过类型检查。当然，运行时出了问题就需要你自己负责了。</p>
+<p>any 类型的万能性也导致我们经常滥用它，比如类型不兼容了就 any 一下，类型不想写了也 any 一下，不确定可能会是啥类型还是 any 一下。此时的 <code>TypeScript</code> 就变成了令人诟病的 <code>AnyScript</code>。</p>
+<h3 id="unknown"><a href="#unknown" class="headerlink" title="unknown"></a>unknown</h3><blockquote>
+<p>少数情况下，如果确实无法预知一个值的类型，不要使用any，更合理的方式是使用 unknown</p>
+</blockquote>
+<p>unknown也表示任何值，一个 unknown 类型的变量可以再次赋值为任意其它类型，但只能赋值给 any 与 unknown 类型的变量</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> <span class="hljs-attr">a</span>: unknown = <span class="hljs-number">30</span>;<br><span class="hljs-keyword">let</span> b = a === <span class="hljs-number">30</span>;<br><br><span class="hljs-keyword">let</span> <span class="hljs-attr">c</span>: any = <span class="hljs-number">30</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">d</span>:number = c + <span class="hljs-number">10</span>;<br><br><span class="hljs-keyword">let</span> <span class="hljs-attr">e</span>: unknown = <span class="hljs-string">&quot;string&quot;</span>;<br>e = <span class="hljs-number">123</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">f</span>: any = e;<br><span class="hljs-comment">// let f:string = e; // error 不能将类型unknown分配给类型string</span><br><span class="hljs-comment">//let f = e + 10; //error &quot;e&quot;的类型为&quot;未知&quot;</span><br><span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> e === <span class="hljs-string">&quot;number&quot;</span>) &#123;<br>  <span class="hljs-keyword">let</span> g = e + <span class="hljs-number">10</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ol>
+<li>TS不会把任何值推导为<code>unknown</code>类型，必须显式注解</li>
+<li><code>unknown</code>类型的值可以比较</li>
+<li><code>unknown</code>类型的变量可以赋值给<code>any</code>或者<code>unknown</code>类型的其他变量</li>
+<li>但是执行操作时不能假定<code>unknown</code>类型的值为某种特定的类型（比如上面的运算，注意和any的区别），必须先向TS证明一个值确实是某个类型，可以使用typeof</li>
+</ol>
+<p>简单的说，<strong>any 放弃了所有的类型检查，而 unknown 并没有</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> <span class="hljs-attr">anyFn</span>:any;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">unknownFn</span>: unknown;<br><br>anyFn.<span class="hljs-title function_">foo</span>();<br>unknownFn.<span class="hljs-title function_">foo</span>(); <span class="hljs-comment">// error 对象的类型为&quot;unknown&quot;</span><br></code></pre></td></tr></table></figure>
+<p><strong>在类型未知的情况下，更推荐使用 unknown 标注。</strong>这相当于你使用额外的心智负担保证了类型在各处的结构，后续重构为具体类型时也可以获得最初始的类型信息，同时还保证了类型检查的存在。当然，unknown 用起来很麻烦。</p>
+<p>……如果本身就出现了不得不使用any或者unknown的情况，没必要太过于纠结使用any还是unknown，归根结底，用哪个完全取决于你自己，毕竟语言只是工具</p>
+<h3 id="boolean与类型字面量"><a href="#boolean与类型字面量" class="headerlink" title="boolean与类型字面量"></a>boolean与类型字面量</h3><p><code>number</code>,<code>boolean</code>,<code>string</code>,<code>symbol</code>,<code>bigint</code>这些js本身就支持的基础类型使用起来很简单，ts的书写几乎感觉不到和js的差别，而且支持很多种书写的方式，当然中间还隐藏着一些很重要的细节。拿boolean举例来说：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> a = <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">var</span> b = <span class="hljs-literal">false</span>;<br><span class="hljs-keyword">const</span> c = <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">d</span>: boolean = <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">e</span>: <span class="hljs-literal">true</span> = <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">f</span>: <span class="hljs-literal">false</span> = <span class="hljs-literal">false</span>;<br><span class="hljs-comment">//let g: true = false; // error 不能将类型false分配给类型true</span><br></code></pre></td></tr></table></figure>
+<ol>
+<li><strong>可以让TS推导出值的类型为boolean（a，b）</strong></li>
+<li><strong>可以明确的告诉TS，值的类型为boolean（d）</strong></li>
+<li><strong>可以明确的告诉TS，值为某个具体的boolean值（e，f和g）</strong></li>
+<li><strong>可以让TS推导出(const)值为某个具体的布尔值（c）</strong></li>
+</ol>
+<p>首先我们常见的写法是1-4（行），要么使用TS自己的类型推导，要么我们自己定义好boolean类型，这是我们开始就介绍的方式。但是，5-7（行）的写法是什么意思？</p>
+<p>其实写法也很直观，我们大概也能猜到，<strong>变量e和f不是普通的boolean类型，而是值只为true和false的boolean类型</strong></p>
+<blockquote>
+<p>把类型设为某个值，就限制了e和f在所有布尔值中只能取指定的那个值。这个特性称为类型字面量（type literal）</p>
+<p><strong>类型字面量：仅仅表示一个值的类型</strong></p>
+</blockquote>
+<p>由于类型字面已经限定了具体的类型true或者false，因此上面代码第7行的错误就可以理解了：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> <span class="hljs-attr">g</span>: <span class="hljs-literal">true</span> = <span class="hljs-literal">false</span>; <span class="hljs-comment">// error 不能将类型false分配给类型true</span><br></code></pre></td></tr></table></figure>
+<p>特别注意一下第三行的代码：<code>const c = true;</code>，这里的变量c的类型是类型字面量true。</p>
+<blockquote>
+<p>因为const声明的基本类型的值，赋值之后便无法修改，因此TS推导出的是范围最窄的类型</p>
+</blockquote>
+<h3 id="number与bigint"><a href="#number与bigint" class="headerlink" title="number与bigint"></a>number与bigint</h3><p>有了上面boolean类型的说明，其他的基本数据类型基本一致</p>
+<blockquote>
+<p>bigint是ES11(ES2020)新增的一种基本数据类型，在JS中，可以用 Number 表示的最大整数为 2^53 - 1，可以写为 Number.MAX_SAFE_INTEGER。如果超过了这个界限，那么就可以用 BigInt 来表示，它可以表示任意大的整数。</p>
+<p>在一个整数字面量后面加 n 的方式定义一个 bigint，或者调用函数 BigInt()</p>
+<p><strong>注意这里强调的问题：ES11（ES2020），如果编译的时候没有指定tsconfig的target（指定代码编译成的版本）和lib（TSC假定运行代码的环境）为es2020以上的版本，或者执行tsc的时候，没有指定–target为es2020以上版本，将会编译报错</strong></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> a = <span class="hljs-number">123</span>;<br><span class="hljs-keyword">let</span> b = <span class="hljs-title class_">Infinity</span> * <span class="hljs-number">0.10</span>;<br><span class="hljs-keyword">const</span> c = <span class="hljs-number">567</span>;<br><span class="hljs-keyword">let</span> d = a &lt; b;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">e</span>: number = <span class="hljs-number">100</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">f</span>: <span class="hljs-number">26.218</span> = <span class="hljs-number">26.218</span>;<br><span class="hljs-comment">// let g: 26.218 = 10; // error 不能将类型10分配给类型26.218</span><br><br><span class="hljs-keyword">let</span> a1 = <span class="hljs-number">1234n</span>;<br><span class="hljs-keyword">const</span> b1 = <span class="hljs-title class_">BigInt</span>(<span class="hljs-number">1234</span>);<br><span class="hljs-keyword">const</span> b2 = <span class="hljs-number">1234n</span>;;<br><span class="hljs-keyword">let</span> d1 = a &lt; a1;<br><span class="hljs-comment">// let e1 = 1234.5n; // error bigint字面量必须是整数</span><br><span class="hljs-comment">// let f1: bigint = 1234; // error 不能将类型number分配给类型bigint</span><br><span class="hljs-keyword">let</span> <span class="hljs-attr">g1</span>: bigint = <span class="hljs-number">100n</span>;<br><span class="hljs-keyword">let</span> <span class="hljs-attr">h1</span>: <span class="hljs-number">100n</span> = <span class="hljs-number">100n</span>;<br></code></pre></td></tr></table></figure>
+<ol>
+<li><strong>可以让TS推导出值的类型为number/bigint（a，b，a1，b1）</strong></li>
+<li><strong>可以明确的告诉TS，值的类型为number/bigint（e，f1）</strong></li>
+<li><strong>可以明确的告诉TS，值为某个具体的number/bigint值（e，f，g，g1，h1）</strong></li>
+<li><strong>可以让TS推导出(const)值为某个具体的number/bigint值（c，b2）</strong></li>
+</ol>
+<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><p>与boolean和number形式是一样的，而且string字符串形式同样有单引号<code>&#39;&#39;</code>,双引号<code>&quot;&quot;</code>和模板字符串<code></code>的形式</p>
+<blockquote>
+<p>模板字符串还可以有其他的作用，这个在后期再给大家介绍</p>
+</blockquote>
+  
+    <div class="footer">
+<script src="//m.servedby-buysellads.com/monetization.js" type="text/javascript"></script>
+<div id="bsa-native"></div>
+<script>
+_bsa.init('custom', 'CKYD62QM', 'placement:vuejsorg',
+  {
+    target: '#bsa-native',
+    template: '<a class="native-box" href="##statlink##"><div class="native-sponsor">Sponsor</div><div class="native-text"><strong>##company##</strong> — ##description##</div></a>'
+  }
+);
+</script>
+
+发现错误？想参与编辑？
+        <a
+            href="https://github.com/vuejs/v2.cn.vuejs.org/blob/master/src/base/ts/index.md"
+            rel="noopener"
+            target="_blank"
+        >
+            在 GitHub 上编辑此页！
+        </a>
+        <!-- Deployed on
+    <a href="https://url.netlify.com/HJ8X2mxP8" rel="noopener" target="_blank">
+      Netlify
+    </a>. -->
+    </div>
+</div>
+
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- search -->
+    <link href="//code.bdstatic.com/npm/docsearch.js@1.5.0/dist/cdn/docsearch.min.css" rel='stylesheet' type='text/css'>
+    
+<link rel="stylesheet" href="/css/search.css">
+
+    <script src="//code.bdstatic.com/npm/docsearch.js@1.5.0/dist/cdn/docsearch.min.js"></script>
+    <script>
+    [
+      '#search-query-nav',
+      '#search-query-sidebar',
+      '#search-query-menu'
+    ].forEach(function (selector) {
+      if (!document.querySelector(selector)) return
+      docsearch({
+        appId: 'UURH1MHAF7',
+        apiKey: 'c23eb8e7895f42daeaf2bf6f63eb4bf6',
+        indexName: 'vuejs_cn2',
+        inputSelector: selector,
+        algoliaOptions: { facetFilters: ["version:v2"]},
+        autocompleteOptions: { hint: false, appendTo: 'body'}
+      })
+    })
+
+    // unregister service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for(let registration of registrations) {
+          registration.unregister()
+        }
+      })
+    }
+    </script>
+  </body>
+</html>

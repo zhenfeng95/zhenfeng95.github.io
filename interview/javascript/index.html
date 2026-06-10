@@ -1,0 +1,622 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="with-v3-banner">
+  <head>
+    <title>JavaScript — zzf的个人博客笔记</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="alternate" hreflang="x-default" href="https://v2.vuejs.org/interview/javascript/index.html">
+    <link rel="alternate" hreflang="zh" href="https://v2.cn.vuejs.org/interview/javascript/index.html">
+    <link rel="alternate" hreflang="ja" href="https://jp.vuejs.org/interview/javascript/index.html">
+    <link rel="alternate" hreflang="ru" href="https://ru.vuejs.org/interview/javascript/index.html">
+    <link rel="alternate" hreflang="ko" href="https://kr.vuejs.org/interview/javascript/index.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://br.vuejs.org/interview/javascript/index.html">
+    <link rel="alternate" hreflang="fr" href="https://fr.vuejs.org/interview/javascript/index.html">
+    <link rel="alternate" hreflang="es" href="https://es.vuejs.org/interview/javascript/index.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="JavaScript — Vue.js">
+    <meta property="og:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta property="og:image" content="https://v2.cn.vuejs.org/images/logo.png">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="JavaScript — Vue.js">
+    <meta name="twitter:description" content="Vue.js - The Progressive JavaScript Framework">
+    <meta name="twitter:image" content="https://v2.cn.vuejs.org/images/logo.png">
+
+    <!-- <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/images/icons/android-icon-192x192.png"> -->
+    <!-- <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png"> -->
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/favicon.png">
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="/images/icons/favicon-16x16.png"> -->
+    <meta name="msapplication-TileImage" content="/images/icons/ms-icon-144x144.png">
+    <!-- <link rel="icon" href="/images/logo.svg"> -->
+
+    <meta name="msapplication-TileColor" content="#4fc08d">
+    <meta name="theme-color" content="#4fc08d">
+
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin> -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com" rel="preconnect" crossorigin> -->
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono&display=swap" rel="stylesheet"> -->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Dosis:500&text=Vue.js&display=swap" rel="stylesheet"> -->
+
+    <link href="//code.bdstatic.com/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- main page styles -->
+    
+<link rel="stylesheet" href="/css/page.css">
+
+
+    <!-- this needs to be loaded before guide's inline scripts -->
+    <script src="/js/vue.js"></script>
+
+    
+
+    <script>
+      Vue.config.productionTip = false
+      window.PAGE_TYPE = "javascript"
+    </script>
+
+    <!-- Fathom - beautiful, simple website analytics -->
+    <script src="https://cdn.usefathom.com/script.js" data-site="KTDIHEIJ" defer></script>
+    <!-- / Fathom -->
+
+    <!-- vimeo analytics -->
+    <!-- <script type="text/javascript" defer="defer" src="https://extend.vimeocdn.com/ga/72160148.js"></script> -->
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Vue123.js" type="application/atom+xml">
+</head>
+  <body class="docs">
+
+    
+
+    <div id="mobile-bar" >
+      <a class="menu-button"></a>
+      <a class="logo" href="/"></a>
+    </div>
+    <div>
+
+
+  <header id="header">
+    <a id="logo" href="/">
+      <!-- <img src="/images/logo.svg" alt="vue logo"> -->
+      <span>个人博客</span>
+    </a>
+    <ul id="nav">
+      <li>
+    <form id="search-form">
+        <input type="text" id="search-query-nav" class="search-query st-default-search-input" aria-label="搜索" />
+    </form>
+</li>
+<li class="nav-dropdown-container learn">
+    <a class="nav-link">前端基础</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li><h4>文档</h4></li>
+        <li>
+            <ul>
+                <li><a href="/base/html/" class="nav-link">HTML</a></li>
+                <li><a href="/base/css/" class="nav-link">CSS</a></li>
+                <li><a href="/base/js/" class="nav-link">JavaScript</a></li>
+                 <li><a href="/base/ts/" class="nav-link">TypeScript</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container framework">
+    <a class="nav-link">前端框架</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/framework/vue/" class="nav-link">vue</a></li>
+                  <li><a href="/framework/uniapp/" class="nav-link">uniapp</a></li>
+               
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container resources">
+    <a class="nav-link">网站部署</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/website/process/" class="nav-link">部署流程</a></li>
+                <li><a href="/website/hexo/" class="nav-link">HEXO</a></li>
+                <li><a href="/website/docker/" class="nav-link">Docker</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container tool">
+    <a class="nav-link">工具</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/tool/environment/" class="nav-link">开发环境</a></li>
+                 <li><a href="/tool/git/" class="nav-link">git</a></li>
+                  <li><a href="/tool/webpack/" class="nav-link">webpack</a></li>
+                <li><a href="/tool/jenkins/" class="nav-link">jenkins</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+ <li class="nav-dropdown-container backend">
+    <a class="nav-link">服务端</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/backend/node/" class="nav-link">node</a></li>
+                 <li><a href="/backend/MongoDB/" class="nav-link">MongoDB</a></li>
+                 
+            </ul>
+        </li>
+    </ul>
+</li>
+<li class="nav-dropdown-container interview">
+    <a class="nav-link current">面试题</a
+    ><span class="arrow"></span>
+    <ul class="nav-dropdown">
+        <li>
+            <ul>
+                 <li><a href="/interview/javascript/" class="nav-link current">javascript</a></li>
+
+
+            </ul>
+        </li>
+    </ul>
+</li>
+
+<!-- <li>
+    <a href="/eol/" class="badge-parent">终止支持 (EOL)<sup class="badge">新</sup></a>
+</li> -->
+
+    </ul>
+  </header>
+</div>
+
+    
+      <div id="main" class="fix-sidebar">
+         
+
+<div class="sidebar">
+    <div class="sidebar-inner">
+        
+        <div class="list"> <ul class="menu-root">
+  
+    
+    
+    <li>
+      <a href="/interview/javascript/index.html" class="sidebar-link current">JavaScript</a>
+    </li>
+  
+</ul>
+ </div>
+    </div>
+</div>
+<!--
+
+<div id="sidebar-sponsors-platinum-right">
+  <div class="main-sponsor">
+    <span>白金赞助商</span>
+    <div>
+    <a href="https://www.vuemastery.com/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/vuemastery.png" alt="VueMastery">
+    </a>
+    <a href="https://vehikl.com/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/vehikl.png" alt="Vehikl">
+    </a>
+    <a href="https://vuejs.amsterdam/" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/vue_js_amsterdam.png" alt="Vue.js Amsterdam">
+    </a>
+    <a href="https://www.storyblok.com" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/storyblok.png" alt="Storyblok">
+    </a>
+    <a href="https://opencollective.com/2021-frameworks-fund" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/chrome_frameworks_fund.png" alt="Chrome Frameworks Fund">
+    </a>
+    <a href="https://www.herodevs.com/support/vue" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/herodevs.png" alt="HeroDevs">
+    </a>
+    <a href="https://certificates.dev/javascript/?ref=vuejs-sponsor&friend=VUEJS" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/javascript_certification.png?v2" alt="JavaScript Certification">
+    </a>
+    <a href="https://www.coderabbit.ai?utm_source=github&utm_medium=sponsors&utm_campaign=evan_you_2025" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/coderabbit_.png" alt="CodeRabbit ">
+    </a>
+    <a href="https://imagekit.io/?utm_source=vuejs&utm_medium=referral&utm_campaign=oss-sponsorship&utm_content=homepage" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/imagekit_io.svg" alt="ImageKit.io">
+    </a>
+    <a href="https://www.greptile.com/?utm_source=vuejs&utm_medium=sponsorship&utm_campaign=vue_sponsor_page" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/greptile.png" alt="Greptile">
+    </a>
+    <a href="https://serpapi.com/?utm_source=vuejs" target="_blank" rel="sponsored noopener" class="logo">
+      <img src="https://sponsors.vuejs.org/images/serpapi.png" alt="SerpApi">
+    </a>
+    </div>
+  </div>
+  <a class="become-backer" href="/support-vuejs">
+    成为赞助者
+  </a>
+</div>
+
+
+-->
+ 
+<div
+    class="content javascript with-sidebar "
+>
+      
+<div id="ad">
+  <!-- start: special logic for cn -->
+  <div
+    class="wwads-cn wwads-vertical"
+    data-id="53"
+    style="max-width: 200px"
+  ></div>
+  <script
+    type="text/javascript"
+    src="https://cdn.wwads.cn/js/makemoney.js"
+    async
+  ></script>
+  <!-- end: special logic for cn -->
+  <!-- <script
+    async
+    type="text/javascript"
+    src="//cdn.carbonads.com/carbon.js?serve=CEBDT27Y&placement=vuejsorg"
+    id="_carbonads_js"
+  ></script> -->
+</div>
+
+   
+    <h1>JavaScript</h1>
+    
+
+    <!-- start: special logic for cn -->
+    <!-- start: special logic for cn -->
+<!-- <div class="ad-pagetop">
+  <a href="http://www.vueshop.com.cn/index.php?http_referer=vuejs" target="_blank" rel="noopener noreferrer">
+    <span class="name">VUEshop</span>
+    <span class="description">中国免费商城系统 - 搜豹商城系统 - 免费50小时 Vue 视频教程</span>
+    <span class="action">立即查看 &gt;</span>
+  </a>
+</div> -->
+<!-- end: special logic for cn -->
+
+    <!-- end: special logic for cn -->
+
+     <h2 id="let、var、const-的区别"><a href="#let、var、const-的区别" class="headerlink" title="let、var、const 的区别"></a>let、var、const 的区别</h2><h3 id="声明变量关键字汇总"><a href="#声明变量关键字汇总" class="headerlink" title="声明变量关键字汇总"></a>声明变量关键字汇总</h3><p>在 <em>JavaScript</em> 中，一共存在 _3_ 种声明变量的方式：</p>
+<ul>
+<li><em>var</em></li>
+<li><em>let</em></li>
+<li><em>const</em></li>
+</ul>
+<p>之所以有 _3_ 种方式，这是由于历史原因造成的。最初声明变量的关键字就是 <em>var</em>，但是为了解决作用域的问题，所以后面新增了 <em>let</em> 和 <em>const</em> 的方式。</p>
+<h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><p>首先我们来了解一下作用域。</p>
+<p><em>ES5</em> 中的作用域有：全局作用域、函数作用域，<em>ES6</em> 中新增了块级作用域。块作用域由 { } 包括，_if_ 语句和 <em>for</em> 语句里面的 { } 也属于块作用域。</p>
+<p>关于作用域的更多内容，可以参阅《作用域和作用域链》章节。</p>
+<h4 id="var-关键字"><a href="#var-关键字" class="headerlink" title="var 关键字"></a><em>var</em> 关键字</h4><ol>
+<li>没有块级作用域的概念</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//Global Scope</span><br>&#123;<br>    <span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;<br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a); <span class="hljs-comment">//10</span><br></code></pre></td></tr></table></figure>
+<p>上面代码中，在 <em>Global Scope</em>（全局作用域）中，且在 <em>Block Scope</em>（块级作用域） { } 中，_a_ 输出结果为 _10_，由此可以看出 <em>var</em> 声明的变量不存在 <em>Block Scope</em> 的概念</p>
+<ol start="2">
+<li>有全局作用域、函数作用域的概念</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//Global Scope</span><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">checkscope</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">//Local Scope</span><br>    <span class="hljs-keyword">var</span> b = <span class="hljs-number">20</span>;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a); <span class="hljs-comment">//10</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(b); <span class="hljs-comment">//20</span><br>&#125;<br><span class="hljs-title function_">checkscope</span>();<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(b); <span class="hljs-comment">//ReferenceError: b is not defined</span><br></code></pre></td></tr></table></figure>
+<p>上面代码中，在 <em>Global Scope</em> 中用 <em>var</em> 声明了 _a_，在 <em>checkscope</em> 函数中的 <em>Local Scope</em>（本地作用域、函数作用域）中打印出了 _10_，但是在 <em>Global Scope</em> 中打印的变量 _b_ 报错了。</p>
+<ol start="3">
+<li>不初始化值默认为 <em>undefined</em></li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//Global Scope</span><br><span class="hljs-keyword">var</span> a;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a); <span class="hljs-comment">//undefined</span><br></code></pre></td></tr></table></figure>
+<p>上面代码中，在 <em>Global Scope</em> 中用 <em>var</em> 声明了 _a_，但没有初始化值，它的值默认为 <em>undefined</em>，这里是 <em>undefined</em> 是 <em>undefined</em> 类型，而不是字符串。</p>
+<ol start="4">
+<li>存在变量提升</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//Global Scope</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a); <span class="hljs-comment">//undefined</span><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;<br><br><span class="hljs-title function_">checkscope</span>();<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">checkscope</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">//Local Scope</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a); <span class="hljs-comment">//undefined</span><br>    <span class="hljs-keyword">var</span> a;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>上面代码中，先打印了 _a_，然后用 <em>var</em> 声明变量 _a_。变量提升是因为 _js_ 需要经历编译和执行阶段。而 _js_ 在编译阶段的时候，会搜集所有的变量声明并且提前声明变量。</p>
+<p>可以将这个过程形象地想象成所有的声明（变量）都会被“移动”到各自作用域的最顶端，这个过程被称为提升。</p>
+<p>至于 <em>checkscope</em> 函数中的变量 _a_ 为什么输出 <em>undefined</em>，可以参阅《作用域和作用域链》章节。</p>
+<ol start="5">
+<li>全局作用域用 <em>var</em> 声明的变量会挂载到 <em>window</em> 对象下</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//Global Scope</span><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a); <span class="hljs-comment">//10</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">window</span>.<span class="hljs-property">a</span>); <span class="hljs-comment">//10</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">a</span>); <span class="hljs-comment">//10</span><br></code></pre></td></tr></table></figure>
+<p>上面代码中，打印出了 _3_ 个 _10_，访问 _a_ 和 <em>window.a</em> 或是 <em>this.a</em> 都是等价的。</p>
+<p>举个例子：比如我要访问 <em>location</em> 对象，使用 <em>location</em> 可以访问，使用 <em>window.location</em> 也可以访问，只不过 <em>window</em> 对象可以省略不写，就像 <em>new Array( )</em> 和 <em>new window.Array( )</em> 是等价的。</p>
+<ol start="6">
+<li>同一作用域中允许重复声明</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//Global Scope</span><br><span class="hljs-keyword">var</span> a = <span class="hljs-number">10</span>;<br><span class="hljs-keyword">var</span> a = <span class="hljs-number">20</span>;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a); <span class="hljs-comment">//20</span><br><br><span class="hljs-title function_">checkscope</span>();<br><span class="hljs-keyword">function</span> <span class="hljs-title function_">checkscope</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-comment">//Local Scope</span><br>    <span class="hljs-keyword">var</span> b = <span class="hljs-number">10</span>;<br>    <span class="hljs-keyword">var</span> b = <span class="hljs-number">20</span>;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(b); <span class="hljs-comment">//20</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>上面代码中，在 <em>Global Scope</em> 中声明了 _2_ 次 _a_，以最后一次声明有效，打印为 _20_。同理，在 <em>Local Scope</em> 也是一样的。</p>
+<h4 id="let-关键字"><a href="#let-关键字" class="headerlink" title="let 关键字"></a><em>let</em> 关键字</h4><ol>
+<li>有块级作用域的概念</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">&#123;<br>    <span class="hljs-comment">//Block Scope</span><br>    <span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;<br>&#125;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a); <span class="hljs-comment">//ReferenceError: a is not defined</span><br></code></pre></td></tr></table></figure>
+<p>上面代码中，打印 _a_ 报错，说明存在 <em>Block Scope</em> 的概念。</p>
+<ol start="2">
+<li>不存在变量提升</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">&#123;<br>    <span class="hljs-comment">//Block Scope</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a); <span class="hljs-comment">//ReferenceError: Cannot access &#x27;a&#x27; before initialization</span><br>    <span class="hljs-keyword">let</span> a = <span class="hljs-number">10</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>上面代码中，打印 _a_ 报错：无法在初始化之前访问。说明不存在变量提升。</p>
+<ol start="3">
+<li>暂时性死区</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">&#123;<br>    <span class="hljs-comment">//Block Scope</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a); <span class="hljs-comment">//ReferenceError: Cannot access &#x27;a&#x27; before initialization</span><br>    <span class="hljs-keyword">let</span> a = <span class="hljs-number">20</span>;<br>&#125;<br><br><span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>) &#123;<br>    <span class="hljs-comment">//TDZ开始</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a); <span class="hljs-comment">//ReferenceError: Cannot access &#x27;a&#x27; before initialization</span><br><br>    <span class="hljs-keyword">let</span> a; <span class="hljs-comment">//TDZ结束</span><br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a); <span class="hljs-comment">//undefined</span><br><br>    a = <span class="hljs-number">123</span>;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a); <span class="hljs-comment">//123</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>上面代码中，使用 <em>let</em> 声明的变量 _a_，导致绑定这个块级作用域，所以在 <em>let</em> 声明变量前，打印的变量 _a_ 报错。</p>
+<p>这是因为使用 <em>let/const</em> 所声明的变量会存在暂时性死区。</p>
+<p>什么叫做暂时性死区域呢？</p>
+<p><em>ES6</em> 标准中对 <em>let/const</em> 声明中的解释 <a target="_blank" rel="noopener" href="https://link.segmentfault.com/?enc=K6pZVwgVNQb0IBQ9LTOuJg%3D%3D.p07UoPCGl5RslJ9ZnW9Nr36NFqs2pU%2FnSfWZUPIH3S1TUXzWdj22pH0lUMFVGVUwJkDpSHrYe8uKlYek%2FK4HBDYkJhc%2Fe2xiWo5V6teR%2BXY%3D">第13章</a>，有如下一段文字：</p>
+<blockquote>
+<p><em>The variables are created when their containing Lexical Environment is instantiated but may not be accessed inany way until the variable’s LexicalBinding is evaluated.</em></p>
+</blockquote>
+<p>翻译成人话就是：</p>
+<blockquote>
+<p>当程序的控制流程在新的作用域（<em>module、function</em> 或 <em>block</em> 作用域）进行实例化时，在此作用域中用 <em>let/const</em> 声明的变量会先在作用域中被创建出来，但因此时还未进行词法绑定，所以是不能被访问的，如果访问就会抛出错误。因此，在这运行流程进入作用域创建变量，到变量可以被访问之间的这一段时间，就称之为暂时死区。</p>
+</blockquote>
+<p>再简单理解就是：</p>
+<blockquote>
+<p><em>ES6</em> 规定，<em>let/const</em> 命令会使区块形成封闭的作用域。若在声明之前使用变量，就会报错。<br>总之，在代码块内，使用 <em>let/const</em> 命令声明变量之前，该变量都是不可用的。<br>这在语法上，称为 <strong>“暂时性死区”</strong>（ <em>temporal dead zone</em>，简称 <strong><em>TDZ</em></strong>）。</p>
+</blockquote>
+<p>其实上面不存在变量提升的例子中，其实也是暂时性死区，因为它有暂时性死区的概念，所以它压根就不存在变量提升了。</p>
+<ol start="4">
+<li>同一块作用域中不允许重复声明</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">&#123;<br>    <span class="hljs-comment">//Block Scope</span><br>    <span class="hljs-keyword">let</span> A;<br>    <span class="hljs-keyword">var</span> A; <span class="hljs-comment">//SyntaxError: Identifier &#x27;A&#x27; has already been declared</span><br>&#125;<br>&#123;<br>    <span class="hljs-comment">//Block Scope</span><br>    <span class="hljs-keyword">var</span> A;<br>    <span class="hljs-keyword">let</span> A; <span class="hljs-comment">//SyntaxError: Identifier &#x27;A&#x27; has already been declared</span><br>&#125;<br>&#123;<br>    <span class="hljs-comment">//Block Scope</span><br>    <span class="hljs-keyword">let</span> A;<br>    <span class="hljs-keyword">let</span> A; <span class="hljs-comment">//SyntaxError: Identifier &#x27;A&#x27; has already been declared</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="const-关键字"><a href="#const-关键字" class="headerlink" title="const 关键字"></a><em>const</em> 关键字</h4><ol>
+<li>必须立即初始化，不能留到以后赋值</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// Block Scope</span><br><span class="hljs-keyword">const</span> a; <span class="hljs-comment">// SyntaxError: Missing initializer in const declaration &#125;</span><br></code></pre></td></tr></table></figure>
+<p>上面代码中，用 <em>const</em> 声明的变量 _a_ 没有进行初始化，所以报错。</p>
+<ol start="2">
+<li>常量的值不能改变</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//Block Scope</span><br>&#123;<br>    <span class="hljs-keyword">const</span> a = <span class="hljs-number">10</span>;<br>    a = <span class="hljs-number">20</span>; <span class="hljs-comment">// TypeError: Assignment to constant variable</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>上面代码中，用 <em>const</em> 声明了变量 _a_ 且初始化为 _10_，然后试图修改 _a_ 的值，报错。</p>
+<p><em>const</em> 实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址所保存的数据不得改动。</p>
+<h4 id="特点总结"><a href="#特点总结" class="headerlink" title="特点总结"></a>特点总结</h4><ul>
+<li><em>var</em> 关键字</li>
+</ul>
+<ol>
+<li>没有块级作用域的概念</li>
+<li>有全局作用域、函数作用域的概念</li>
+<li>不初始化值默认为 <em>undefined</em></li>
+<li>存在变量提升</li>
+<li>全局作用域用 <em>var</em> 声明的变量会挂载到 <em>window</em> 对象下</li>
+<li>同一作用域中允许重复声明</li>
+</ol>
+<ul>
+<li><em>let</em> 关键字</li>
+</ul>
+<ol>
+<li>有块级作用域的概念</li>
+<li>不存在变量提升</li>
+<li>暂时性死区</li>
+<li>同一块作用域中不允许重复声明</li>
+</ol>
+<ul>
+<li><em>const</em> 关键字</li>
+</ul>
+<ol>
+<li>与 <em>let</em> 特性一样，仅有 _2_ 个差别</li>
+<li>区别 1：必须立即初始化，不能留到以后赋值</li>
+<li>区别 2：常量的值不能改变</li>
+</ol>
+<h3 id="真题解答"><a href="#真题解答" class="headerlink" title="真题解答"></a>真题解答</h3><ul>
+<li><em>let const var</em> 的区别？什么是块级作用域？如何用？</li>
+</ul>
+<blockquote>
+<p>参考答案：</p>
+<ol>
+<li><em>var</em> 定义的变量，没有块的概念，可以跨块访问, 不能跨函数访问，有变量提升。</li>
+<li><em>let</em> 定义的变量，只能在块作用域里访问，不能跨块访问，也不能跨函数访问，无变量提升，不可以重复声明。</li>
+<li><em>const</em> 用来定义常量，使用时必须初始化(即必须赋值)，只能在块作用域里访问，而且不能修改，无变量提升，不可以重复声明。</li>
+</ol>
+<p>最初在 _JS_ 中作用域有：全局作用域、函数作用域。没有块作用域的概念。</p>
+<p><em>ES6</em> 中新增了块级作用域。块作用域由 { } 包括，_if_ 语句和 <em>for</em> 语句里面的 { } 也属于块作用域。</p>
+<p>在以前没有块作用域的时候，在 _if_ 或者 <em>for</em> 循环中声明的变量会泄露成全局变量，其次就是 { } 中的内层变量可能会覆盖外层变量。块级作用域的出现解决了这些问题。</p>
+</blockquote>
+<p>-<em>EOF</em>-</p>
+<h1 id="JS中的数据类型"><a href="#JS中的数据类型" class="headerlink" title="JS中的数据类型"></a>JS中的数据类型</h1><blockquote>
+<p>面试题：JS 中的数据类型有哪些？基本类型和引用类型的区别是什么？</p>
+</blockquote>
+<ul>
+<li>简单值和复杂值</li>
+<li>两者之间本质区别</li>
+<li>两者之间行为区别</li>
+</ul>
+<h2 id="简单值和复杂值"><a href="#简单值和复杂值" class="headerlink" title="简单值和复杂值"></a>简单值和复杂值</h2><p>JS 中的数据类型就分为<strong>两大类</strong>：</p>
+<ul>
+<li>简单值（基本类型、原始类型）</li>
+<li>复杂值（引用值、引用类型）</li>
+</ul>
+<h3 id="1-简单值"><a href="#1-简单值" class="headerlink" title="1. 简单值"></a>1. 简单值</h3><p>一共<strong>有 7 种</strong>：</p>
+<ul>
+<li>number：数字</li>
+<li>string：字符串</li>
+<li>boolean：布尔值</li>
+<li>undefined：未定义</li>
+<li>null：空</li>
+<li>symbol：符号</li>
+<li>bigint：大数</li>
+</ul>
+<p>所谓简单值，是因为<strong>这些类型的值，无法再继续往下拆分</strong>。</p>
+<p><strong>注意点1: symbol 和 bigint</strong></p>
+<p>这两种数据类型从 ES6 开始新增的。</p>
+<p>symbol 这种类型主要用于<strong>创建唯一的标识符</strong>。symbol 的值是唯一且不可变的，适用于作为对象属性的键，以及保证不会与其他属性键发生冲突，特别是在多人合作的大型项目中或者当你使用第三方库的时候。</p>
+<p>bigint 是一种新增的基本数据类型，它于 ECMAScript 2020（ES11）中被正式添加到语言标准中。bigint 数据类型用于表示大于Number.MAX_SAFE_INTEGER（即 <code>2^53 - 1</code>）或小于 Number.MIN_SAFE_INTEGER（即<code>-2^53 + 1</code>）的整数。这个类型<strong>提供了一种在 JS 中安全处理非常大的整数的方法</strong>，这在之前的 JS 版本中是不可能的。这种类型非常适合于用在金融、科学计算和加密等领域。</p>
+<p><strong>注意点2: null 和 undefined</strong></p>
+<blockquote>
+<p>面试题1：为什么 null 的数据类型打印出来为 object ？</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-literal">null</span>); <span class="hljs-comment">// object</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-literal">undefined</span>); <span class="hljs-comment">// undefined</span><br></code></pre></td></tr></table></figure>
+<p>这其实是 JS 从第一个版本开始时，<strong>设计上的一个遗留问题</strong>。最初的 JS 语言实现是在 1995 年由 Brendan Eich 在 Netscape Navigator 中设计的。在 JS 最初的版本中，<strong>数据类型是使用底层的位模式来标识的，每种数据类型的前几位是用来表示类型信息的</strong>。例如，<strong>对象的类型标记通常以 00 开头</strong>，而由于一个历史错误，<strong>null 被表示为全零（00000000）</strong>，这就使得 null 的类型检查结果与对象一致。</p>
+<p>虽然这个行为在技术上是不正确的（因为 null 既不是对象也不包含任何属性），但改变这个行为可能会破坏大量现存的 Web 页面和应用。因此，尽管这是一个众所周知的问题，但由于向后兼容性的考虑，这个设计决策一直未被修改。</p>
+<p>不仅没有修改，这个行为目前还被 ECMAScript 标准所采纳，成为了规范的一部分，所有遵循 ECMAScript 标准的 JS 实现都默认在 typeof null 时返回 object.</p>
+<blockquote>
+<p>面试题2：为什么 undefined 和 null 明明是两种基础数据类型，但 undefined == null 返回的是 true ？</p>
+</blockquote>
+<p>这个问题其实也是一个历史问题。众所周知，JS 是借鉴了在当时很多已有的语言的一个产物。其中关于“无”这个概念，JS 就是借鉴的 Java，使用 null 来表示“无”的意思，而<u>根据 C 语言的传统，null 被设计成可以自动转为 0</u>.</p>
+<p>但是 Brendan Eich 觉得这么做还不够，主要是因为如下两个原因：</p>
+<ol>
+<li>由于前面所介绍的设计上的失误，获取 null 的数据类型会得到一个 obect，这在开发上会带来一些未知的问题。</li>
+<li>JS 在设计之初就是弱类型语言，当发生数据类型不匹配的时候，往往会自动数据类型转换或者静默失败，null 自动转为 0 的话也很不容易发现错误。</li>
+</ol>
+<p>基于上面的这些理由，Brendan Eich 又设计出来了 undefined. 也就是说，undefined 实际上是为了填补 null 所带来的坑。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-literal">null</span> + <span class="hljs-number">1</span>); <span class="hljs-comment">// 1</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-literal">undefined</span> + <span class="hljs-number">1</span>); <span class="hljs-comment">// NaN</span><br></code></pre></td></tr></table></figure>
+<p>目前来讲，关于 null 和 undefined 主要区别总结如下：</p>
+<ul>
+<li>null：从语义上来讲就是表示对象的 “无”<ul>
+<li>转为数值时会被转换为 0</li>
+<li>作为原型链的终点</li>
+</ul>
+</li>
+<li>undefined：从语义上来讲就是表示简单值的“无”<ul>
+<li>转为数值为 NaN</li>
+<li>变量声明了没有赋值，那么默认值为 undefined.</li>
+<li>调用函数没有提供要求的参数，那么该参数就是 undefined</li>
+<li>函数没有返回值的时候，默认返回 undefined.</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-复杂值"><a href="#2-复杂值" class="headerlink" title="2. 复杂值"></a>2. 复杂值</h3><p><strong>复杂值就一种</strong>：object</p>
+<p>之所以被称之为复杂值，就是<strong>因为这种类型的值可以继续往下拆分，分为多个简单值或者复杂值</strong>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> obj = &#123;<br>    <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;张三&#x27;</span>,<br>    <span class="hljs-attr">age</span>: <span class="hljs-number">18</span>,<br>    <span class="hljs-attr">scores</span>: &#123;<br>        <span class="hljs-string">&#x27;htmlScore&#x27;</span>: <span class="hljs-number">99</span>,<br>        <span class="hljs-string">&#x27;cssScore&#x27;</span>: <span class="hljs-number">95</span>,<br>    &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p><strong>像数组、函数、正则这些统统都是对象类型，属于复杂值</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> []); <span class="hljs-comment">// object</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;&#125;); <span class="hljs-comment">// function</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-keyword">typeof</span> /abc/); <span class="hljs-comment">// object</span><br></code></pre></td></tr></table></figure>
+<p><strong>函数的本质也是对象。</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">func</span>(<span class="hljs-params"></span>) &#123;&#125;<br><span class="hljs-comment">// 该函数我是可以正常添加属性和方法的</span><br>func.<span class="hljs-property">a</span> = <span class="hljs-number">1</span>; <span class="hljs-comment">// 添加了一个属性</span><br>func.<span class="hljs-property">test</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;this is a test function&#x27;</span>);<br>&#125;; <span class="hljs-comment">// 添加了一个方法</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(func.<span class="hljs-property">a</span>); <span class="hljs-comment">// 1</span><br>func.<span class="hljs-title function_">test</span>(); <span class="hljs-comment">// this is a test function</span><br></code></pre></td></tr></table></figure>
+<p>在函数内部有一个特别的内部属性 <code>[[Call]]</code>，这个是属于内部代码，开发者层面是没有办法调用的。但是<strong>有了这个属性之后，表示这个对象是可以被调用。</strong></p>
+<p>因为函数是可调用的对象，为了区分 <strong>普通对象</strong> 和 <strong>函数对象</strong>，因此当我们使用 typeof 操作符检测一个函数时，它返回的是 function。</p>
+<p>也正因为这种设计，所以 JS 中能够实现高阶函数。高阶函数的定义：</p>
+<ul>
+<li>接受一个或多个函数作为输入</li>
+<li>输出一个函数</li>
+</ul>
+<p>因为在 JS 中，函数的本质就是对象，因此可以像其他普通对象一样，作为参数或者返回值进行传递。这也是 JS 中所说的函数是一等公民这个说法的由来。</p>
+<h2 id="两者之间本质区别"><a href="#两者之间本质区别" class="headerlink" title="两者之间本质区别"></a>两者之间本质区别</h2><p>介绍完了简单值和复杂值之后，接下来我们从内存存储的角度，来看一下这两种本质上的区别。</p>
+<p>我们知道，内存的存储区域可以分为 <strong>栈</strong> 和 <strong>堆</strong> 这两大块。</p>
+<ul>
+<li>栈内存：<strong>栈内存因为其数据大小和生命周期的可预测性而易于管理和快速访问</strong>。栈支持快速的数据分配和销毁过程，<strong>但它不适合复杂的或大规模的数据结构</strong>。</li>
+<li>堆内存：<strong>堆内存更加灵活，可以动态地分配和释放空间，适合存储生命周期长或大小不确定的数据</strong>。使用堆内存可以有效地管理大量的数据，但相对于栈来说，其管理成本更高，访问速度也较慢。</li>
+</ul>
+<p>对于<strong>简单值而言，它们通常存储在栈内存里面</strong>。上面说了，栈内存的特点是管理简单且访问速度快，适用于存储 <strong>大小固定、生命周期短</strong> 的数据。简单值的存储通常包括直接在栈内存中分配的数据空间，并且直接存储了数据的实际值。</p>
+<p><img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2024-04-30-031914.png" alt="image-20240430111914109" style="zoom:50%;" /></p>
+<p>而对于复杂值而言，具体的值是存储在 <strong>堆内存</strong> 里面的。因为<strong>复杂值往往大小是不固定的，无法在栈区分配一个固定大小的内存</strong>，因此<strong>具体的数据放在堆里面</strong>。那么这就没有栈区什么事儿了么？倒也不是，<strong>栈区会存储一个内存地址</strong>，通过该内存地址可以访问到堆区里面具体的数据。</p>
+<p><img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2024-04-30-032917.png" alt="image-20240430112917412" style="zoom:50%;" /></p>
+<p>另外讲到这里，还有一个非常重要的点要提一下，那就是 <strong>JS 中在调用函数的时候，通通都是值传递，而非引用传递</strong>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">test</span>(<span class="hljs-params">obj</span>) &#123;<br>    obj.<span class="hljs-property">a</span> = <span class="hljs-number">1000</span>;<br>&#125;<br><span class="hljs-keyword">const</span> obj = &#123;&#125;;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj); <span class="hljs-comment">// &#123;&#125;</span><br><span class="hljs-title function_">test</span>(obj);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj); <span class="hljs-comment">// &#123; a: 1000 &#125;</span><br></code></pre></td></tr></table></figure>
+<p>上面的代码，有一定的迷惑性。你看到上面的代码，觉得调用函数之后，obj 发生了真实的修改，所以这是一个引用传递。</p>
+<p>但是这里<strong>仍然是一个值传递</strong>。只不过这个值的背后对应的是一个地址值，这个地址值和简单值一模一样，会被复制一份传递给函数，然后函数内部拿到的是地址值，就可以通过这个地址值找到同一份堆区数据。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">test</span>(<span class="hljs-params">obj</span>) &#123;<br>    obj = &#123; <span class="hljs-attr">b</span>: <span class="hljs-number">1</span> &#125;; <span class="hljs-comment">// 这里就赋值了一个新对象，不再使用原来的对象</span><br>    obj.<span class="hljs-property">a</span> = <span class="hljs-number">1000</span>;<br>&#125;<br><span class="hljs-keyword">const</span> obj = &#123;&#125;;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj); <span class="hljs-comment">// &#123;&#125;</span><br><span class="hljs-title function_">test</span>(obj);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj); <span class="hljs-comment">// &#123;&#125;</span><br></code></pre></td></tr></table></figure>
+<p>如果是真正的引用传递，那么函数内部的 obj 和外部的 obj 是绑在一起的，函数内部对 obj 做任何修改，都会影响外部。但是上面的代码中，很明显在函数内部对 obj 重新赋值后，断开了内外的联系，因此<strong>在 JS 中只有值传递</strong>。</p>
+<h2 id="两者之间行为区别"><a href="#两者之间行为区别" class="headerlink" title="两者之间行为区别"></a>两者之间行为区别</h2><p>聊完了本质区别后，接下来我们再来聊一下两者之间行为的区别，主要就下面这么几个点：</p>
+<ol>
+<li>访问方式</li>
+<li>比较方式</li>
+<li>动态属性</li>
+<li>变量赋值</li>
+</ol>
+<h3 id="1-访问方式"><a href="#1-访问方式" class="headerlink" title="1. 访问方式"></a>1. 访问方式</h3><p>简单值是 <strong>按值访问</strong>，也就是说，一个变量如果存储的是一个简单值，当访问这个变量的时候，得到就是对应的值。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> str = <span class="hljs-string">&#x27;Hello&#x27;</span>;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(str);<br></code></pre></td></tr></table></figure>
+<p>复杂值是虽然也是 <strong>按值访问</strong> ，但是由于值对应的是一个 <strong>内存地址值</strong>，一般不能够直接使用，还需要进一步获取地址值背后对应的值。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> obj = &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;张三&#x27;</span> &#125;;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj.<span class="hljs-property">name</span>);<br></code></pre></td></tr></table></figure>
+<h3 id="2-比较方式"><a href="#2-比较方式" class="headerlink" title="2. 比较方式"></a>2. 比较方式</h3><p>这个比较重要，<strong>无论是简单值也好，复杂值也好，都是进行的值比较</strong>。不过由于复杂值对应的值是一个 <strong>内存地址值</strong>，因此只有在这个内存地址值相同时，才会被认为是相等。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> a = &#123;&#125;; <span class="hljs-comment">// 内存地址不一样，假设 0x0012ff7c</span><br><span class="hljs-keyword">const</span> b = &#123;&#125;; <span class="hljs-comment">// 内存地址不一样，假设 0x0012ff7d</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a === b); <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
+<h3 id="3-动态属性"><a href="#3-动态属性" class="headerlink" title="3. 动态属性"></a>3. 动态属性</h3><p>对于<strong>复杂值来讲，可以动态的为其添加属性和方法，这一点简单值是做不到的</strong>。</p>
+<p>如果为简单值动态添加属性，不会报错，会静默失败，访问时返回的值为 undefined</p>
+<p>但如果为简单值动态添加方法，则会报错 xxx is not a function.</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> a = <span class="hljs-number">1</span>;<br>a.<span class="hljs-property">b</span> = <span class="hljs-number">2</span>;<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a.<span class="hljs-property">b</span>); <span class="hljs-comment">// undefined</span><br>a.<span class="hljs-property">c</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;&#125;;<br>a.<span class="hljs-title function_">c</span>(); <span class="hljs-comment">// error</span><br></code></pre></td></tr></table></figure>
+<h3 id="4-变量赋值"><a href="#4-变量赋值" class="headerlink" title="4. 变量赋值"></a>4. 变量赋值</h3><p>最后说一下关于赋值，记住，它们都是 <strong>将值复制一份</strong> 然后赋值给另外一个变量。</p>
+<p>不过由于复杂值复制的是 <strong>内存地址</strong>，因此修改新的变量会对旧的变量有影响。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> a = <span class="hljs-number">5</span>;<br><span class="hljs-keyword">let</span> b = a;<br>b = <span class="hljs-number">10</span>; <span class="hljs-comment">// 不影响 a</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(a);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(b);<br><span class="hljs-keyword">let</span> obj = &#123;&#125;;<br><span class="hljs-keyword">let</span> obj2 = obj;<br>obj2.<span class="hljs-property">name</span> = <span class="hljs-string">&#x27;张三&#x27;</span>; <span class="hljs-comment">// 会影响 obj</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj); <span class="hljs-comment">// &#123; name: &#x27;张三&#x27; &#125;</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj2); <span class="hljs-comment">// &#123; name: &#x27;张三&#x27; &#125;</span><br>obj2 = &#123; <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;张三&#x27;</span> &#125;;<br>obj2.<span class="hljs-property">age</span> = <span class="hljs-number">18</span>; <span class="hljs-comment">// 不会影响 obj</span><br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj);<br><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(obj2);<br></code></pre></td></tr></table></figure>
+<hr>
+<p>-EOF-</p>
+  
+    <div class="footer">
+<script src="//m.servedby-buysellads.com/monetization.js" type="text/javascript"></script>
+<div id="bsa-native"></div>
+<script>
+_bsa.init('custom', 'CKYD62QM', 'placement:vuejsorg',
+  {
+    target: '#bsa-native',
+    template: '<a class="native-box" href="##statlink##"><div class="native-sponsor">Sponsor</div><div class="native-text"><strong>##company##</strong> — ##description##</div></a>'
+  }
+);
+</script>
+
+发现错误？想参与编辑？
+        <a
+            href="https://github.com/vuejs/v2.cn.vuejs.org/blob/master/src/interview/javascript/index.md"
+            rel="noopener"
+            target="_blank"
+        >
+            在 GitHub 上编辑此页！
+        </a>
+        <!-- Deployed on
+    <a href="https://url.netlify.com/HJ8X2mxP8" rel="noopener" target="_blank">
+      Netlify
+    </a>. -->
+    </div>
+</div>
+
+      </div>
+      <script src="/js/smooth-scroll.min.js"></script>
+    
+
+    <!-- main custom script for sidebars, version selects etc. -->
+    <script src="/js/css.escape.js"></script>
+    <script src="/js/common.js"></script>
+
+    <!-- search -->
+    <link href="//code.bdstatic.com/npm/docsearch.js@1.5.0/dist/cdn/docsearch.min.css" rel='stylesheet' type='text/css'>
+    
+<link rel="stylesheet" href="/css/search.css">
+
+    <script src="//code.bdstatic.com/npm/docsearch.js@1.5.0/dist/cdn/docsearch.min.js"></script>
+    <script>
+    [
+      '#search-query-nav',
+      '#search-query-sidebar',
+      '#search-query-menu'
+    ].forEach(function (selector) {
+      if (!document.querySelector(selector)) return
+      docsearch({
+        appId: 'UURH1MHAF7',
+        apiKey: 'c23eb8e7895f42daeaf2bf6f63eb4bf6',
+        indexName: 'vuejs_cn2',
+        inputSelector: selector,
+        algoliaOptions: { facetFilters: ["version:v2"]},
+        autocompleteOptions: { hint: false, appendTo: 'body'}
+      })
+    })
+
+    // unregister service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for(let registration of registrations) {
+          registration.unregister()
+        }
+      })
+    }
+    </script>
+  </body>
+</html>
